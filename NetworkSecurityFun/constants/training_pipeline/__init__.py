@@ -4,12 +4,12 @@ import numpy as np
 import pandas as pd
 
 """
-defining common constant variable for training pipeline
+defining common constant variable for CyberGuard withdrawal prediction pipeline
 """
-TARGET_COLUMN = "Result"
-PIPELINE_NAME: str = "network_security"
+TARGET_COLUMNS = ["predicted_withdrawal_lat", "predicted_withdrawal_lng", "withdrawal_probability"]
+PIPELINE_NAME: str = "cyberguard_predictor"
 ARTIFACT_DIR: str = "artifact"
-FILENAME: str = "phishingData.csv"
+FILENAME: str = "datasets/withdrawal_prediction/complaint_to_withdrawal_focused.csv"
 
 TRAIN_FILENAME: str = "train.csv"
 TEST_FILENAME: str = "test.csv"
@@ -20,11 +20,11 @@ SAVED_MODEL_DIR: str = os.path.join("saved_models")
 MODEL_FILE_NAME: str = "model.pkl"
 
 """
-DATA Ingestion related constant starts with DATA_INGESTION VAR NAME
+Data Ingestion related constant starts with DATA_INGESTION VAR NAME
 """
 
-DATA_INGESTION_COLLECTION_NAME: str = "NetworkData"
-DATA_INGESTION_DATABASE_NAME: str = "NetworkSecurity"
+DATA_INGESTION_COLLECTION_NAME: str = "WithdrawalPredictionData"
+DATA_INGESTION_DATABASE_NAME: str = "CyberGuardDB"
 DATA_INGESTION_DIR_NAME: str = "data_ingestion"
 DATA_INGESTION_FEATURE_STORE_DIR_NAME: str = "feature_store"
 DATA_INGESTION_INGESTED_DIR_NAME: str = "ingested"
@@ -48,6 +48,17 @@ Data Transformation related constant starts with DATA_TRANSFORMATION VAR NAME
 DATA_TRANSFORMATION_DIR_NAME: str = "data_transformation"
 DATA_TRANSFORMATION_TRANSFORMED_DATA_NAME: str = "transformed"
 DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR: str = "transformed_object"
+
+# Multi-target transformation parameters
+DATA_TRANSFORMATION_MULTI_OUTPUT_TARGETS: list = ["predicted_withdrawal_lat", "predicted_withdrawal_lng", "withdrawal_probability"]
+DATA_TRANSFORMATION_GEOSPATIAL_FEATURES: list = ["complaint_lat", "complaint_lng", "nearest_atm_lat", "nearest_atm_lng"]
+DATA_TRANSFORMATION_TEMPORAL_FEATURES: list = ["hour", "day_of_week", "is_weekend", "is_peak_withdrawal_time"]
+
+# KNN Imputer parameters for withdrawal prediction
+DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
+    "n_neighbors": 5,
+    "weights": "uniform"
+}
 
 ## knn imputerto replace missing values
 DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {

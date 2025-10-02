@@ -8,13 +8,14 @@ import pandas as pd
 import os, sys
 from NetworkSecurityFun.utils.main_utils.utils import read_yaml_file, write_yaml_file
 
-class DataValidation:
+class CyberGuardDataValidation:
     def __init__(self, data_ingestion_artifact: DataIngestionArtifact,
                  data_validation_config: DataValidationConfig):
         try:
             self.data_ingestion_artifact = data_ingestion_artifact
             self.data_validation_config = data_validation_config
             self.schema_config = read_yaml_file(SCHEMA_FILE_PATH)
+            logger.info("🔄 CyberGuard Data Validation initialized for withdrawal prediction")
         except Exception as e:
             raise NetworkSecurityException(e, sys)
 
@@ -27,14 +28,140 @@ class DataValidation:
 
     def validate_number_of_columns(self, dataframe: pd.DataFrame) -> bool:
         try:
-            number_of_columns = len(self.schema_config["columns"])  # FIXED
+            number_of_columns = len(self.schema_config["columns"])
             logger.info(f"Required number of columns: {number_of_columns}")
             logger.info(f"Actual number of columns: {len(dataframe.columns)}")
+            logger.info(f"Dataframe columns: {list(dataframe.columns)}")
+            
+            # Get schema column names
+            schema_columns = [list(col.keys())[0] for col in self.schema_config["columns"]]
+            logger.info(f"Schema columns: {schema_columns}")
+            
+            # Check if all schema columns exist in dataframe
+            missing_cols = set(schema_columns) - set(dataframe.columns)
+            extra_cols = set(dataframe.columns) - set(schema_columns)
+            
+            if missing_cols:
+                logger.error(f"❌ Missing columns in dataset: {missing_cols}")
+                return False
+            if extra_cols:
+                logger.error(f"❌ Extra columns in dataset: {extra_cols}")
+                return False
+                
+            logger.info("✅ Column validation passed")
             return len(dataframe.columns) == number_of_columns
         except Exception as e:
             raise NetworkSecurityException(e, sys)
 
+    def validate_withdrawal_prediction_data(self, dataframe: pd.DataFrame) -> bool:
+        """Validate withdrawal prediction specific requirements"""
+        try:
+            logger.info("🔍 Validating withdrawal prediction data requirements...")
+            
+            # Check for required target columns
+            required_targets = ["predicted_withdrawal_lat", "predicted_withdrawal_lng", "withdrawal_probability"]
+            missing_targets = [col for col in required_targets if col not in dataframe.columns]
+            
+            if missing_targets:
+                logger.error(f"❌ Missing target columns: {missing_targets}")
+                return False
+            
+            # Validate coordinate ranges (India bounds)
+            if not self.validate_indian_coordinates(dataframe):
+                return False
+                
+            # Validate withdrawal probability range
+            if not dataframe['withdrawal_probability'].between(0, 1).all():
+                logger.error("❌ Withdrawal probability values outside [0,1] range")
+                return False
+                
+            # Validate positive amounts
+            if (dataframe['amount_lost'] <= 0).any():
+                logger.error("❌ Found non-positive amount values")
+                return False
+                
+            logger.info("✅ Withdrawal prediction data validation passed")
+            return True
+            
+        except Exception as e:
+            raise NetworkSecurityException(e, sys)
+    
+    def validate_indian_coordinates(self, dataframe: pd.DataFrame) -> bool:
+        """Validate that coordinates are within Indian geographic bounds"""
+        try:
+            # India bounds: Latitude: 6.0° to 37.6°, Longitude: 67.7° to 97.25°
+            lat_cols = ['complaint_lat', 'predicted_withdrawal_lat', 'nearest_atm_lat']
+            lng_cols = ['complaint_lng', 'predicted_withdrawal_lng', 'nearest_atm_lng']
+            
+            for col in lat_cols:
+                if col in dataframe.columns:
+                    if not dataframe[col].between(6.0, 37.6).all():
+                        logger.error(f"❌ Latitude values in {col} outside Indian bounds")
+                        return False
+                        
+            for col in lng_cols:
+                if col in dataframe.columns:
+                    if not dataframe[col].between(67.7, 97.25).all():
+                        logger.error(f"❌ Longitude values in {col} outside Indian bounds")
+                        return False
+                        
+            logger.info("✅ Geographic coordinates validation passed")
+            return True
+            
+        except Exception as e:
+            raise NetworkSecurityException(e, sys)
+    
     def detect_dataset_drift(self, base_df, current_df, threshold=0.05) -> bool:
+        """Detect drift between base and current datasets for withdrawal prediction"""
+        try:
+            logger.info("🔍 Detecting dataset drift for withdrawal prediction...")
+            
+            # For withdrawal prediction, we'll focus on key numerical features
+            numerical_cols = ['amount_lost', 'complaint_lat', 'complaint_lng', 
+                            'withdrawal_probability', 'hours_to_withdrawal', 
+                            'atm_distance_km', 'risk_score']
+            
+            drift_detected = False
+            drift_report = {}
+            
+            for col in numerical_cols:
+                if col in base_df.columns and col in current_df.columns:
+                    # Simple statistical drift detection using mean difference
+                    base_mean = base_df[col].mean()
+                    current_mean = current_df[col].mean()
+                    
+                    if base_mean != 0:
+                        drift_ratio = abs(current_mean - base_mean) / abs(base_mean)
+                        drift_report[col] = {
+                            'base_mean': base_mean,
+                            'current_mean': current_mean,
+                            'drift_ratio': drift_ratio,
+                            'drift_detected': drift_ratio > threshold
+                        }
+                        
+                        if drift_ratio > threshold:
+                            drift_detected = True
+                            logger.warning(f"⚠️ Drift detected in {col}: {drift_ratio:.4f}")
+            
+            # Save drift report
+            drift_report_file_path = self.data_validation_config.drift_report_file_path
+            dir_path = os.path.dirname(drift_report_file_path)
+            os.makedirs(dir_path, exist_ok=True)
+            
+            # Save report as YAML
+            from NetworkSecurityFun.utils.main_utils.utils import write_yaml_file
+            write_yaml_file(file_path=drift_report_file_path, content=drift_report)
+            
+            if drift_detected:
+                logger.warning("⚠️ Dataset drift detected - review required")
+            else:
+                logger.info("✅ No significant dataset drift detected")
+                
+            return not drift_detected  # Return True if no drift
+            
+        except Exception as e:
+            logger.warning(f"Drift detection failed: {e}. Continuing...")
+            return True  # Continue even if drift detection fails
         try:
             status = True
             report = {}
@@ -73,8 +200,8 @@ class DataValidation:
             test_file_path = self.data_ingestion_artifact.test_file_path
 
             # Read train and test data
-            train_df = DataValidation.read_data(train_file_path)
-            test_df = DataValidation.read_data(test_file_path)
+            train_df = CyberGuardDataValidation.read_data(train_file_path)
+            test_df = CyberGuardDataValidation.read_data(test_file_path)
 
             # Validate number of columns
             if not self.validate_number_of_columns(train_df):

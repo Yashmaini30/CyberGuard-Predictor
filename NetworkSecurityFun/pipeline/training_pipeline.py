@@ -5,10 +5,10 @@ from dotenv import load_dotenv
 from NetworkSecurityFun.exception.exception import NetworkSecurityException
 from NetworkSecurityFun.logging.logger import logger
 
-from NetworkSecurityFun.components.data_ingestion import DataIngestion
-from NetworkSecurityFun.components.data_validation import DataValidation
-from NetworkSecurityFun.components.data_transformation import DataTransformation
-from NetworkSecurityFun.components.model_trainer import ModelTrainer
+from NetworkSecurityFun.components.data_ingestion import CyberGuardDataIngestion
+from NetworkSecurityFun.components.data_validation import CyberGuardDataValidation
+from NetworkSecurityFun.components.data_transformation import CyberGuardDataTransformation
+from NetworkSecurityFun.components.model_trainer import CyberGuardModelTrainer
 
 from NetworkSecurityFun.entity.config_entity import (
     TrainingPipelineConfig,
@@ -30,7 +30,7 @@ from NetworkSecurityFun.cloud.s3_syncer import S3Syncer
 
 load_dotenv()
 TRAINING_BUCKET_NAME=os.getenv("TRAINING_BUCKET_NAME")
-class TrainingPipeline:
+class CyberGuardTrainingPipeline:
     def __init__(self):
         self.training_pipeline_config = TrainingPipelineConfig()
         self.s3_sync=S3Syncer()
@@ -39,7 +39,7 @@ class TrainingPipeline:
         try:
             self.data_ingestion_config=DataIngestionConfig(training_pipeline_config=self.training_pipeline_config)
             logger.info("Data Ingestion started")
-            data_ingestion=DataIngestion(self.data_ingestion_config)
+            data_ingestion=CyberGuardDataIngestion(self.data_ingestion_config)
             data_ingestion_artifact=data_ingestion.initiate_data_ingestion()
             logger.info("Data Ingestion completed")
 
@@ -51,7 +51,7 @@ class TrainingPipeline:
         try:
             self.data_validation_config=DataValidationConfig(training_pipeline_config=self.training_pipeline_config)
             logger.info("Data Validation started")
-            data_validation = DataValidation(
+            data_validation = CyberGuardDataValidation(
                 data_ingestion_artifact=data_ingestion_artifact, 
                 data_validation_config=self.data_validation_config
             )
@@ -67,7 +67,7 @@ class TrainingPipeline:
         try:
             self.data_transformation_config=DataTransformationConfig(training_pipeline_config=self.training_pipeline_config)
             logger.info("Data Transformation started")
-            data_transformation=DataTransformation(data_validation_artifact=self.data_validation_config,data_transformation_config=self.data_transformation_config)
+            data_transformation=CyberGuardDataTransformation(data_validation_artifact=data_validation_artifact,data_transformation_config=self.data_transformation_config)
             data_transformation_artifact=data_transformation.initiate_data_transformation()
             logger.info("Data Transformation completed")
 
@@ -81,7 +81,7 @@ class TrainingPipeline:
                 training_pipeline_config=self.training_pipeline_config
             )
 
-            model_trainer = ModelTrainer(
+            model_trainer = CyberGuardModelTrainer(
                 model_trainer_config=self.model_trainer_config,
                 data_transformation_artifact=data_transformation_artifact
             )

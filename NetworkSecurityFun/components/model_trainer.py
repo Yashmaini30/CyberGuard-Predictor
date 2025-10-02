@@ -23,16 +23,17 @@ from NetworkSecurityFun.utils.ml_utils.metric.classification_metric import (
     get_classification_score,
 )
 
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.svm import SVC
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import (
-    RandomForestClassifier,
-    AdaBoostClassifier,
-    GradientBoostingClassifier,
+    RandomForestRegressor,
+    GradientBoostingRegressor,
+    AdaBoostRegressor,
 )
-from sklearn.metrics import f1_score
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.svm import SVR
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.multioutput import MultiOutputRegressor
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 
 import mlflow
 import dagshub
@@ -48,7 +49,7 @@ dagshub.init(
 )
 
 
-class ModelTrainer:
+class CyberGuardModelTrainer:
     """Train a collection of models, pick the best F‑score, track with MLflow."""
 
     def __init__(
@@ -60,13 +61,13 @@ class ModelTrainer:
         self.data_transformation_artifact = data_transformation_artifact
 
     @staticmethod
-    def _track_model(name: str, model: Any, metric_obj: Any) -> None:
+    def _track_model(name: str, model: Any, r2: float, mse: float, mae: float) -> None:
         with mlflow.start_run():
             mlflow.log_param("model_name", name)
             mlflow.log_params(model.get_params())
-            mlflow.log_metric("f1_score", metric_obj.f1_score)
-            mlflow.log_metric("precision", metric_obj.precision_score)
-            mlflow.log_metric("recall", metric_obj.recall_score)
+            mlflow.log_metric("r2_score", r2)
+            mlflow.log_metric("mean_squared_error", mse)
+            mlflow.log_metric("mean_absolute_error", mae)
             mlflow.sklearn.log_model(model, "model")
 
     def train_model(
@@ -78,13 +79,13 @@ class ModelTrainer:
     ) -> ModelTrainerArtifact:
 
         models: Dict[str, Any] = {
-            "Logistic Regression": LogisticRegression(max_iter=10_000, solver="saga", n_jobs=-1),
-            "Decision Tree": DecisionTreeClassifier(),
-            "Support Vector Machine": SVC(),
-            "KNN": KNeighborsClassifier(),
-            "Random Forest": RandomForestClassifier(n_jobs=-1),
-            "AdaBoost": AdaBoostClassifier(),
-            "Gradient Boosting": GradientBoostingClassifier(),
+            "Random Forest": MultiOutputRegressor(RandomForestRegressor(n_estimators=100, n_jobs=-1)),
+            "Gradient Boosting": MultiOutputRegressor(GradientBoostingRegressor(n_estimators=100)),
+            "Linear Regression": MultiOutputRegressor(LinearRegression()),
+            "Ridge Regression": MultiOutputRegressor(Ridge()),
+            "Decision Tree": MultiOutputRegressor(DecisionTreeRegressor()),
+            "KNN": MultiOutputRegressor(KNeighborsRegressor()),
+            "AdaBoost": MultiOutputRegressor(AdaBoostRegressor()),
         }
 
         params: Dict[str, Any] = {
