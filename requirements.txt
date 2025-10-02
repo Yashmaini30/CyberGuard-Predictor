@@ -1,10 +1,9 @@
 python-dotenv
 pandas
-numpy
+numpy<2.0
 pymongo
 certifi
 pymongo[srv]
-pymongo
 scikit-learn
 dill
 mlflow
@@ -13,5 +12,9 @@ dvc
 fastapi
 uvicorn
 python-multipart
+geopy
+folium
+plotly
+streamlit
 
 ## -e .

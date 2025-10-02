@@ -34,6 +34,7 @@ from sklearn.svm import SVR
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.multioutput import MultiOutputRegressor
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
+import numpy as np
 
 import mlflow
 import dagshub
@@ -59,6 +60,58 @@ class CyberGuardModelTrainer:
     ) -> None:
         self.model_trainer_config = model_trainer_config
         self.data_transformation_artifact = data_transformation_artifact
+
+    @staticmethod
+    def calculate_haversine_distance(lat1, lng1, lat2, lng2):
+        """Calculate Haversine distance between two points in kilometers"""
+        R = 6371  # Earth's radius in kilometers
+        
+        lat1_rad = np.radians(lat1)
+        lng1_rad = np.radians(lng1)
+        lat2_rad = np.radians(lat2)
+        lng2_rad = np.radians(lng2)
+        
+        dlat = lat2_rad - lat1_rad
+        dlng = lng2_rad - lng1_rad
+        
+        a = np.sin(dlat/2)**2 + np.cos(lat1_rad) * np.cos(lat2_rad) * np.sin(dlng/2)**2
+        c = 2 * np.arcsin(np.sqrt(a))
+        
+        return R * c
+
+    @staticmethod
+    def calculate_geospatial_metrics(y_true, y_pred):
+        """Calculate geospatial-specific metrics for withdrawal prediction"""
+        # Extract coordinates (first 2 columns are lat/lng)
+        true_lat, true_lng = y_true[:, 0], y_true[:, 1]
+        pred_lat, pred_lng = y_pred[:, 0], y_pred[:, 1]
+        
+        # Calculate Haversine distance for each prediction
+        distances = []
+        for i in range(len(true_lat)):
+            dist = CyberGuardModelTrainer.calculate_haversine_distance(
+                true_lat[i], true_lng[i], pred_lat[i], pred_lng[i]
+            )
+            distances.append(dist)
+        
+        distances = np.array(distances)
+        
+        # Geospatial metrics
+        mean_distance_error = np.mean(distances)
+        median_distance_error = np.median(distances)
+        
+        # Accuracy within certain radii (useful for law enforcement)
+        accuracy_500m = np.mean(distances <= 0.5) * 100  # % within 500m
+        accuracy_1km = np.mean(distances <= 1.0) * 100   # % within 1km
+        accuracy_5km = np.mean(distances <= 5.0) * 100   # % within 5km
+        
+        return {
+            "mean_distance_error_km": mean_distance_error,
+            "median_distance_error_km": median_distance_error,
+            "accuracy_within_500m_pct": accuracy_500m,
+            "accuracy_within_1km_pct": accuracy_1km,
+            "accuracy_within_5km_pct": accuracy_5km,
+        }
 
     @staticmethod
     def _track_model(name: str, model: Any, r2: float, mse: float, mae: float) -> None:
@@ -89,38 +142,26 @@ class CyberGuardModelTrainer:
         }
 
         params: Dict[str, Any] = {
-            "Logistic Regression": [
-                {
-                    "penalty": ["elasticnet"],
-                    "l1_ratio": [0.5, 0.8],
-                    "C": [0.01, 0.1, 1, 10],
-                    "solver": ["saga"],
-                },
-                {
-                    "penalty": ["l1", "l2"],
-                    "C": [0.01, 0.1, 1, 10],
-                    "solver": ["liblinear", "saga"],
-                },
-            ],
-            "Decision Tree": {
-                "criterion": ["gini", "entropy", "log_loss"],
-                "max_depth": [None, 10, 20, 30],
-            },
-            "Support Vector Machine": {
-                "C": [0.1, 1, 10],
-                "kernel": ["linear", "rbf"],
-                "gamma": ["scale", "auto"],
-            },
-            "KNN": {"n_neighbors": [3, 5, 7], "weights": ["uniform", "distance"]},
             "Random Forest": {
-                "n_estimators": [50, 100, 200],
-                "max_depth": [None, 10, 20],
+                "estimator__n_estimators": [50, 100],
+                "estimator__max_depth": [10, 20],
             },
-            "AdaBoost": {"n_estimators": [50, 100, 200], "learning_rate": [0.1, 1]},
             "Gradient Boosting": {
-                "n_estimators": [50, 100, 200],
-                "learning_rate": [0.1, 0.05],
-                "max_depth": [3, 5],
+                "estimator__n_estimators": [50, 100],
+                "estimator__learning_rate": [0.1, 0.2],
+            },
+            "Linear Regression": {},  # No hyperparameters to tune
+            "Ridge Regression": {
+                "estimator__alpha": [1.0, 10.0],
+            },
+            "Decision Tree": {
+                "estimator__max_depth": [10, 20],
+            },
+            "KNN": {
+                "estimator__n_neighbors": [5, 7],
+            },
+            "AdaBoost": {
+                "estimator__n_estimators": [50, 100],
             },
         }
         scores: Dict[str, float] = evaluate_models(
@@ -138,15 +179,32 @@ class CyberGuardModelTrainer:
         expected = self.model_trainer_config.expected_accuracy
         if best_score < expected:
             warnings.warn(
-                f"Best F1 {best_score:.3f} below expected {expected:.3f}",
+                f"Best R² score {best_score:.3f} below expected {expected:.3f}",
                 RuntimeWarning,
             )
+        
+        # Generate predictions
         train_pred = best_estimator.predict(X_train)
         test_pred = best_estimator.predict(X_test)
-        train_metric = get_classification_score(y_train, train_pred)
-        test_metric = get_classification_score(y_test, test_pred)
+        
+        # Calculate standard regression metrics
+        train_r2 = r2_score(y_train, train_pred)
+        train_mse = mean_squared_error(y_train, train_pred)
+        train_mae = mean_absolute_error(y_train, train_pred)
+        
+        test_r2 = r2_score(y_test, test_pred)
+        test_mse = mean_squared_error(y_test, test_pred)
+        test_mae = mean_absolute_error(y_test, test_pred)
+        
+        # Calculate geospatial metrics for withdrawal prediction
+        train_geo_metrics = self.calculate_geospatial_metrics(y_train, train_pred)
+        test_geo_metrics = self.calculate_geospatial_metrics(y_test, test_pred)
+        
+        logger.info(f"📊 Training Metrics: R²={train_r2:.4f}, Distance Error={train_geo_metrics['mean_distance_error_km']:.2f}km")
+        logger.info(f"📊 Test Metrics: R²={test_r2:.4f}, Distance Error={test_geo_metrics['mean_distance_error_km']:.2f}km")
+        logger.info(f"🎯 Accuracy within 1km: {test_geo_metrics['accuracy_within_1km_pct']:.1f}%")
 
-        self._track_model(best_name, best_estimator, test_metric)
+        self._track_model(best_name, best_estimator, test_r2, test_mse, test_mae)
 
         preprocessor = load_object(self.data_transformation_artifact.transformed_object_file_path)
         full_pipeline = NetworkSecurityModel(preprocessor=preprocessor, model=best_estimator)
@@ -157,12 +215,18 @@ class CyberGuardModelTrainer:
 
         artifact = ModelTrainerArtifact(
             trained_model_file_path=self.model_trainer_config.trained_model_file_path,
-            trained_metric_artifact=train_metric,
-            test_metric_artifact=test_metric,
+            trained_metric_artifact={
+                "regression_metrics": {"r2": train_r2, "mse": train_mse, "mae": train_mae},
+                "geospatial_metrics": train_geo_metrics
+            },
+            test_metric_artifact={
+                "regression_metrics": {"r2": test_r2, "mse": test_mse, "mae": test_mae},
+                "geospatial_metrics": test_geo_metrics
+            },
             best_model_name=best_name,
             best_model_params=best_estimator.get_params(),
         )
-        logger.info(f"🏆  Best model: {best_name} – F1={best_score:.4f}")
+        logger.info(f"🏆  Best CyberGuard model: {best_name} – R²={best_score:.4f}, 1km accuracy={test_geo_metrics['accuracy_within_1km_pct']:.1f}%")
         return artifact
 
     def initiate_model_trainer(self) -> ModelTrainerArtifact:
@@ -174,8 +238,12 @@ class CyberGuardModelTrainer:
                 self.data_transformation_artifact.transformed_test_file_path
             )
 
-            X_train, y_train = train_arr[:, :-1], train_arr[:, -1]
-            X_test, y_test = test_arr[:, :-1], test_arr[:, -1]
+            # Multi-output target extraction (last 3 columns are targets)
+            X_train, y_train = train_arr[:, :-3], train_arr[:, -3:]
+            X_test, y_test = test_arr[:, :-3], test_arr[:, -3:]
+
+            logger.info(f"🎯 Training data: {X_train.shape} features, {y_train.shape} targets")
+            logger.info(f"🎯 Test data: {X_test.shape} features, {y_test.shape} targets")
 
             return self.train_model(X_train, y_train, X_test, y_test)
         except Exception as e:

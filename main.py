@@ -1,41 +1,43 @@
-from NetworkSecurityFun.components.data_ingestion import DataIngestion
-from NetworkSecurityFun.components.data_validation import DataValidation
-from NetworkSecurityFun.components.data_transformation import DataTransformation
-from NetworkSecurityFun.components.model_trainer import ModelTrainer
+from NetworkSecurityFun.pipeline.training_pipeline import CyberGuardTrainingPipeline
 from NetworkSecurityFun.exception.exception import NetworkSecurityException
 from NetworkSecurityFun.logging.logger import logger
-from NetworkSecurityFun.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig,ModelTrainerConfig
-from NetworkSecurityFun.entity.config_entity import TrainingPipelineConfig
 
 import sys
 
 if __name__ == "__main__":
     try:
-        trainingpipelineconfig=TrainingPipelineConfig()
-        data_ingestion_config=DataIngestionConfig(trainingpipelineconfig)
-        data_ingestion=DataIngestion(data_ingestion_config)
-        logger.info("Data Ingestion started")
-        dataingestionartifact=data_ingestion.initiate_data_ingestion()
-        logger.info("Data Ingestion completed")
+        logger.info("🚀 Starting CyberGuard Predictor Training Pipeline...")
         
-        data_validation_config=DataValidationConfig(trainingpipelineconfig)
-        data_validation=DataValidation(dataingestionartifact,data_validation_config)
-        logger.info("Data Validation started")
-        data_validation_artifact=data_validation.initiate_data_validation()
-        logger.info("Data Validation completed")
+        # Initialize CyberGuard training pipeline
+        training_pipeline = CyberGuardTrainingPipeline()
+        
+        # Start data ingestion
+        logger.info("📥 Starting data ingestion...")
+        data_ingestion_artifact = training_pipeline.start_data_ingestion()
+        logger.info("✅ Data ingestion completed successfully")
+        
+        # Start data validation  
+        logger.info("🔍 Starting data validation...")
+        data_validation_artifact = training_pipeline.start_data_validation(data_ingestion_artifact)
+        logger.info("✅ Data validation completed successfully")
 
-        data_transformation_config=DataTransformationConfig(trainingpipelineconfig)
-        data_transformation=DataTransformation(data_validation_artifact,data_transformation_config)
-        logger.info("Data Transformation started")
-        data_transformation_artifact=data_transformation.initiate_data_transformation()
-        print(data_transformation_artifact)
-        logger.info("Data Transformation completed")
-
-        logger.info("Model Training started")
-        model_trainer_config=ModelTrainerConfig(trainingpipelineconfig)
-        model_trainer=ModelTrainer(model_trainer_config,data_transformation_artifact)
-        model_trainer_artifact=model_trainer.initiate_model_trainer()
-        logger.info("Model Training completed")
+        # Start data transformation
+        logger.info("🔄 Starting data transformation...")
+        data_transformation_artifact = training_pipeline.start_data_transformation(data_validation_artifact)
+        logger.info("✅ Data transformation completed successfully")
+        
+        # Start model training
+        logger.info("🤖 Starting model training...")
+        model_trainer_artifact = training_pipeline.start_model_trainer(data_transformation_artifact)
+        logger.info("✅ Model training completed successfully")
+        
+        # Sync artifacts to S3 (if configured)
+        logger.info("☁️ Syncing artifacts to S3...")
+        training_pipeline.sync_artifact_dir_to_s3()
+        logger.info("✅ S3 sync completed successfully")
+        
+        logger.info("🎉 CyberGuard Predictor training pipeline completed successfully!")
         
     except Exception as e:
+        logger.error(f"❌ Training pipeline failed: {str(e)}")
         raise NetworkSecurityException(e, sys)
