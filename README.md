@@ -1,20 +1,29 @@
-# 🛡️ Threat Matrix Predictor
+# 🛡️ CyberGuard Predictor
 
-Production-ready MLOps platform for network security threat detection using machine learning and modern cloud-native architecture
+**Advanced Cybercrime Withdrawal Location Prediction System for SIH 2024**
+
+*Problem Statement ID 25257: Predict withdrawal locations for cybercrime complaints*
 
 ## 🚀 Overview
 
-A sophisticated threat detection system that analyzes network security data to predict and classify potential threats using advanced machine learning algorithms. Built with enterprise-grade MLOps practices including automated pipelines, comprehensive monitoring, and scalable cloud deployment.
+An intelligent system that predicts the most likely withdrawal locations for cybercrime complaints using advanced machine learning and geospatial analysis. Built for Law Enforcement Agencies (LEAs) and Banks to enhance cybercrime prevention and investigation capabilities.
 
 ## 🎯 Key Features
 
-- 🧠 **Intelligent Threat Detection**: Advanced ML algorithms for network security analysis
-- ⚙️ **Automated ML Pipeline**: End-to-end MLOps workflow with data validation and monitoring
-- ☁️ **Cloud-Native Architecture**: Scalable infrastructure with AWS integration
-- 📊 **Experiment Tracking**: MLflow integration with DagHub for reproducible ML experiments
-- 🔒 **Production Security**: Containerized deployment with proper authentication
-- 📈 **Real-time Monitoring**: Comprehensive logging and performance metrics
-- 💾 **Data Persistence**: MongoDB integration with artifact versioning
+- 🧠 **Intelligent Location Prediction**: Multi-output regression for latitude, longitude, and timing
+- 🗺️ **Interactive Risk Heatmap**: Real-time visualization of high-risk areas across India
+- ⚡ **Real-time Alerts**: WebSocket-based alerts for LEAs and financial institutions
+- 📊 **Advanced Analytics**: Geospatial metrics with 67.2% accuracy within 1km radius
+- 🌐 **Web Dashboard**: Modern interface with Leaflet maps and Bootstrap UI
+- 🔗 **RESTful API**: Comprehensive API endpoints for integration
+- � **MLflow Tracking**: Experiment tracking with DagHub integration
+- � **Docker Ready**: Containerized for easy deployment
+
+## 🎥 Live Demo
+
+**🌐 Deployed App:** [https://cyberguard-predictor.onrender.com](https://cyberguard-predictor.onrender.com)
+
+**📖 API Docs:** [https://cyberguard-predictor.onrender.com/docs](https://cyberguard-predictor.onrender.com/docs)
 
 ## 🏗️ Architecture
 
@@ -369,11 +378,72 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact & Support
 
-**Project Maintainer**: Your Name - your.email@example.com
+## 🚀 Deployment Options
 
-**Project Repository**: https://github.com/yourusername/ThreatMatrix-Predictor
+### Option 1: Render.com (Recommended) 
+```bash
+# 1. Push to GitHub
+git add . && git commit -m "Deploy CyberGuard" && git push
 
-**MLflow Experiments**: https://dagshub.com/mainiyash2/ThreatMatrix-Predictor
+# 2. Go to render.com → New Web Service
+# 3. Connect GitHub repo: CyberGuard-Predictor
+# 4. Settings:
+#    - Build: pip install -r requirements.txt
+#    - Start: python app.py
+#    - Port: 8000
+```
+
+### Option 2: Railway.app
+```bash
+# 1. Go to railway.app
+# 2. Deploy from GitHub
+# 3. Select CyberGuard-Predictor repo
+# 4. Auto-deploys! 🎉
+```
+
+### Option 3: Local Docker
+```bash
+# Build and run
+docker build -t cyberguard .
+docker run -p 8000:8000 cyberguard
+
+# Access at http://localhost:8000
+```
+
+### Environment Variables (for cloud deployment)
+```env
+DAGSHUB_AUTH_TOKEN=your_token
+DAGSHUB_USERNAME=mainiyash2
+DAGSHUB_REPO=CyberGuard-Predictor
+MONGO_DB_URL=optional_mongo_connection
+```
+
+**📖 Full Deployment Guide:** See [DEPLOYMENT.md](DEPLOYMENT.md)
+
+---
+
+## 📱 API Endpoints
+
+| Endpoint | Method | Description |
+|----------|---------|-------------|
+| `/` | GET | Interactive Dashboard |
+| `/predict-withdrawal-location` | POST | Single prediction |
+| `/bulk-predict` | POST | Batch predictions |
+| `/risk-heatmap` | GET | Heatmap data |
+| `/system-stats` | GET | System metrics |
+| `/ws/lea-alerts` | WebSocket | LEA alerts |
+| `/ws/bank-alerts` | WebSocket | Bank alerts |
+| `/docs` | GET | API documentation |
+
+---
+
+## 📞 Contact & Support
+
+**Project Maintainer**: Yash Maini - mainiyash2@gmail.com
+
+**Project Repository**: https://github.com/Yashmaini30/CyberGuard-Predictor
+
+**MLflow Experiments**: https://dagshub.com/mainiyash2/CyberGuard-Predictor
 
 ### Getting Help
 - 📖 **Documentation**: Check the wiki for detailed guides

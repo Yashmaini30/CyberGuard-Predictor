@@ -12,7 +12,7 @@ from NetworkSecurityFun.entity.artifact_entity import (
 )
 from NetworkSecurityFun.entity.config_entity import ModelTrainerConfig
 
-from NetworkSecurityFun.utils.ml_utils.model.estimator import NetworkSecurityModel
+from NetworkSecurityFun.utils.ml_utils.model.estimator import CyberGuardModel
 from NetworkSecurityFun.utils.main_utils.utils import (
     save_object,
     load_object,
@@ -207,7 +207,7 @@ class CyberGuardModelTrainer:
         self._track_model(best_name, best_estimator, test_r2, test_mse, test_mae)
 
         preprocessor = load_object(self.data_transformation_artifact.transformed_object_file_path)
-        full_pipeline = NetworkSecurityModel(preprocessor=preprocessor, model=best_estimator)
+        full_pipeline = CyberGuardModel(preprocessor=preprocessor, model=best_estimator)
 
         os.makedirs(os.path.dirname(self.model_trainer_config.trained_model_file_path), exist_ok=True)
         save_object(self.model_trainer_config.trained_model_file_path, full_pipeline)

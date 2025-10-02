@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberGuard Predictor - Advanced Cybercrime Analytics</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #dc2626;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            --dark-color: #111827;
+            --light-color: #f9fafb;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-color);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .stat-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .map-container {
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .alert-panel {
+            max-height: 400px;
+            overflow-y: auto;
+            border-radius: 15px;
+        }
+
+        .alert-item {
+            border-left: 4px solid var(--warning-color);
+            margin-bottom: 10px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .alert-high {
+            border-left-color: var(--secondary-color);
+        }
+
+        .alert-medium {
+            border-left-color: var(--warning-color);
+        }
+
+        .alert-low {
+            border-left-color: var(--success-color);
+        }
+
+        .prediction-form {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary-custom {
+            background: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .prediction-result {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .connection-status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .status-connected {
+            background-color: var(--success-color);
+        }
+
+        .status-disconnected {
+            background-color: var(--secondary-color);
+        }
+
+        .leaflet-popup-content {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .heatmap-legend {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Connection Status Indicator -->
+    <div class="connection-status">
+        <div id="wsStatus" class="badge status-disconnected">
+            <i class="fas fa-wifi"></i> Disconnected
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--dark-color);">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-shield-alt"></i> CyberGuard Predictor
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#prediction"><i class="fas fa-brain"></i> Prediction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#analytics"><i class="fas fa-chart-line"></i> Analytics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/docs" target="_blank"><i class="fas fa-book"></i> API Docs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <section id="dashboard" class="dashboard-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="display-5 fw-bold">Advanced Cybercrime Analytics</h1>
+                    <p class="lead">Real-time withdrawal location prediction for enhanced cybercrime prevention</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="badge bg-light text-dark p-3">
+                        <i class="fas fa-clock"></i> 
+                        <span id="currentTime"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Cards -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card stat-card h-100">
+                        <div class="card-body text-center">
+                            <div class="stat-icon bg-primary mx-auto mb-3">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3 id="totalPredictions" class="fw-bold">1,247</h3>
+                            <p class="text-muted">Total Predictions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card h-100">
+                        <div class="card-body text-center">
+                            <div class="stat-icon bg-danger mx-auto mb-3">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <h3 id="highRiskAlerts" class="fw-bold">89</h3>
+                            <p class="text-muted">High Risk Alerts</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card h-100">
+                        <div class="card-body text-center">
+                            <div class="stat-icon bg-success mx-auto mb-3">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h3 id="accuracyRate" class="fw-bold">67.2%</h3>
+                            <p class="text-muted">Accuracy Rate</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card h-100">
+                        <div class="card-body text-center">
+                            <div class="stat-icon bg-warning mx-auto mb-3">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 id="activeConnections" class="fw-bold">24</h3>
+                            <p class="text-muted">Active Connections</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Risk Heatmap -->
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-map-marked-alt text-primary"></i> 
+                                Risk Heatmap - India
+                            </h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div id="riskMap" class="map-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-time Alerts -->
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-bell text-warning"></i> 
+                                Real-time Alerts
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="alertsContainer" class="alert-panel">
+                                <!-- Dynamic alerts will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prediction Section -->
+    <section id="prediction" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="prediction-form">
+                        <h3 class="text-center mb-4">
+                            <i class="fas fa-brain text-primary"></i> 
+                            Withdrawal Location Prediction
+                        </h3>
+                        
+                        <form id="predictionForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="complaintId" class="form-label">Complaint ID</label>
+                                    <input type="text" class="form-control" id="complaintId" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="crimeType" class="form-label">Crime Type</label>
+                                    <select class="form-select" id="crimeType" required>
+                                        <option value="">Select Crime Type</option>
+                                        <option value="phishing">Phishing</option>
+                                        <option value="fraud">Financial Fraud</option>
+                                        <option value="identity_theft">Identity Theft</option>
+                                        <option value="ransomware">Ransomware</option>
+                                        <option value="social_engineering">Social Engineering</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="amountLost" class="form-label">Amount Lost (₹)</label>
+                                    <input type="number" class="form-control" id="amountLost" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="urgencyLevel" class="form-label">Urgency Level</label>
+                                    <select class="form-select" id="urgencyLevel" required>
+                                        <option value="">Select Urgency</option>
+                                        <option value="High">High</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Low">Low</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="complaintCity" class="form-label">Complaint City</label>
+                                    <input type="text" class="form-control" id="complaintCity" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="complaintLat" class="form-label">Latitude</label>
+                                    <input type="number" step="any" class="form-control" id="complaintLat" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="complaintLng" class="form-label">Longitude</label>
+                                    <input type="number" step="any" class="form-control" id="complaintLng" required>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary-custom">
+                                    <i class="fas fa-search"></i> Predict Withdrawal Location
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Prediction Results -->
+                        <div id="predictionResults" class="prediction-result" style="display: none;">
+                            <!-- Dynamic results will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Section -->
+    <section id="analytics" class="py-5">
+        <div class="container">
+            <h3 class="text-center mb-5">
+                <i class="fas fa-chart-line text-primary"></i> 
+                System Analytics
+            </h3>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0">Weekly Trend</h6>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="trendChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0">Risk Distribution</h6>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="riskChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 CyberGuard Predictor - SIH 2024 Problem Statement ID 25257</p>
+            <p class="small">Advanced Cybercrime Withdrawal Location Prediction System</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        let map;
+        let websocket;
+        let predictionSocket;
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMap();
+            initializeWebSocket();
+            updateCurrentTime();
+            loadSystemStats();
+            setupPredictionForm();
+            
+            // Update time every minute
+            setInterval(updateCurrentTime, 60000);
+            // Update stats every 30 seconds
+            setInterval(loadSystemStats, 30000);
+        });
+
+        // Initialize Leaflet map
+        function initializeMap() {
+            map = L.map('riskMap').setView([20.5937, 78.9629], 5); // Center on India
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Load risk heatmap data
+            loadRiskHeatmap();
+        }
+
+        // Load risk heatmap from API
+        async function loadRiskHeatmap() {
+            try {
+                const response = await fetch('/risk-heatmap');
+                const heatmapData = await response.json();
+                
+                heatmapData.forEach(point => {
+                    const color = point.risk_score > 0.8 ? '#dc2626' : 
+                                 point.risk_score > 0.5 ? '#d97706' : '#059669';
+                    
+                    const marker = L.circleMarker([point.lat, point.lng], {
+                        radius: Math.max(5, point.incident_count * 2),
+                        fillColor: color,
+                        color: color,
+                        weight: 2,
+                        opacity: 0.8,
+                        fillOpacity: 0.6
+                    }).addTo(map);
+
+                    marker.bindPopup(`
+                        <div>
+                            <h6>${point.city}</h6>
+                            <p><strong>Risk Score:</strong> ${(point.risk_score * 100).toFixed(1)}%</p>
+                            <p><strong>Incidents:</strong> ${point.incident_count}</p>
+                        </div>
+                    `);
+                });
+            } catch (error) {
+                console.error('Failed to load heatmap data:', error);
+            }
+        }
+
+        // Initialize WebSocket connections
+        function initializeWebSocket() {
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = `${protocol}//${window.location.host}/ws/lea-alerts`;
+            
+            websocket = new WebSocket(wsUrl);
+            
+            websocket.onopen = function(event) {
+                document.getElementById('wsStatus').className = 'badge status-connected';
+                document.getElementById('wsStatus').innerHTML = '<i class="fas fa-wifi"></i> Connected';
+                console.log('WebSocket connected');
+            };
+
+            websocket.onmessage = function(event) {
+                const alert = JSON.parse(event.data);
+                addAlertToPanel(alert);
+            };
+
+            websocket.onerror = function(error) {
+                console.error('WebSocket error:', error);
+                document.getElementById('wsStatus').className = 'badge status-disconnected';
+                document.getElementById('wsStatus').innerHTML = '<i class="fas fa-wifi"></i> Error';
+            };
+
+            websocket.onclose = function(event) {
+                document.getElementById('wsStatus').className = 'badge status-disconnected';
+                document.getElementById('wsStatus').innerHTML = '<i class="fas fa-wifi"></i> Disconnected';
+                
+                // Attempt to reconnect after 5 seconds
+                setTimeout(initializeWebSocket, 5000);
+            };
+        }
+
+        // Add alert to the alerts panel
+        function addAlertToPanel(alert) {
+            const alertsContainer = document.getElementById('alertsContainer');
+            const alertElement = document.createElement('div');
+            alertElement.className = `alert-item alert-${alert.severity.toLowerCase()}`;
+            
+            alertElement.innerHTML = `
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-1">${alert.alert_type.replace('_', ' ').toUpperCase()}</h6>
+                        <p class="mb-1">${alert.message}</p>
+                        <small class="text-muted">Complaint: ${alert.complaint_id}</small>
+                    </div>
+                    <span class="badge bg-${alert.severity.toLowerCase() === 'high' ? 'danger' : 'warning'}">
+                        ${alert.severity}
+                    </span>
+                </div>
+            `;
+            
+            alertsContainer.insertBefore(alertElement, alertsContainer.firstChild);
+            
+            // Keep only latest 10 alerts
+            while (alertsContainer.children.length > 10) {
+                alertsContainer.removeChild(alertsContainer.lastChild);
+            }
+        }
+
+        // Update current time
+        function updateCurrentTime() {
+            const now = new Date();
+            document.getElementById('currentTime').textContent = now.toLocaleString();
+        }
+
+        // Load system statistics
+        async function loadSystemStats() {
+            try {
+                const response = await fetch('/system-stats');
+                const stats = await response.json();
+                
+                document.getElementById('totalPredictions').textContent = stats.predictions_last_7_days || '0';
+                document.getElementById('highRiskAlerts').textContent = stats.high_risk_alerts || '0';
+                document.getElementById('accuracyRate').textContent = stats.accuracy_rate || '0%';
+                document.getElementById('activeConnections').textContent = 
+                    (stats.lea_connections + stats.bank_connections) || '0';
+            } catch (error) {
+                console.error('Failed to load system stats:', error);
+            }
+        }
+
+        // Setup prediction form
+        function setupPredictionForm() {
+            document.getElementById('predictionForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const formData = {
+                    complaint_id: document.getElementById('complaintId').value,
+                    crime_type: document.getElementById('crimeType').value,
+                    amount_lost: parseFloat(document.getElementById('amountLost').value),
+                    urgency_level: document.getElementById('urgencyLevel').value,
+                    complaint_city: document.getElementById('complaintCity').value,
+                    complaint_lat: parseFloat(document.getElementById('complaintLat').value),
+                    complaint_lng: parseFloat(document.getElementById('complaintLng').value)
+                };
+
+                try {
+                    const response = await fetch('/predict-withdrawal-location', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const result = await response.json();
+                    displayPredictionResults(result);
+                } catch (error) {
+                    console.error('Prediction failed:', error);
+                    alert('Prediction failed. Please try again.');
+                }
+            });
+        }
+
+        // Display prediction results
+        function displayPredictionResults(result) {
+            const resultsDiv = document.getElementById('predictionResults');
+            
+            resultsDiv.innerHTML = `
+                <h5 class="text-center mb-3">
+                    <i class="fas fa-map-marker-alt text-primary"></i> 
+                    Prediction Results
+                </h5>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="card border-0 bg-light">
+                            <div class="card-body text-center">
+                                <h6>Predicted Location</h6>
+                                <p class="mb-0">
+                                    <strong>Lat:</strong> ${result.predicted_withdrawal_lat.toFixed(4)}<br>
+                                    <strong>Lng:</strong> ${result.predicted_withdrawal_lng.toFixed(4)}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 bg-light">
+                            <div class="card-body text-center">
+                                <h6>Risk Assessment</h6>
+                                <p class="mb-0">
+                                    <span class="badge bg-${result.risk_level.toLowerCase() === 'high' ? 'danger' : 
+                                                               result.risk_level.toLowerCase() === 'medium' ? 'warning' : 'success'} fs-6">
+                                        ${result.risk_level}
+                                    </span><br>
+                                    <small>Probability: ${(result.withdrawal_probability * 100).toFixed(1)}%</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 bg-light">
+                            <div class="card-body text-center">
+                                <h6>Predicted Timing</h6>
+                                <p class="mb-0">
+                                    <strong>${result.predicted_hours_to_withdrawal}</strong> hours<br>
+                                    <small>Alert Radius: ${result.alert_radius_km} km</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 bg-light">
+                            <div class="card-body text-center">
+                                <h6>Confidence Score</h6>
+                                <p class="mb-0">
+                                    <strong>${(result.confidence_score * 100).toFixed(1)}%</strong><br>
+                                    <small>Model reliability</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            resultsDiv.style.display = 'block';
+            
+            // Add marker to map
+            if (map) {
+                const marker = L.marker([result.predicted_withdrawal_lat, result.predicted_withdrawal_lng])
+                    .addTo(map)
+                    .bindPopup(`
+                        <div>
+                            <h6>Predicted Withdrawal Location</h6>
+                            <p><strong>Complaint ID:</strong> ${result.complaint_id}</p>
+                            <p><strong>Risk Level:</strong> ${result.risk_level}</p>
+                            <p><strong>Probability:</strong> ${(result.withdrawal_probability * 100).toFixed(1)}%</p>
+                        </div>
+                    `);
+                
+                map.setView([result.predicted_withdrawal_lat, result.predicted_withdrawal_lng], 10);
+                marker.openPopup();
+            }
+        }
+
+        // Sample data for demo alerts
+        function loadSampleAlerts() {
+            const sampleAlerts = [
+                {
+                    alert_id: "alert_001",
+                    complaint_id: "CG2025001",
+                    alert_type: "high_risk",
+                    message: "HIGH RISK: Withdrawal predicted in Delhi region within 6 hours",
+                    severity: "HIGH",
+                    timestamp: new Date().toISOString()
+                },
+                {
+                    alert_id: "alert_002", 
+                    complaint_id: "CG2025002",
+                    alert_type: "withdrawal_predicted",
+                    message: "MEDIUM RISK: Potential withdrawal location identified in Mumbai",
+                    severity: "MEDIUM",
+                    timestamp: new Date().toISOString()
+                }
+            ];
+            
+            sampleAlerts.forEach(alert => addAlertToPanel(alert));
+        }
+
+        // Load sample alerts on startup
+        setTimeout(loadSampleAlerts, 2000);
+    </script>
+</body>
+</html>

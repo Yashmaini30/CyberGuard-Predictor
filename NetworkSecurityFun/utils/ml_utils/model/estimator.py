@@ -6,7 +6,7 @@ import sys
 from NetworkSecurityFun.exception.exception import NetworkSecurityException
 from NetworkSecurityFun.logging.logger import logger
 
-class NetworkSecurityModel:
+class CyberGuardModel:
     def __init__(self,preprocessor, model):
         try:
             self.preprocessor = preprocessor

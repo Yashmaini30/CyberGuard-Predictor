@@ -1,0 +1,14 @@
+# Render.com deployment configuration
+# This file tells Render how to build and run your app
+
+# Build Command (automatically detected)
+# pip install -r requirements.txt
+
+# Start Command
+python app.py
+
+# Environment Variables (set in Render dashboard):
+# DAGSHUB_AUTH_TOKEN=your_token
+# DAGSHUB_USERNAME=your_username  
+# DAGSHUB_REPO=CyberGuard-Predictor
+# MONGO_DB_URL=your_mongo_url (optional - app works in offline mode)
