@@ -1,66 +1,93 @@
 columns:
-  - having_IP_Address: int64
-  - URL_Length: int64
-  - Shortining_Service: int64
-  - having_At_Symbol: int64
-  - double_slash_redirecting: int64
-  - Prefix_Suffix: int64
-  - having_Sub_Domain: int64
-  - SSLfinal_State: int64
-  - Domain_registeration_length: int64
-  - Favicon: int64
-  - port: int64
-  - HTTPS_token: int64
-  - Request_URL: int64
-  - URL_of_Anchor: int64
-  - Links_in_tags: int64
-  - SFH: int64
-  - Submitting_to_email: int64
-  - Abnormal_URL: int64
-  - Redirect: int64
-  - on_mouseover: int64
-  - RightClick: int64
-  - popUpWidnow: int64
-  - Iframe: int64
-  - age_of_domain: int64
-  - DNSRecord: int64 
-  - web_traffic: int64
-  - Page_Rank: int64
-  - Google_Index: int64
-  - Links_pointing_to_page: int64
-  - Statistical_report: int64
-  - Result: int64
+  # Complaint Details
+  - complaint_id: str
+  - timestamp: datetime
+  - crime_type: str
+  - amount_lost: float64
+  - urgency_level: str
+  
+  # Geographic Features
+  - complaint_city: str
+  - complaint_lat: float64
+  - complaint_lng: float64
+  
+  # Target Variables (Prediction Targets)
+  - predicted_withdrawal_lat: float64
+  - predicted_withdrawal_lng: float64
+  - withdrawal_probability: float64
+  
+  # Timing Features
+  - hours_to_withdrawal: int64
+  - intervention_window_hours: int64
+  - hour: int64
+  - day_of_week: int64
+  - is_weekend: int64
+  - is_peak_withdrawal_time: int64
+  
+  # ATM/Banking Infrastructure
+  - nearest_atm_network: str
+  - nearest_atm_lat: float64
+  - nearest_atm_lng: float64
+  - atm_distance_km: float64
+  
+  # Risk Assessment
+  - risk_score: float64
+  - alert_priority: str
+  - requires_bank_alert: int64
+  
+  # LEA Coordination
+  - jurisdiction: str
 
 
 numerical_columns:
-  - having_IP_Address
-  - URL_Length
-  - Shortining_Service
-  - having_At_Symbol
-  - double_slash_redirecting
-  - Prefix_Suffix
-  - having_Sub_Domain
-  - SSLfinal_State
-  - Domain_registeration_length
-  - Favicon
-  - port
-  - HTTPS_token
-  - Request_URL
-  - URL_of_Anchor
-  - Links_in_tags 
-  - SFH
-  - Submitting_to_email
-  - Abnormal_URL
-  - Redirect
-  - on_mouseover
-  - RightClick
-  - popUpWidnow
-  - Iframe
-  - age_of_domain
-  - DNSRecord 
-  - web_traffic
-  - Page_Rank
-  - Google_Index
-  - Links_pointing_to_page
-  - Statistical_report
-  - Result
+  # Amount and Geographic
+  - amount_lost
+  - complaint_lat
+  - complaint_lng
+  - predicted_withdrawal_lat
+  - predicted_withdrawal_lng
+  - withdrawal_probability
+  
+  # Timing Features
+  - hours_to_withdrawal
+  - intervention_window_hours
+  - hour
+  - day_of_week
+  - is_weekend
+  - is_peak_withdrawal_time
+  
+  # Infrastructure Features
+  - nearest_atm_lat
+  - nearest_atm_lng
+  - atm_distance_km
+  
+  # Risk Features
+  - risk_score
+  - requires_bank_alert
+
+categorical_columns:
+  - crime_type
+  - urgency_level
+  - complaint_city
+  - nearest_atm_network
+  - alert_priority
+  - jurisdiction
+
+target_variables:
+  - predicted_withdrawal_lat
+  - predicted_withdrawal_lng  
+  - withdrawal_probability
+
+feature_columns:
+  - amount_lost
+  - complaint_lat
+  - complaint_lng
+  - hours_to_withdrawal
+  - hour
+  - day_of_week
+  - is_weekend
+  - is_peak_withdrawal_time
+  - nearest_atm_lat
+  - nearest_atm_lng
+  - atm_distance_km
+  - risk_score
