@@ -1,0 +1,50 @@
+{
+  "problem_statement": {
+    "id": "25257",
+    "title": "Predictive Analytics Framework for Cybercrime Cash Withdrawal Location Forecasting",
+    "focus": "Predict likely cash withdrawal locations to enable proactive intervention"
+  },
+  "datasets_created": {
+    "complaint_to_withdrawal_focused.csv": {
+      "purpose": "Primary training dataset for ML model",
+      "records": 8000,
+      "features": "Optimized for withdrawal location prediction",
+      "target_variables": [
+        "predicted_withdrawal_lat",
+        "predicted_withdrawal_lng",
+        "withdrawal_probability"
+      ]
+    },
+    "risk_heatmap_data.csv": {
+      "purpose": "GIS-enabled dashboard visualization",
+      "records": 125,
+      "features": "Grid-based risk intensity mapping",
+      "use_case": "Real-time risk zone visualization"
+    },
+    "alert_triggers.csv": {
+      "purpose": "Alert & notification system patterns",
+      "records": 1000,
+      "features": "Alert triggers and response tracking",
+      "use_case": "Real-time notification to LEAs and banks"
+    },
+    "state_risk_factors.csv": {
+      "purpose": "NCRB-validated state risk factors",
+      "records": 960,
+      "features": "Official government statistics",
+      "use_case": "Risk factor validation and adjustment"
+    }
+  },
+  "key_deliverables_mapping": {
+    "Predictive Analytics Engine": "complaint_to_withdrawal_focused.csv + state_risk_factors.csv",
+    "Risk Heatmap Dashboard": "risk_heatmap_data.csv",
+    "Law Enforcement Interface": "alert_triggers.csv + complaint_to_withdrawal_focused.csv",
+    "Alert & Notification System": "alert_triggers.csv"
+  },
+  "optimization_focus": [
+    "Cash withdrawal location prediction accuracy",
+    "Real-time intervention window calculation",
+    "Geospatial risk modeling",
+    "LEA and bank coordination",
+    "8000 daily complaints processing capability"
+  ]
+}

@@ -1,0 +1,961 @@
+year,month,state,total_cybercrime_cases,fraud_cases,cybercrime_rate_per_lakh,fraud_rate_per_lakh,population,fraud_percentage,data_source
+2020,1,Uttar Pradesh,197,138,1.25,0.88,237000000,70.1,NCRB Crime in India Report
+2020,2,Uttar Pradesh,197,138,1.25,0.88,237000000,70.1,NCRB Crime in India Report
+2020,3,Uttar Pradesh,296,208,1.25,0.88,237000000,70.3,NCRB Crime in India Report
+2020,4,Uttar Pradesh,296,208,1.25,0.88,237000000,70.3,NCRB Crime in India Report
+2020,5,Uttar Pradesh,296,208,1.25,0.88,237000000,70.3,NCRB Crime in India Report
+2020,6,Uttar Pradesh,197,138,1.25,0.88,237000000,70.1,NCRB Crime in India Report
+2020,7,Uttar Pradesh,197,138,1.25,0.88,237000000,70.1,NCRB Crime in India Report
+2020,8,Uttar Pradesh,197,138,1.25,0.88,237000000,70.1,NCRB Crime in India Report
+2020,9,Uttar Pradesh,197,138,1.25,0.88,237000000,70.1,NCRB Crime in India Report
+2020,10,Uttar Pradesh,296,208,1.25,0.88,237000000,70.3,NCRB Crime in India Report
+2020,11,Uttar Pradesh,296,208,1.25,0.88,237000000,70.3,NCRB Crime in India Report
+2020,12,Uttar Pradesh,296,208,1.25,0.88,237000000,70.3,NCRB Crime in India Report
+2020,1,Maharashtra,359,255,4.31,3.06,125000000,71.0,NCRB Crime in India Report
+2020,2,Maharashtra,359,255,4.31,3.06,125000000,71.0,NCRB Crime in India Report
+2020,3,Maharashtra,539,382,4.31,3.06,125000000,70.9,NCRB Crime in India Report
+2020,4,Maharashtra,539,382,4.31,3.06,125000000,70.9,NCRB Crime in India Report
+2020,5,Maharashtra,539,382,4.31,3.06,125000000,70.9,NCRB Crime in India Report
+2020,6,Maharashtra,359,255,4.31,3.06,125000000,71.0,NCRB Crime in India Report
+2020,7,Maharashtra,359,255,4.31,3.06,125000000,71.0,NCRB Crime in India Report
+2020,8,Maharashtra,359,255,4.31,3.06,125000000,71.0,NCRB Crime in India Report
+2020,9,Maharashtra,359,255,4.31,3.06,125000000,71.0,NCRB Crime in India Report
+2020,10,Maharashtra,539,382,4.31,3.06,125000000,70.9,NCRB Crime in India Report
+2020,11,Maharashtra,539,382,4.31,3.06,125000000,70.9,NCRB Crime in India Report
+2020,12,Maharashtra,539,382,4.31,3.06,125000000,70.9,NCRB Crime in India Report
+2020,1,Karnataka,452,339,9.98,7.5,68000000,75.0,NCRB Crime in India Report
+2020,2,Karnataka,452,339,9.98,7.5,68000000,75.0,NCRB Crime in India Report
+2020,3,Karnataka,678,509,9.98,7.5,68000000,75.1,NCRB Crime in India Report
+2020,4,Karnataka,678,509,9.98,7.5,68000000,75.1,NCRB Crime in India Report
+2020,5,Karnataka,678,509,9.98,7.5,68000000,75.1,NCRB Crime in India Report
+2020,6,Karnataka,452,339,9.98,7.5,68000000,75.0,NCRB Crime in India Report
+2020,7,Karnataka,452,339,9.98,7.5,68000000,75.0,NCRB Crime in India Report
+2020,8,Karnataka,452,339,9.98,7.5,68000000,75.0,NCRB Crime in India Report
+2020,9,Karnataka,452,339,9.98,7.5,68000000,75.0,NCRB Crime in India Report
+2020,10,Karnataka,678,509,9.98,7.5,68000000,75.1,NCRB Crime in India Report
+2020,11,Karnataka,678,509,9.98,7.5,68000000,75.1,NCRB Crime in India Report
+2020,12,Karnataka,678,509,9.98,7.5,68000000,75.1,NCRB Crime in India Report
+2020,1,Telangana,217,164,8.82,6.65,37000000,75.6,NCRB Crime in India Report
+2020,2,Telangana,217,164,8.82,6.65,37000000,75.6,NCRB Crime in India Report
+2020,3,Telangana,326,246,8.82,6.65,37000000,75.5,NCRB Crime in India Report
+2020,4,Telangana,326,246,8.82,6.65,37000000,75.5,NCRB Crime in India Report
+2020,5,Telangana,326,246,8.82,6.65,37000000,75.5,NCRB Crime in India Report
+2020,6,Telangana,217,164,8.82,6.65,37000000,75.6,NCRB Crime in India Report
+2020,7,Telangana,217,164,8.82,6.65,37000000,75.6,NCRB Crime in India Report
+2020,8,Telangana,217,164,8.82,6.65,37000000,75.6,NCRB Crime in India Report
+2020,9,Telangana,217,164,8.82,6.65,37000000,75.6,NCRB Crime in India Report
+2020,10,Telangana,326,246,8.82,6.65,37000000,75.5,NCRB Crime in India Report
+2020,11,Telangana,326,246,8.82,6.65,37000000,75.5,NCRB Crime in India Report
+2020,12,Telangana,326,246,8.82,6.65,37000000,75.5,NCRB Crime in India Report
+2020,1,Assam,95,63,4.11,2.7,35000000,66.3,NCRB Crime in India Report
+2020,2,Assam,95,63,4.11,2.7,35000000,66.3,NCRB Crime in India Report
+2020,3,Assam,143,94,4.11,2.7,35000000,65.7,NCRB Crime in India Report
+2020,4,Assam,143,94,4.11,2.7,35000000,65.7,NCRB Crime in India Report
+2020,5,Assam,143,94,4.11,2.7,35000000,65.7,NCRB Crime in India Report
+2020,6,Assam,95,63,4.11,2.7,35000000,66.3,NCRB Crime in India Report
+2020,7,Assam,95,63,4.11,2.7,35000000,66.3,NCRB Crime in India Report
+2020,8,Assam,95,63,4.11,2.7,35000000,66.3,NCRB Crime in India Report
+2020,9,Assam,95,63,4.11,2.7,35000000,66.3,NCRB Crime in India Report
+2020,10,Assam,143,94,4.11,2.7,35000000,65.7,NCRB Crime in India Report
+2020,11,Assam,143,94,4.11,2.7,35000000,65.7,NCRB Crime in India Report
+2020,12,Assam,143,94,4.11,2.7,35000000,65.7,NCRB Crime in India Report
+2020,1,Delhi,185,134,8.44,6.11,33000000,72.4,NCRB Crime in India Report
+2020,2,Delhi,185,134,8.44,6.11,33000000,72.4,NCRB Crime in India Report
+2020,3,Delhi,278,201,8.44,6.11,33000000,72.3,NCRB Crime in India Report
+2020,4,Delhi,278,201,8.44,6.11,33000000,72.3,NCRB Crime in India Report
+2020,5,Delhi,278,201,8.44,6.11,33000000,72.3,NCRB Crime in India Report
+2020,6,Delhi,185,134,8.44,6.11,33000000,72.4,NCRB Crime in India Report
+2020,7,Delhi,185,134,8.44,6.11,33000000,72.4,NCRB Crime in India Report
+2020,8,Delhi,185,134,8.44,6.11,33000000,72.4,NCRB Crime in India Report
+2020,9,Delhi,185,134,8.44,6.11,33000000,72.4,NCRB Crime in India Report
+2020,10,Delhi,278,201,8.44,6.11,33000000,72.3,NCRB Crime in India Report
+2020,11,Delhi,278,201,8.44,6.11,33000000,72.3,NCRB Crime in India Report
+2020,12,Delhi,278,201,8.44,6.11,33000000,72.3,NCRB Crime in India Report
+2020,1,Tamil Nadu,133,95,2.6,1.86,77000000,71.4,NCRB Crime in India Report
+2020,2,Tamil Nadu,133,95,2.6,1.86,77000000,71.4,NCRB Crime in India Report
+2020,3,Tamil Nadu,200,143,2.6,1.86,77000000,71.5,NCRB Crime in India Report
+2020,4,Tamil Nadu,200,143,2.6,1.86,77000000,71.5,NCRB Crime in India Report
+2020,5,Tamil Nadu,200,143,2.6,1.86,77000000,71.5,NCRB Crime in India Report
+2020,6,Tamil Nadu,133,95,2.6,1.86,77000000,71.4,NCRB Crime in India Report
+2020,7,Tamil Nadu,133,95,2.6,1.86,77000000,71.4,NCRB Crime in India Report
+2020,8,Tamil Nadu,133,95,2.6,1.86,77000000,71.4,NCRB Crime in India Report
+2020,9,Tamil Nadu,133,95,2.6,1.86,77000000,71.4,NCRB Crime in India Report
+2020,10,Tamil Nadu,200,143,2.6,1.86,77000000,71.5,NCRB Crime in India Report
+2020,11,Tamil Nadu,200,143,2.6,1.86,77000000,71.5,NCRB Crime in India Report
+2020,12,Tamil Nadu,200,143,2.6,1.86,77000000,71.5,NCRB Crime in India Report
+2020,1,Rajasthan,168,111,3.16,2.08,80000000,66.1,NCRB Crime in India Report
+2020,2,Rajasthan,168,111,3.16,2.08,80000000,66.1,NCRB Crime in India Report
+2020,3,Rajasthan,252,166,3.16,2.08,80000000,65.9,NCRB Crime in India Report
+2020,4,Rajasthan,252,166,3.16,2.08,80000000,65.9,NCRB Crime in India Report
+2020,5,Rajasthan,252,166,3.16,2.08,80000000,65.9,NCRB Crime in India Report
+2020,6,Rajasthan,168,111,3.16,2.08,80000000,66.1,NCRB Crime in India Report
+2020,7,Rajasthan,168,111,3.16,2.08,80000000,66.1,NCRB Crime in India Report
+2020,8,Rajasthan,168,111,3.16,2.08,80000000,66.1,NCRB Crime in India Report
+2020,9,Rajasthan,168,111,3.16,2.08,80000000,66.1,NCRB Crime in India Report
+2020,10,Rajasthan,252,166,3.16,2.08,80000000,65.9,NCRB Crime in India Report
+2020,11,Rajasthan,252,166,3.16,2.08,80000000,65.9,NCRB Crime in India Report
+2020,12,Rajasthan,252,166,3.16,2.08,80000000,65.9,NCRB Crime in India Report
+2020,1,Haryana,146,107,7.57,5.58,29000000,73.3,NCRB Crime in India Report
+2020,2,Haryana,146,107,7.57,5.58,29000000,73.3,NCRB Crime in India Report
+2020,3,Haryana,219,161,7.57,5.58,29000000,73.5,NCRB Crime in India Report
+2020,4,Haryana,219,161,7.57,5.58,29000000,73.5,NCRB Crime in India Report
+2020,5,Haryana,219,161,7.57,5.58,29000000,73.5,NCRB Crime in India Report
+2020,6,Haryana,146,107,7.57,5.58,29000000,73.3,NCRB Crime in India Report
+2020,7,Haryana,146,107,7.57,5.58,29000000,73.3,NCRB Crime in India Report
+2020,8,Haryana,146,107,7.57,5.58,29000000,73.3,NCRB Crime in India Report
+2020,9,Haryana,146,107,7.57,5.58,29000000,73.3,NCRB Crime in India Report
+2020,10,Haryana,219,161,7.57,5.58,29000000,73.5,NCRB Crime in India Report
+2020,11,Haryana,219,161,7.57,5.58,29000000,73.5,NCRB Crime in India Report
+2020,12,Haryana,219,161,7.57,5.58,29000000,73.5,NCRB Crime in India Report
+2020,1,Gujarat,123,86,2.84,2.0,65000000,69.9,NCRB Crime in India Report
+2020,2,Gujarat,123,86,2.84,2.0,65000000,69.9,NCRB Crime in India Report
+2020,3,Gujarat,184,129,2.84,2.0,65000000,70.1,NCRB Crime in India Report
+2020,4,Gujarat,184,129,2.84,2.0,65000000,70.1,NCRB Crime in India Report
+2020,5,Gujarat,184,129,2.84,2.0,65000000,70.1,NCRB Crime in India Report
+2020,6,Gujarat,123,86,2.84,2.0,65000000,69.9,NCRB Crime in India Report
+2020,7,Gujarat,123,86,2.84,2.0,65000000,69.9,NCRB Crime in India Report
+2020,8,Gujarat,123,86,2.84,2.0,65000000,69.9,NCRB Crime in India Report
+2020,9,Gujarat,123,86,2.84,2.0,65000000,69.9,NCRB Crime in India Report
+2020,10,Gujarat,184,129,2.84,2.0,65000000,70.1,NCRB Crime in India Report
+2020,11,Gujarat,184,129,2.84,2.0,65000000,70.1,NCRB Crime in India Report
+2020,12,Gujarat,184,129,2.84,2.0,65000000,70.1,NCRB Crime in India Report
+2020,1,West Bengal,93,66,1.42,1.01,99000000,71.0,NCRB Crime in India Report
+2020,2,West Bengal,93,66,1.42,1.01,99000000,71.0,NCRB Crime in India Report
+2020,3,West Bengal,140,99,1.42,1.01,99000000,70.7,NCRB Crime in India Report
+2020,4,West Bengal,140,99,1.42,1.01,99000000,70.7,NCRB Crime in India Report
+2020,5,West Bengal,140,99,1.42,1.01,99000000,70.7,NCRB Crime in India Report
+2020,6,West Bengal,93,66,1.42,1.01,99000000,71.0,NCRB Crime in India Report
+2020,7,West Bengal,93,66,1.42,1.01,99000000,71.0,NCRB Crime in India Report
+2020,8,West Bengal,93,66,1.42,1.01,99000000,71.0,NCRB Crime in India Report
+2020,9,West Bengal,93,66,1.42,1.01,99000000,71.0,NCRB Crime in India Report
+2020,10,West Bengal,140,99,1.42,1.01,99000000,70.7,NCRB Crime in India Report
+2020,11,West Bengal,140,99,1.42,1.01,99000000,70.7,NCRB Crime in India Report
+2020,12,West Bengal,140,99,1.42,1.01,99000000,70.7,NCRB Crime in India Report
+2020,1,Madhya Pradesh,90,61,1.6,1.09,85000000,67.8,NCRB Crime in India Report
+2020,2,Madhya Pradesh,90,61,1.6,1.09,85000000,67.8,NCRB Crime in India Report
+2020,3,Madhya Pradesh,135,92,1.6,1.09,85000000,68.1,NCRB Crime in India Report
+2020,4,Madhya Pradesh,135,92,1.6,1.09,85000000,68.1,NCRB Crime in India Report
+2020,5,Madhya Pradesh,135,92,1.6,1.09,85000000,68.1,NCRB Crime in India Report
+2020,6,Madhya Pradesh,90,61,1.6,1.09,85000000,67.8,NCRB Crime in India Report
+2020,7,Madhya Pradesh,90,61,1.6,1.09,85000000,67.8,NCRB Crime in India Report
+2020,8,Madhya Pradesh,90,61,1.6,1.09,85000000,67.8,NCRB Crime in India Report
+2020,9,Madhya Pradesh,90,61,1.6,1.09,85000000,67.8,NCRB Crime in India Report
+2020,10,Madhya Pradesh,135,92,1.6,1.09,85000000,68.1,NCRB Crime in India Report
+2020,11,Madhya Pradesh,135,92,1.6,1.09,85000000,68.1,NCRB Crime in India Report
+2020,12,Madhya Pradesh,135,92,1.6,1.09,85000000,68.1,NCRB Crime in India Report
+2020,1,Odisha,81,53,2.71,1.78,45000000,65.4,NCRB Crime in India Report
+2020,2,Odisha,81,53,2.71,1.78,45000000,65.4,NCRB Crime in India Report
+2020,3,Odisha,121,80,2.71,1.78,45000000,66.1,NCRB Crime in India Report
+2020,4,Odisha,121,80,2.71,1.78,45000000,66.1,NCRB Crime in India Report
+2020,5,Odisha,121,80,2.71,1.78,45000000,66.1,NCRB Crime in India Report
+2020,6,Odisha,81,53,2.71,1.78,45000000,65.4,NCRB Crime in India Report
+2020,7,Odisha,81,53,2.71,1.78,45000000,65.4,NCRB Crime in India Report
+2020,8,Odisha,81,53,2.71,1.78,45000000,65.4,NCRB Crime in India Report
+2020,9,Odisha,81,53,2.71,1.78,45000000,65.4,NCRB Crime in India Report
+2020,10,Odisha,121,80,2.71,1.78,45000000,66.1,NCRB Crime in India Report
+2020,11,Odisha,121,80,2.71,1.78,45000000,66.1,NCRB Crime in India Report
+2020,12,Odisha,121,80,2.71,1.78,45000000,66.1,NCRB Crime in India Report
+2020,1,Punjab,76,51,3.8,2.57,30000000,67.1,NCRB Crime in India Report
+2020,2,Punjab,76,51,3.8,2.57,30000000,67.1,NCRB Crime in India Report
+2020,3,Punjab,114,77,3.8,2.57,30000000,67.5,NCRB Crime in India Report
+2020,4,Punjab,114,77,3.8,2.57,30000000,67.5,NCRB Crime in India Report
+2020,5,Punjab,114,77,3.8,2.57,30000000,67.5,NCRB Crime in India Report
+2020,6,Punjab,76,51,3.8,2.57,30000000,67.1,NCRB Crime in India Report
+2020,7,Punjab,76,51,3.8,2.57,30000000,67.1,NCRB Crime in India Report
+2020,8,Punjab,76,51,3.8,2.57,30000000,67.1,NCRB Crime in India Report
+2020,9,Punjab,76,51,3.8,2.57,30000000,67.1,NCRB Crime in India Report
+2020,10,Punjab,114,77,3.8,2.57,30000000,67.5,NCRB Crime in India Report
+2020,11,Punjab,114,77,3.8,2.57,30000000,67.5,NCRB Crime in India Report
+2020,12,Punjab,114,77,3.8,2.57,30000000,67.5,NCRB Crime in India Report
+2020,1,Bihar,53,37,0.63,0.44,128000000,69.8,NCRB Crime in India Report
+2020,2,Bihar,53,37,0.63,0.44,128000000,69.8,NCRB Crime in India Report
+2020,3,Bihar,80,56,0.63,0.44,128000000,70.0,NCRB Crime in India Report
+2020,4,Bihar,80,56,0.63,0.44,128000000,70.0,NCRB Crime in India Report
+2020,5,Bihar,80,56,0.63,0.44,128000000,70.0,NCRB Crime in India Report
+2020,6,Bihar,53,37,0.63,0.44,128000000,69.8,NCRB Crime in India Report
+2020,7,Bihar,53,37,0.63,0.44,128000000,69.8,NCRB Crime in India Report
+2020,8,Bihar,53,37,0.63,0.44,128000000,69.8,NCRB Crime in India Report
+2020,9,Bihar,53,37,0.63,0.44,128000000,69.8,NCRB Crime in India Report
+2020,10,Bihar,80,56,0.63,0.44,128000000,70.0,NCRB Crime in India Report
+2020,11,Bihar,80,56,0.63,0.44,128000000,70.0,NCRB Crime in India Report
+2020,12,Bihar,80,56,0.63,0.44,128000000,70.0,NCRB Crime in India Report
+2020,1,Jharkhand,37,25,1.5,1.02,38000000,67.6,NCRB Crime in India Report
+2020,2,Jharkhand,37,25,1.5,1.02,38000000,67.6,NCRB Crime in India Report
+2020,3,Jharkhand,56,38,1.5,1.02,38000000,67.9,NCRB Crime in India Report
+2020,4,Jharkhand,56,38,1.5,1.02,38000000,67.9,NCRB Crime in India Report
+2020,5,Jharkhand,56,38,1.5,1.02,38000000,67.9,NCRB Crime in India Report
+2020,6,Jharkhand,37,25,1.5,1.02,38000000,67.6,NCRB Crime in India Report
+2020,7,Jharkhand,37,25,1.5,1.02,38000000,67.6,NCRB Crime in India Report
+2020,8,Jharkhand,37,25,1.5,1.02,38000000,67.6,NCRB Crime in India Report
+2020,9,Jharkhand,37,25,1.5,1.02,38000000,67.6,NCRB Crime in India Report
+2020,10,Jharkhand,56,38,1.5,1.02,38000000,67.9,NCRB Crime in India Report
+2020,11,Jharkhand,56,38,1.5,1.02,38000000,67.9,NCRB Crime in India Report
+2020,12,Jharkhand,56,38,1.5,1.02,38000000,67.9,NCRB Crime in India Report
+2020,1,Kerala,49,34,2.11,1.46,35000000,69.4,NCRB Crime in India Report
+2020,2,Kerala,49,34,2.11,1.46,35000000,69.4,NCRB Crime in India Report
+2020,3,Kerala,73,51,2.11,1.46,35000000,69.9,NCRB Crime in India Report
+2020,4,Kerala,73,51,2.11,1.46,35000000,69.9,NCRB Crime in India Report
+2020,5,Kerala,73,51,2.11,1.46,35000000,69.9,NCRB Crime in India Report
+2020,6,Kerala,49,34,2.11,1.46,35000000,69.4,NCRB Crime in India Report
+2020,7,Kerala,49,34,2.11,1.46,35000000,69.4,NCRB Crime in India Report
+2020,8,Kerala,49,34,2.11,1.46,35000000,69.4,NCRB Crime in India Report
+2020,9,Kerala,49,34,2.11,1.46,35000000,69.4,NCRB Crime in India Report
+2020,10,Kerala,73,51,2.11,1.46,35000000,69.9,NCRB Crime in India Report
+2020,11,Kerala,73,51,2.11,1.46,35000000,69.9,NCRB Crime in India Report
+2020,12,Kerala,73,51,2.11,1.46,35000000,69.9,NCRB Crime in India Report
+2020,1,Andhra Pradesh,67,47,1.89,1.32,54000000,70.1,NCRB Crime in India Report
+2020,2,Andhra Pradesh,67,47,1.89,1.32,54000000,70.1,NCRB Crime in India Report
+2020,3,Andhra Pradesh,101,71,1.89,1.32,54000000,70.3,NCRB Crime in India Report
+2020,4,Andhra Pradesh,101,71,1.89,1.32,54000000,70.3,NCRB Crime in India Report
+2020,5,Andhra Pradesh,101,71,1.89,1.32,54000000,70.3,NCRB Crime in India Report
+2020,6,Andhra Pradesh,67,47,1.89,1.32,54000000,70.1,NCRB Crime in India Report
+2020,7,Andhra Pradesh,67,47,1.89,1.32,54000000,70.1,NCRB Crime in India Report
+2020,8,Andhra Pradesh,67,47,1.89,1.32,54000000,70.1,NCRB Crime in India Report
+2020,9,Andhra Pradesh,67,47,1.89,1.32,54000000,70.1,NCRB Crime in India Report
+2020,10,Andhra Pradesh,101,71,1.89,1.32,54000000,70.3,NCRB Crime in India Report
+2020,11,Andhra Pradesh,101,71,1.89,1.32,54000000,70.3,NCRB Crime in India Report
+2020,12,Andhra Pradesh,101,71,1.89,1.32,54000000,70.3,NCRB Crime in India Report
+2020,1,Chhattisgarh,24,16,1.27,0.87,29000000,66.7,NCRB Crime in India Report
+2020,2,Chhattisgarh,24,16,1.27,0.87,29000000,66.7,NCRB Crime in India Report
+2020,3,Chhattisgarh,36,25,1.27,0.87,29000000,69.4,NCRB Crime in India Report
+2020,4,Chhattisgarh,36,25,1.27,0.87,29000000,69.4,NCRB Crime in India Report
+2020,5,Chhattisgarh,36,25,1.27,0.87,29000000,69.4,NCRB Crime in India Report
+2020,6,Chhattisgarh,24,16,1.27,0.87,29000000,66.7,NCRB Crime in India Report
+2020,7,Chhattisgarh,24,16,1.27,0.87,29000000,66.7,NCRB Crime in India Report
+2020,8,Chhattisgarh,24,16,1.27,0.87,29000000,66.7,NCRB Crime in India Report
+2020,9,Chhattisgarh,24,16,1.27,0.87,29000000,66.7,NCRB Crime in India Report
+2020,10,Chhattisgarh,36,25,1.27,0.87,29000000,69.4,NCRB Crime in India Report
+2020,11,Chhattisgarh,36,25,1.27,0.87,29000000,69.4,NCRB Crime in India Report
+2020,12,Chhattisgarh,36,25,1.27,0.87,29000000,69.4,NCRB Crime in India Report
+2020,1,Uttarakhand,19,13,2.63,1.84,11000000,68.4,NCRB Crime in India Report
+2020,2,Uttarakhand,19,13,2.63,1.84,11000000,68.4,NCRB Crime in India Report
+2020,3,Uttarakhand,28,20,2.63,1.84,11000000,71.4,NCRB Crime in India Report
+2020,4,Uttarakhand,28,20,2.63,1.84,11000000,71.4,NCRB Crime in India Report
+2020,5,Uttarakhand,28,20,2.63,1.84,11000000,71.4,NCRB Crime in India Report
+2020,6,Uttarakhand,19,13,2.63,1.84,11000000,68.4,NCRB Crime in India Report
+2020,7,Uttarakhand,19,13,2.63,1.84,11000000,68.4,NCRB Crime in India Report
+2020,8,Uttarakhand,19,13,2.63,1.84,11000000,68.4,NCRB Crime in India Report
+2020,9,Uttarakhand,19,13,2.63,1.84,11000000,68.4,NCRB Crime in India Report
+2020,10,Uttarakhand,28,20,2.63,1.84,11000000,71.4,NCRB Crime in India Report
+2020,11,Uttarakhand,28,20,2.63,1.84,11000000,71.4,NCRB Crime in India Report
+2020,12,Uttarakhand,28,20,2.63,1.84,11000000,71.4,NCRB Crime in India Report
+2021,1,Uttar Pradesh,249,174,1.58,1.11,237000000,69.9,NCRB Crime in India Report
+2021,2,Uttar Pradesh,249,174,1.58,1.11,237000000,69.9,NCRB Crime in India Report
+2021,3,Uttar Pradesh,373,262,1.58,1.11,237000000,70.2,NCRB Crime in India Report
+2021,4,Uttar Pradesh,373,262,1.58,1.11,237000000,70.2,NCRB Crime in India Report
+2021,5,Uttar Pradesh,373,262,1.58,1.11,237000000,70.2,NCRB Crime in India Report
+2021,6,Uttar Pradesh,249,174,1.58,1.11,237000000,69.9,NCRB Crime in India Report
+2021,7,Uttar Pradesh,249,174,1.58,1.11,237000000,69.9,NCRB Crime in India Report
+2021,8,Uttar Pradesh,249,174,1.58,1.11,237000000,69.9,NCRB Crime in India Report
+2021,9,Uttar Pradesh,249,174,1.58,1.11,237000000,69.9,NCRB Crime in India Report
+2021,10,Uttar Pradesh,373,262,1.58,1.11,237000000,70.2,NCRB Crime in India Report
+2021,11,Uttar Pradesh,373,262,1.58,1.11,237000000,70.2,NCRB Crime in India Report
+2021,12,Uttar Pradesh,373,262,1.58,1.11,237000000,70.2,NCRB Crime in India Report
+2021,1,Maharashtra,453,321,5.44,3.86,125000000,70.9,NCRB Crime in India Report
+2021,2,Maharashtra,453,321,5.44,3.86,125000000,70.9,NCRB Crime in India Report
+2021,3,Maharashtra,679,482,5.44,3.86,125000000,71.0,NCRB Crime in India Report
+2021,4,Maharashtra,679,482,5.44,3.86,125000000,71.0,NCRB Crime in India Report
+2021,5,Maharashtra,679,482,5.44,3.86,125000000,71.0,NCRB Crime in India Report
+2021,6,Maharashtra,453,321,5.44,3.86,125000000,70.9,NCRB Crime in India Report
+2021,7,Maharashtra,453,321,5.44,3.86,125000000,70.9,NCRB Crime in India Report
+2021,8,Maharashtra,453,321,5.44,3.86,125000000,70.9,NCRB Crime in India Report
+2021,9,Maharashtra,453,321,5.44,3.86,125000000,70.9,NCRB Crime in India Report
+2021,10,Maharashtra,679,482,5.44,3.86,125000000,71.0,NCRB Crime in India Report
+2021,11,Maharashtra,679,482,5.44,3.86,125000000,71.0,NCRB Crime in India Report
+2021,12,Maharashtra,679,482,5.44,3.86,125000000,71.0,NCRB Crime in India Report
+2021,1,Karnataka,570,428,12.59,9.46,68000000,75.1,NCRB Crime in India Report
+2021,2,Karnataka,570,428,12.59,9.46,68000000,75.1,NCRB Crime in India Report
+2021,3,Karnataka,856,643,12.59,9.46,68000000,75.1,NCRB Crime in India Report
+2021,4,Karnataka,856,643,12.59,9.46,68000000,75.1,NCRB Crime in India Report
+2021,5,Karnataka,856,643,12.59,9.46,68000000,75.1,NCRB Crime in India Report
+2021,6,Karnataka,570,428,12.59,9.46,68000000,75.1,NCRB Crime in India Report
+2021,7,Karnataka,570,428,12.59,9.46,68000000,75.1,NCRB Crime in India Report
+2021,8,Karnataka,570,428,12.59,9.46,68000000,75.1,NCRB Crime in India Report
+2021,9,Karnataka,570,428,12.59,9.46,68000000,75.1,NCRB Crime in India Report
+2021,10,Karnataka,856,643,12.59,9.46,68000000,75.1,NCRB Crime in India Report
+2021,11,Karnataka,856,643,12.59,9.46,68000000,75.1,NCRB Crime in India Report
+2021,12,Karnataka,856,643,12.59,9.46,68000000,75.1,NCRB Crime in India Report
+2021,1,Telangana,274,207,11.13,8.39,37000000,75.5,NCRB Crime in India Report
+2021,2,Telangana,274,207,11.13,8.39,37000000,75.5,NCRB Crime in India Report
+2021,3,Telangana,411,310,11.13,8.39,37000000,75.4,NCRB Crime in India Report
+2021,4,Telangana,411,310,11.13,8.39,37000000,75.4,NCRB Crime in India Report
+2021,5,Telangana,411,310,11.13,8.39,37000000,75.4,NCRB Crime in India Report
+2021,6,Telangana,274,207,11.13,8.39,37000000,75.5,NCRB Crime in India Report
+2021,7,Telangana,274,207,11.13,8.39,37000000,75.5,NCRB Crime in India Report
+2021,8,Telangana,274,207,11.13,8.39,37000000,75.5,NCRB Crime in India Report
+2021,9,Telangana,274,207,11.13,8.39,37000000,75.5,NCRB Crime in India Report
+2021,10,Telangana,411,310,11.13,8.39,37000000,75.4,NCRB Crime in India Report
+2021,11,Telangana,411,310,11.13,8.39,37000000,75.4,NCRB Crime in India Report
+2021,12,Telangana,411,310,11.13,8.39,37000000,75.4,NCRB Crime in India Report
+2021,1,Assam,121,79,5.19,3.41,35000000,65.3,NCRB Crime in India Report
+2021,2,Assam,121,79,5.19,3.41,35000000,65.3,NCRB Crime in India Report
+2021,3,Assam,181,119,5.19,3.41,35000000,65.7,NCRB Crime in India Report
+2021,4,Assam,181,119,5.19,3.41,35000000,65.7,NCRB Crime in India Report
+2021,5,Assam,181,119,5.19,3.41,35000000,65.7,NCRB Crime in India Report
+2021,6,Assam,121,79,5.19,3.41,35000000,65.3,NCRB Crime in India Report
+2021,7,Assam,121,79,5.19,3.41,35000000,65.3,NCRB Crime in India Report
+2021,8,Assam,121,79,5.19,3.41,35000000,65.3,NCRB Crime in India Report
+2021,9,Assam,121,79,5.19,3.41,35000000,65.3,NCRB Crime in India Report
+2021,10,Assam,181,119,5.19,3.41,35000000,65.7,NCRB Crime in India Report
+2021,11,Assam,181,119,5.19,3.41,35000000,65.7,NCRB Crime in India Report
+2021,12,Assam,181,119,5.19,3.41,35000000,65.7,NCRB Crime in India Report
+2021,1,Delhi,234,169,10.65,7.71,33000000,72.2,NCRB Crime in India Report
+2021,2,Delhi,234,169,10.65,7.71,33000000,72.2,NCRB Crime in India Report
+2021,3,Delhi,351,254,10.65,7.71,33000000,72.4,NCRB Crime in India Report
+2021,4,Delhi,351,254,10.65,7.71,33000000,72.4,NCRB Crime in India Report
+2021,5,Delhi,351,254,10.65,7.71,33000000,72.4,NCRB Crime in India Report
+2021,6,Delhi,234,169,10.65,7.71,33000000,72.2,NCRB Crime in India Report
+2021,7,Delhi,234,169,10.65,7.71,33000000,72.2,NCRB Crime in India Report
+2021,8,Delhi,234,169,10.65,7.71,33000000,72.2,NCRB Crime in India Report
+2021,9,Delhi,234,169,10.65,7.71,33000000,72.2,NCRB Crime in India Report
+2021,10,Delhi,351,254,10.65,7.71,33000000,72.4,NCRB Crime in India Report
+2021,11,Delhi,351,254,10.65,7.71,33000000,72.4,NCRB Crime in India Report
+2021,12,Delhi,351,254,10.65,7.71,33000000,72.4,NCRB Crime in India Report
+2021,1,Tamil Nadu,168,120,3.28,2.34,77000000,71.4,NCRB Crime in India Report
+2021,2,Tamil Nadu,168,120,3.28,2.34,77000000,71.4,NCRB Crime in India Report
+2021,3,Tamil Nadu,252,180,3.28,2.34,77000000,71.4,NCRB Crime in India Report
+2021,4,Tamil Nadu,252,180,3.28,2.34,77000000,71.4,NCRB Crime in India Report
+2021,5,Tamil Nadu,252,180,3.28,2.34,77000000,71.4,NCRB Crime in India Report
+2021,6,Tamil Nadu,168,120,3.28,2.34,77000000,71.4,NCRB Crime in India Report
+2021,7,Tamil Nadu,168,120,3.28,2.34,77000000,71.4,NCRB Crime in India Report
+2021,8,Tamil Nadu,168,120,3.28,2.34,77000000,71.4,NCRB Crime in India Report
+2021,9,Tamil Nadu,168,120,3.28,2.34,77000000,71.4,NCRB Crime in India Report
+2021,10,Tamil Nadu,252,180,3.28,2.34,77000000,71.4,NCRB Crime in India Report
+2021,11,Tamil Nadu,252,180,3.28,2.34,77000000,71.4,NCRB Crime in India Report
+2021,12,Tamil Nadu,252,180,3.28,2.34,77000000,71.4,NCRB Crime in India Report
+2021,1,Rajasthan,212,140,3.99,2.63,80000000,66.0,NCRB Crime in India Report
+2021,2,Rajasthan,212,140,3.99,2.63,80000000,66.0,NCRB Crime in India Report
+2021,3,Rajasthan,319,210,3.99,2.63,80000000,65.8,NCRB Crime in India Report
+2021,4,Rajasthan,319,210,3.99,2.63,80000000,65.8,NCRB Crime in India Report
+2021,5,Rajasthan,319,210,3.99,2.63,80000000,65.8,NCRB Crime in India Report
+2021,6,Rajasthan,212,140,3.99,2.63,80000000,66.0,NCRB Crime in India Report
+2021,7,Rajasthan,212,140,3.99,2.63,80000000,66.0,NCRB Crime in India Report
+2021,8,Rajasthan,212,140,3.99,2.63,80000000,66.0,NCRB Crime in India Report
+2021,9,Rajasthan,212,140,3.99,2.63,80000000,66.0,NCRB Crime in India Report
+2021,10,Rajasthan,319,210,3.99,2.63,80000000,65.8,NCRB Crime in India Report
+2021,11,Rajasthan,319,210,3.99,2.63,80000000,65.8,NCRB Crime in India Report
+2021,12,Rajasthan,319,210,3.99,2.63,80000000,65.8,NCRB Crime in India Report
+2021,1,Haryana,184,136,9.55,7.03,29000000,73.9,NCRB Crime in India Report
+2021,2,Haryana,184,136,9.55,7.03,29000000,73.9,NCRB Crime in India Report
+2021,3,Haryana,276,204,9.55,7.03,29000000,73.9,NCRB Crime in India Report
+2021,4,Haryana,276,204,9.55,7.03,29000000,73.9,NCRB Crime in India Report
+2021,5,Haryana,276,204,9.55,7.03,29000000,73.9,NCRB Crime in India Report
+2021,6,Haryana,184,136,9.55,7.03,29000000,73.9,NCRB Crime in India Report
+2021,7,Haryana,184,136,9.55,7.03,29000000,73.9,NCRB Crime in India Report
+2021,8,Haryana,184,136,9.55,7.03,29000000,73.9,NCRB Crime in India Report
+2021,9,Haryana,184,136,9.55,7.03,29000000,73.9,NCRB Crime in India Report
+2021,10,Haryana,276,204,9.55,7.03,29000000,73.9,NCRB Crime in India Report
+2021,11,Haryana,276,204,9.55,7.03,29000000,73.9,NCRB Crime in India Report
+2021,12,Haryana,276,204,9.55,7.03,29000000,73.9,NCRB Crime in India Report
+2021,1,Gujarat,155,109,3.59,2.52,65000000,70.3,NCRB Crime in India Report
+2021,2,Gujarat,155,109,3.59,2.52,65000000,70.3,NCRB Crime in India Report
+2021,3,Gujarat,233,163,3.59,2.52,65000000,70.0,NCRB Crime in India Report
+2021,4,Gujarat,233,163,3.59,2.52,65000000,70.0,NCRB Crime in India Report
+2021,5,Gujarat,233,163,3.59,2.52,65000000,70.0,NCRB Crime in India Report
+2021,6,Gujarat,155,109,3.59,2.52,65000000,70.3,NCRB Crime in India Report
+2021,7,Gujarat,155,109,3.59,2.52,65000000,70.3,NCRB Crime in India Report
+2021,8,Gujarat,155,109,3.59,2.52,65000000,70.3,NCRB Crime in India Report
+2021,9,Gujarat,155,109,3.59,2.52,65000000,70.3,NCRB Crime in India Report
+2021,10,Gujarat,233,163,3.59,2.52,65000000,70.0,NCRB Crime in India Report
+2021,11,Gujarat,233,163,3.59,2.52,65000000,70.0,NCRB Crime in India Report
+2021,12,Gujarat,233,163,3.59,2.52,65000000,70.0,NCRB Crime in India Report
+2021,1,West Bengal,117,83,1.78,1.27,99000000,70.9,NCRB Crime in India Report
+2021,2,West Bengal,117,83,1.78,1.27,99000000,70.9,NCRB Crime in India Report
+2021,3,West Bengal,176,125,1.78,1.27,99000000,71.0,NCRB Crime in India Report
+2021,4,West Bengal,176,125,1.78,1.27,99000000,71.0,NCRB Crime in India Report
+2021,5,West Bengal,176,125,1.78,1.27,99000000,71.0,NCRB Crime in India Report
+2021,6,West Bengal,117,83,1.78,1.27,99000000,70.9,NCRB Crime in India Report
+2021,7,West Bengal,117,83,1.78,1.27,99000000,70.9,NCRB Crime in India Report
+2021,8,West Bengal,117,83,1.78,1.27,99000000,70.9,NCRB Crime in India Report
+2021,9,West Bengal,117,83,1.78,1.27,99000000,70.9,NCRB Crime in India Report
+2021,10,West Bengal,176,125,1.78,1.27,99000000,71.0,NCRB Crime in India Report
+2021,11,West Bengal,176,125,1.78,1.27,99000000,71.0,NCRB Crime in India Report
+2021,12,West Bengal,176,125,1.78,1.27,99000000,71.0,NCRB Crime in India Report
+2021,1,Madhya Pradesh,114,77,2.01,1.37,85000000,67.5,NCRB Crime in India Report
+2021,2,Madhya Pradesh,114,77,2.01,1.37,85000000,67.5,NCRB Crime in India Report
+2021,3,Madhya Pradesh,171,116,2.01,1.37,85000000,67.8,NCRB Crime in India Report
+2021,4,Madhya Pradesh,171,116,2.01,1.37,85000000,67.8,NCRB Crime in India Report
+2021,5,Madhya Pradesh,171,116,2.01,1.37,85000000,67.8,NCRB Crime in India Report
+2021,6,Madhya Pradesh,114,77,2.01,1.37,85000000,67.5,NCRB Crime in India Report
+2021,7,Madhya Pradesh,114,77,2.01,1.37,85000000,67.5,NCRB Crime in India Report
+2021,8,Madhya Pradesh,114,77,2.01,1.37,85000000,67.5,NCRB Crime in India Report
+2021,9,Madhya Pradesh,114,77,2.01,1.37,85000000,67.5,NCRB Crime in India Report
+2021,10,Madhya Pradesh,171,116,2.01,1.37,85000000,67.8,NCRB Crime in India Report
+2021,11,Madhya Pradesh,171,116,2.01,1.37,85000000,67.8,NCRB Crime in India Report
+2021,12,Madhya Pradesh,171,116,2.01,1.37,85000000,67.8,NCRB Crime in India Report
+2021,1,Odisha,102,67,3.42,2.25,45000000,65.7,NCRB Crime in India Report
+2021,2,Odisha,102,67,3.42,2.25,45000000,65.7,NCRB Crime in India Report
+2021,3,Odisha,153,101,3.42,2.25,45000000,66.0,NCRB Crime in India Report
+2021,4,Odisha,153,101,3.42,2.25,45000000,66.0,NCRB Crime in India Report
+2021,5,Odisha,153,101,3.42,2.25,45000000,66.0,NCRB Crime in India Report
+2021,6,Odisha,102,67,3.42,2.25,45000000,65.7,NCRB Crime in India Report
+2021,7,Odisha,102,67,3.42,2.25,45000000,65.7,NCRB Crime in India Report
+2021,8,Odisha,102,67,3.42,2.25,45000000,65.7,NCRB Crime in India Report
+2021,9,Odisha,102,67,3.42,2.25,45000000,65.7,NCRB Crime in India Report
+2021,10,Odisha,153,101,3.42,2.25,45000000,66.0,NCRB Crime in India Report
+2021,11,Odisha,153,101,3.42,2.25,45000000,66.0,NCRB Crime in India Report
+2021,12,Odisha,153,101,3.42,2.25,45000000,66.0,NCRB Crime in India Report
+2021,1,Punjab,95,64,4.8,3.25,30000000,67.4,NCRB Crime in India Report
+2021,2,Punjab,95,64,4.8,3.25,30000000,67.4,NCRB Crime in India Report
+2021,3,Punjab,143,97,4.8,3.25,30000000,67.8,NCRB Crime in India Report
+2021,4,Punjab,143,97,4.8,3.25,30000000,67.8,NCRB Crime in India Report
+2021,5,Punjab,143,97,4.8,3.25,30000000,67.8,NCRB Crime in India Report
+2021,6,Punjab,95,64,4.8,3.25,30000000,67.4,NCRB Crime in India Report
+2021,7,Punjab,95,64,4.8,3.25,30000000,67.4,NCRB Crime in India Report
+2021,8,Punjab,95,64,4.8,3.25,30000000,67.4,NCRB Crime in India Report
+2021,9,Punjab,95,64,4.8,3.25,30000000,67.4,NCRB Crime in India Report
+2021,10,Punjab,143,97,4.8,3.25,30000000,67.8,NCRB Crime in India Report
+2021,11,Punjab,143,97,4.8,3.25,30000000,67.8,NCRB Crime in India Report
+2021,12,Punjab,143,97,4.8,3.25,30000000,67.8,NCRB Crime in India Report
+2021,1,Bihar,68,47,0.8,0.55,128000000,69.1,NCRB Crime in India Report
+2021,2,Bihar,68,47,0.8,0.55,128000000,69.1,NCRB Crime in India Report
+2021,3,Bihar,102,71,0.8,0.55,128000000,69.6,NCRB Crime in India Report
+2021,4,Bihar,102,71,0.8,0.55,128000000,69.6,NCRB Crime in India Report
+2021,5,Bihar,102,71,0.8,0.55,128000000,69.6,NCRB Crime in India Report
+2021,6,Bihar,68,47,0.8,0.55,128000000,69.1,NCRB Crime in India Report
+2021,7,Bihar,68,47,0.8,0.55,128000000,69.1,NCRB Crime in India Report
+2021,8,Bihar,68,47,0.8,0.55,128000000,69.1,NCRB Crime in India Report
+2021,9,Bihar,68,47,0.8,0.55,128000000,69.1,NCRB Crime in India Report
+2021,10,Bihar,102,71,0.8,0.55,128000000,69.6,NCRB Crime in India Report
+2021,11,Bihar,102,71,0.8,0.55,128000000,69.6,NCRB Crime in India Report
+2021,12,Bihar,102,71,0.8,0.55,128000000,69.6,NCRB Crime in India Report
+2021,1,Jharkhand,47,32,1.89,1.29,38000000,68.1,NCRB Crime in India Report
+2021,2,Jharkhand,47,32,1.89,1.29,38000000,68.1,NCRB Crime in India Report
+2021,3,Jharkhand,71,49,1.89,1.29,38000000,69.0,NCRB Crime in India Report
+2021,4,Jharkhand,71,49,1.89,1.29,38000000,69.0,NCRB Crime in India Report
+2021,5,Jharkhand,71,49,1.89,1.29,38000000,69.0,NCRB Crime in India Report
+2021,6,Jharkhand,47,32,1.89,1.29,38000000,68.1,NCRB Crime in India Report
+2021,7,Jharkhand,47,32,1.89,1.29,38000000,68.1,NCRB Crime in India Report
+2021,8,Jharkhand,47,32,1.89,1.29,38000000,68.1,NCRB Crime in India Report
+2021,9,Jharkhand,47,32,1.89,1.29,38000000,68.1,NCRB Crime in India Report
+2021,10,Jharkhand,71,49,1.89,1.29,38000000,69.0,NCRB Crime in India Report
+2021,11,Jharkhand,71,49,1.89,1.29,38000000,69.0,NCRB Crime in India Report
+2021,12,Jharkhand,71,49,1.89,1.29,38000000,69.0,NCRB Crime in India Report
+2021,1,Kerala,61,43,2.65,1.85,35000000,70.5,NCRB Crime in India Report
+2021,2,Kerala,61,43,2.65,1.85,35000000,70.5,NCRB Crime in India Report
+2021,3,Kerala,92,64,2.65,1.85,35000000,69.6,NCRB Crime in India Report
+2021,4,Kerala,92,64,2.65,1.85,35000000,69.6,NCRB Crime in India Report
+2021,5,Kerala,92,64,2.65,1.85,35000000,69.6,NCRB Crime in India Report
+2021,6,Kerala,61,43,2.65,1.85,35000000,70.5,NCRB Crime in India Report
+2021,7,Kerala,61,43,2.65,1.85,35000000,70.5,NCRB Crime in India Report
+2021,8,Kerala,61,43,2.65,1.85,35000000,70.5,NCRB Crime in India Report
+2021,9,Kerala,61,43,2.65,1.85,35000000,70.5,NCRB Crime in India Report
+2021,10,Kerala,92,64,2.65,1.85,35000000,69.6,NCRB Crime in India Report
+2021,11,Kerala,92,64,2.65,1.85,35000000,69.6,NCRB Crime in India Report
+2021,12,Kerala,92,64,2.65,1.85,35000000,69.6,NCRB Crime in India Report
+2021,1,Andhra Pradesh,85,60,2.38,1.67,54000000,70.6,NCRB Crime in India Report
+2021,2,Andhra Pradesh,85,60,2.38,1.67,54000000,70.6,NCRB Crime in India Report
+2021,3,Andhra Pradesh,128,90,2.38,1.67,54000000,70.3,NCRB Crime in India Report
+2021,4,Andhra Pradesh,128,90,2.38,1.67,54000000,70.3,NCRB Crime in India Report
+2021,5,Andhra Pradesh,128,90,2.38,1.67,54000000,70.3,NCRB Crime in India Report
+2021,6,Andhra Pradesh,85,60,2.38,1.67,54000000,70.6,NCRB Crime in India Report
+2021,7,Andhra Pradesh,85,60,2.38,1.67,54000000,70.6,NCRB Crime in India Report
+2021,8,Andhra Pradesh,85,60,2.38,1.67,54000000,70.6,NCRB Crime in India Report
+2021,9,Andhra Pradesh,85,60,2.38,1.67,54000000,70.6,NCRB Crime in India Report
+2021,10,Andhra Pradesh,128,90,2.38,1.67,54000000,70.3,NCRB Crime in India Report
+2021,11,Andhra Pradesh,128,90,2.38,1.67,54000000,70.3,NCRB Crime in India Report
+2021,12,Andhra Pradesh,128,90,2.38,1.67,54000000,70.3,NCRB Crime in India Report
+2021,1,Chhattisgarh,30,21,1.6,1.1,29000000,70.0,NCRB Crime in India Report
+2021,2,Chhattisgarh,30,21,1.6,1.1,29000000,70.0,NCRB Crime in India Report
+2021,3,Chhattisgarh,46,31,1.6,1.1,29000000,67.4,NCRB Crime in India Report
+2021,4,Chhattisgarh,46,31,1.6,1.1,29000000,67.4,NCRB Crime in India Report
+2021,5,Chhattisgarh,46,31,1.6,1.1,29000000,67.4,NCRB Crime in India Report
+2021,6,Chhattisgarh,30,21,1.6,1.1,29000000,70.0,NCRB Crime in India Report
+2021,7,Chhattisgarh,30,21,1.6,1.1,29000000,70.0,NCRB Crime in India Report
+2021,8,Chhattisgarh,30,21,1.6,1.1,29000000,70.0,NCRB Crime in India Report
+2021,9,Chhattisgarh,30,21,1.6,1.1,29000000,70.0,NCRB Crime in India Report
+2021,10,Chhattisgarh,46,31,1.6,1.1,29000000,67.4,NCRB Crime in India Report
+2021,11,Chhattisgarh,46,31,1.6,1.1,29000000,67.4,NCRB Crime in India Report
+2021,12,Chhattisgarh,46,31,1.6,1.1,29000000,67.4,NCRB Crime in India Report
+2021,1,Uttarakhand,24,17,3.31,2.32,11000000,70.8,NCRB Crime in India Report
+2021,2,Uttarakhand,24,17,3.31,2.32,11000000,70.8,NCRB Crime in India Report
+2021,3,Uttarakhand,36,25,3.31,2.32,11000000,69.4,NCRB Crime in India Report
+2021,4,Uttarakhand,36,25,3.31,2.32,11000000,69.4,NCRB Crime in India Report
+2021,5,Uttarakhand,36,25,3.31,2.32,11000000,69.4,NCRB Crime in India Report
+2021,6,Uttarakhand,24,17,3.31,2.32,11000000,70.8,NCRB Crime in India Report
+2021,7,Uttarakhand,24,17,3.31,2.32,11000000,70.8,NCRB Crime in India Report
+2021,8,Uttarakhand,24,17,3.31,2.32,11000000,70.8,NCRB Crime in India Report
+2021,9,Uttarakhand,24,17,3.31,2.32,11000000,70.8,NCRB Crime in India Report
+2021,10,Uttarakhand,36,25,3.31,2.32,11000000,69.4,NCRB Crime in India Report
+2021,11,Uttarakhand,36,25,3.31,2.32,11000000,69.4,NCRB Crime in India Report
+2021,12,Uttarakhand,36,25,3.31,2.32,11000000,69.4,NCRB Crime in India Report
+2022,1,Uttar Pradesh,303,213,1.92,1.35,237000000,70.3,NCRB Crime in India Report
+2022,2,Uttar Pradesh,303,213,1.92,1.35,237000000,70.3,NCRB Crime in India Report
+2022,3,Uttar Pradesh,455,320,1.92,1.35,237000000,70.3,NCRB Crime in India Report
+2022,4,Uttar Pradesh,455,320,1.92,1.35,237000000,70.3,NCRB Crime in India Report
+2022,5,Uttar Pradesh,455,320,1.92,1.35,237000000,70.3,NCRB Crime in India Report
+2022,6,Uttar Pradesh,303,213,1.92,1.35,237000000,70.3,NCRB Crime in India Report
+2022,7,Uttar Pradesh,303,213,1.92,1.35,237000000,70.3,NCRB Crime in India Report
+2022,8,Uttar Pradesh,303,213,1.92,1.35,237000000,70.3,NCRB Crime in India Report
+2022,9,Uttar Pradesh,303,213,1.92,1.35,237000000,70.3,NCRB Crime in India Report
+2022,10,Uttar Pradesh,455,320,1.92,1.35,237000000,70.3,NCRB Crime in India Report
+2022,11,Uttar Pradesh,455,320,1.92,1.35,237000000,70.3,NCRB Crime in India Report
+2022,12,Uttar Pradesh,455,320,1.92,1.35,237000000,70.3,NCRB Crime in India Report
+2022,1,Maharashtra,552,392,6.63,4.71,125000000,71.0,NCRB Crime in India Report
+2022,2,Maharashtra,552,392,6.63,4.71,125000000,71.0,NCRB Crime in India Report
+2022,3,Maharashtra,829,589,6.63,4.71,125000000,71.0,NCRB Crime in India Report
+2022,4,Maharashtra,829,589,6.63,4.71,125000000,71.0,NCRB Crime in India Report
+2022,5,Maharashtra,829,589,6.63,4.71,125000000,71.0,NCRB Crime in India Report
+2022,6,Maharashtra,552,392,6.63,4.71,125000000,71.0,NCRB Crime in India Report
+2022,7,Maharashtra,552,392,6.63,4.71,125000000,71.0,NCRB Crime in India Report
+2022,8,Maharashtra,552,392,6.63,4.71,125000000,71.0,NCRB Crime in India Report
+2022,9,Maharashtra,552,392,6.63,4.71,125000000,71.0,NCRB Crime in India Report
+2022,10,Maharashtra,829,589,6.63,4.71,125000000,71.0,NCRB Crime in India Report
+2022,11,Maharashtra,829,589,6.63,4.71,125000000,71.0,NCRB Crime in India Report
+2022,12,Maharashtra,829,589,6.63,4.71,125000000,71.0,NCRB Crime in India Report
+2022,1,Karnataka,696,523,15.35,11.54,68000000,75.1,NCRB Crime in India Report
+2022,2,Karnataka,696,523,15.35,11.54,68000000,75.1,NCRB Crime in India Report
+2022,3,Karnataka,1044,784,15.35,11.54,68000000,75.1,NCRB Crime in India Report
+2022,4,Karnataka,1044,784,15.35,11.54,68000000,75.1,NCRB Crime in India Report
+2022,5,Karnataka,1044,784,15.35,11.54,68000000,75.1,NCRB Crime in India Report
+2022,6,Karnataka,696,523,15.35,11.54,68000000,75.1,NCRB Crime in India Report
+2022,7,Karnataka,696,523,15.35,11.54,68000000,75.1,NCRB Crime in India Report
+2022,8,Karnataka,696,523,15.35,11.54,68000000,75.1,NCRB Crime in India Report
+2022,9,Karnataka,696,523,15.35,11.54,68000000,75.1,NCRB Crime in India Report
+2022,10,Karnataka,1044,784,15.35,11.54,68000000,75.1,NCRB Crime in India Report
+2022,11,Karnataka,1044,784,15.35,11.54,68000000,75.1,NCRB Crime in India Report
+2022,12,Karnataka,1044,784,15.35,11.54,68000000,75.1,NCRB Crime in India Report
+2022,1,Telangana,334,252,13.58,10.24,37000000,75.4,NCRB Crime in India Report
+2022,2,Telangana,334,252,13.58,10.24,37000000,75.4,NCRB Crime in India Report
+2022,3,Telangana,502,378,13.58,10.24,37000000,75.3,NCRB Crime in India Report
+2022,4,Telangana,502,378,13.58,10.24,37000000,75.3,NCRB Crime in India Report
+2022,5,Telangana,502,378,13.58,10.24,37000000,75.3,NCRB Crime in India Report
+2022,6,Telangana,334,252,13.58,10.24,37000000,75.4,NCRB Crime in India Report
+2022,7,Telangana,334,252,13.58,10.24,37000000,75.4,NCRB Crime in India Report
+2022,8,Telangana,334,252,13.58,10.24,37000000,75.4,NCRB Crime in India Report
+2022,9,Telangana,334,252,13.58,10.24,37000000,75.4,NCRB Crime in India Report
+2022,10,Telangana,502,378,13.58,10.24,37000000,75.3,NCRB Crime in India Report
+2022,11,Telangana,502,378,13.58,10.24,37000000,75.3,NCRB Crime in India Report
+2022,12,Telangana,502,378,13.58,10.24,37000000,75.3,NCRB Crime in India Report
+2022,1,Assam,147,97,6.33,4.16,35000000,66.0,NCRB Crime in India Report
+2022,2,Assam,147,97,6.33,4.16,35000000,66.0,NCRB Crime in India Report
+2022,3,Assam,221,145,6.33,4.16,35000000,65.6,NCRB Crime in India Report
+2022,4,Assam,221,145,6.33,4.16,35000000,65.6,NCRB Crime in India Report
+2022,5,Assam,221,145,6.33,4.16,35000000,65.6,NCRB Crime in India Report
+2022,6,Assam,147,97,6.33,4.16,35000000,66.0,NCRB Crime in India Report
+2022,7,Assam,147,97,6.33,4.16,35000000,66.0,NCRB Crime in India Report
+2022,8,Assam,147,97,6.33,4.16,35000000,66.0,NCRB Crime in India Report
+2022,9,Assam,147,97,6.33,4.16,35000000,66.0,NCRB Crime in India Report
+2022,10,Assam,221,145,6.33,4.16,35000000,65.6,NCRB Crime in India Report
+2022,11,Assam,221,145,6.33,4.16,35000000,65.6,NCRB Crime in India Report
+2022,12,Assam,221,145,6.33,4.16,35000000,65.6,NCRB Crime in India Report
+2022,1,Delhi,285,206,12.99,9.4,33000000,72.3,NCRB Crime in India Report
+2022,2,Delhi,285,206,12.99,9.4,33000000,72.3,NCRB Crime in India Report
+2022,3,Delhi,428,310,12.99,9.4,33000000,72.4,NCRB Crime in India Report
+2022,4,Delhi,428,310,12.99,9.4,33000000,72.4,NCRB Crime in India Report
+2022,5,Delhi,428,310,12.99,9.4,33000000,72.4,NCRB Crime in India Report
+2022,6,Delhi,285,206,12.99,9.4,33000000,72.3,NCRB Crime in India Report
+2022,7,Delhi,285,206,12.99,9.4,33000000,72.3,NCRB Crime in India Report
+2022,8,Delhi,285,206,12.99,9.4,33000000,72.3,NCRB Crime in India Report
+2022,9,Delhi,285,206,12.99,9.4,33000000,72.3,NCRB Crime in India Report
+2022,10,Delhi,428,310,12.99,9.4,33000000,72.4,NCRB Crime in India Report
+2022,11,Delhi,428,310,12.99,9.4,33000000,72.4,NCRB Crime in India Report
+2022,12,Delhi,428,310,12.99,9.4,33000000,72.4,NCRB Crime in India Report
+2022,1,Tamil Nadu,205,146,4.01,2.86,77000000,71.2,NCRB Crime in India Report
+2022,2,Tamil Nadu,205,146,4.01,2.86,77000000,71.2,NCRB Crime in India Report
+2022,3,Tamil Nadu,308,220,4.01,2.86,77000000,71.4,NCRB Crime in India Report
+2022,4,Tamil Nadu,308,220,4.01,2.86,77000000,71.4,NCRB Crime in India Report
+2022,5,Tamil Nadu,308,220,4.01,2.86,77000000,71.4,NCRB Crime in India Report
+2022,6,Tamil Nadu,205,146,4.01,2.86,77000000,71.2,NCRB Crime in India Report
+2022,7,Tamil Nadu,205,146,4.01,2.86,77000000,71.2,NCRB Crime in India Report
+2022,8,Tamil Nadu,205,146,4.01,2.86,77000000,71.2,NCRB Crime in India Report
+2022,9,Tamil Nadu,205,146,4.01,2.86,77000000,71.2,NCRB Crime in India Report
+2022,10,Tamil Nadu,308,220,4.01,2.86,77000000,71.4,NCRB Crime in India Report
+2022,11,Tamil Nadu,308,220,4.01,2.86,77000000,71.4,NCRB Crime in India Report
+2022,12,Tamil Nadu,308,220,4.01,2.86,77000000,71.4,NCRB Crime in India Report
+2022,1,Rajasthan,259,171,4.86,3.21,80000000,66.0,NCRB Crime in India Report
+2022,2,Rajasthan,259,171,4.86,3.21,80000000,66.0,NCRB Crime in India Report
+2022,3,Rajasthan,389,256,4.86,3.21,80000000,65.8,NCRB Crime in India Report
+2022,4,Rajasthan,389,256,4.86,3.21,80000000,65.8,NCRB Crime in India Report
+2022,5,Rajasthan,389,256,4.86,3.21,80000000,65.8,NCRB Crime in India Report
+2022,6,Rajasthan,259,171,4.86,3.21,80000000,66.0,NCRB Crime in India Report
+2022,7,Rajasthan,259,171,4.86,3.21,80000000,66.0,NCRB Crime in India Report
+2022,8,Rajasthan,259,171,4.86,3.21,80000000,66.0,NCRB Crime in India Report
+2022,9,Rajasthan,259,171,4.86,3.21,80000000,66.0,NCRB Crime in India Report
+2022,10,Rajasthan,389,256,4.86,3.21,80000000,65.8,NCRB Crime in India Report
+2022,11,Rajasthan,389,256,4.86,3.21,80000000,65.8,NCRB Crime in India Report
+2022,12,Rajasthan,389,256,4.86,3.21,80000000,65.8,NCRB Crime in India Report
+2022,1,Haryana,225,165,11.65,8.58,29000000,73.3,NCRB Crime in India Report
+2022,2,Haryana,225,165,11.65,8.58,29000000,73.3,NCRB Crime in India Report
+2022,3,Haryana,337,248,11.65,8.58,29000000,73.6,NCRB Crime in India Report
+2022,4,Haryana,337,248,11.65,8.58,29000000,73.6,NCRB Crime in India Report
+2022,5,Haryana,337,248,11.65,8.58,29000000,73.6,NCRB Crime in India Report
+2022,6,Haryana,225,165,11.65,8.58,29000000,73.3,NCRB Crime in India Report
+2022,7,Haryana,225,165,11.65,8.58,29000000,73.3,NCRB Crime in India Report
+2022,8,Haryana,225,165,11.65,8.58,29000000,73.3,NCRB Crime in India Report
+2022,9,Haryana,225,165,11.65,8.58,29000000,73.3,NCRB Crime in India Report
+2022,10,Haryana,337,248,11.65,8.58,29000000,73.6,NCRB Crime in India Report
+2022,11,Haryana,337,248,11.65,8.58,29000000,73.6,NCRB Crime in India Report
+2022,12,Haryana,337,248,11.65,8.58,29000000,73.6,NCRB Crime in India Report
+2022,1,Gujarat,189,133,4.38,3.07,65000000,70.4,NCRB Crime in India Report
+2022,2,Gujarat,189,133,4.38,3.07,65000000,70.4,NCRB Crime in India Report
+2022,3,Gujarat,284,199,4.38,3.07,65000000,70.1,NCRB Crime in India Report
+2022,4,Gujarat,284,199,4.38,3.07,65000000,70.1,NCRB Crime in India Report
+2022,5,Gujarat,284,199,4.38,3.07,65000000,70.1,NCRB Crime in India Report
+2022,6,Gujarat,189,133,4.38,3.07,65000000,70.4,NCRB Crime in India Report
+2022,7,Gujarat,189,133,4.38,3.07,65000000,70.4,NCRB Crime in India Report
+2022,8,Gujarat,189,133,4.38,3.07,65000000,70.4,NCRB Crime in India Report
+2022,9,Gujarat,189,133,4.38,3.07,65000000,70.4,NCRB Crime in India Report
+2022,10,Gujarat,284,199,4.38,3.07,65000000,70.1,NCRB Crime in India Report
+2022,11,Gujarat,284,199,4.38,3.07,65000000,70.1,NCRB Crime in India Report
+2022,12,Gujarat,284,199,4.38,3.07,65000000,70.1,NCRB Crime in India Report
+2022,1,West Bengal,143,102,2.18,1.55,99000000,71.3,NCRB Crime in India Report
+2022,2,West Bengal,143,102,2.18,1.55,99000000,71.3,NCRB Crime in India Report
+2022,3,West Bengal,215,153,2.18,1.55,99000000,71.2,NCRB Crime in India Report
+2022,4,West Bengal,215,153,2.18,1.55,99000000,71.2,NCRB Crime in India Report
+2022,5,West Bengal,215,153,2.18,1.55,99000000,71.2,NCRB Crime in India Report
+2022,6,West Bengal,143,102,2.18,1.55,99000000,71.3,NCRB Crime in India Report
+2022,7,West Bengal,143,102,2.18,1.55,99000000,71.3,NCRB Crime in India Report
+2022,8,West Bengal,143,102,2.18,1.55,99000000,71.3,NCRB Crime in India Report
+2022,9,West Bengal,143,102,2.18,1.55,99000000,71.3,NCRB Crime in India Report
+2022,10,West Bengal,215,153,2.18,1.55,99000000,71.2,NCRB Crime in India Report
+2022,11,West Bengal,215,153,2.18,1.55,99000000,71.2,NCRB Crime in India Report
+2022,12,West Bengal,215,153,2.18,1.55,99000000,71.2,NCRB Crime in India Report
+2022,1,Madhya Pradesh,139,94,2.46,1.67,85000000,67.6,NCRB Crime in India Report
+2022,2,Madhya Pradesh,139,94,2.46,1.67,85000000,67.6,NCRB Crime in India Report
+2022,3,Madhya Pradesh,208,142,2.46,1.67,85000000,68.3,NCRB Crime in India Report
+2022,4,Madhya Pradesh,208,142,2.46,1.67,85000000,68.3,NCRB Crime in India Report
+2022,5,Madhya Pradesh,208,142,2.46,1.67,85000000,68.3,NCRB Crime in India Report
+2022,6,Madhya Pradesh,139,94,2.46,1.67,85000000,67.6,NCRB Crime in India Report
+2022,7,Madhya Pradesh,139,94,2.46,1.67,85000000,67.6,NCRB Crime in India Report
+2022,8,Madhya Pradesh,139,94,2.46,1.67,85000000,67.6,NCRB Crime in India Report
+2022,9,Madhya Pradesh,139,94,2.46,1.67,85000000,67.6,NCRB Crime in India Report
+2022,10,Madhya Pradesh,208,142,2.46,1.67,85000000,68.3,NCRB Crime in India Report
+2022,11,Madhya Pradesh,208,142,2.46,1.67,85000000,68.3,NCRB Crime in India Report
+2022,12,Madhya Pradesh,208,142,2.46,1.67,85000000,68.3,NCRB Crime in India Report
+2022,1,Odisha,125,82,4.17,2.74,45000000,65.6,NCRB Crime in India Report
+2022,2,Odisha,125,82,4.17,2.74,45000000,65.6,NCRB Crime in India Report
+2022,3,Odisha,187,123,4.17,2.74,45000000,65.8,NCRB Crime in India Report
+2022,4,Odisha,187,123,4.17,2.74,45000000,65.8,NCRB Crime in India Report
+2022,5,Odisha,187,123,4.17,2.74,45000000,65.8,NCRB Crime in India Report
+2022,6,Odisha,125,82,4.17,2.74,45000000,65.6,NCRB Crime in India Report
+2022,7,Odisha,125,82,4.17,2.74,45000000,65.6,NCRB Crime in India Report
+2022,8,Odisha,125,82,4.17,2.74,45000000,65.6,NCRB Crime in India Report
+2022,9,Odisha,125,82,4.17,2.74,45000000,65.6,NCRB Crime in India Report
+2022,10,Odisha,187,123,4.17,2.74,45000000,65.8,NCRB Crime in India Report
+2022,11,Odisha,187,123,4.17,2.74,45000000,65.8,NCRB Crime in India Report
+2022,12,Odisha,187,123,4.17,2.74,45000000,65.8,NCRB Crime in India Report
+2022,1,Punjab,117,79,5.85,3.96,30000000,67.5,NCRB Crime in India Report
+2022,2,Punjab,117,79,5.85,3.96,30000000,67.5,NCRB Crime in India Report
+2022,3,Punjab,175,118,5.85,3.96,30000000,67.4,NCRB Crime in India Report
+2022,4,Punjab,175,118,5.85,3.96,30000000,67.4,NCRB Crime in India Report
+2022,5,Punjab,175,118,5.85,3.96,30000000,67.4,NCRB Crime in India Report
+2022,6,Punjab,117,79,5.85,3.96,30000000,67.5,NCRB Crime in India Report
+2022,7,Punjab,117,79,5.85,3.96,30000000,67.5,NCRB Crime in India Report
+2022,8,Punjab,117,79,5.85,3.96,30000000,67.5,NCRB Crime in India Report
+2022,9,Punjab,117,79,5.85,3.96,30000000,67.5,NCRB Crime in India Report
+2022,10,Punjab,175,118,5.85,3.96,30000000,67.4,NCRB Crime in India Report
+2022,11,Punjab,175,118,5.85,3.96,30000000,67.4,NCRB Crime in India Report
+2022,12,Punjab,175,118,5.85,3.96,30000000,67.4,NCRB Crime in India Report
+2022,1,Bihar,83,57,0.97,0.68,128000000,68.7,NCRB Crime in India Report
+2022,2,Bihar,83,57,0.97,0.68,128000000,68.7,NCRB Crime in India Report
+2022,3,Bihar,124,86,0.97,0.68,128000000,69.4,NCRB Crime in India Report
+2022,4,Bihar,124,86,0.97,0.68,128000000,69.4,NCRB Crime in India Report
+2022,5,Bihar,124,86,0.97,0.68,128000000,69.4,NCRB Crime in India Report
+2022,6,Bihar,83,57,0.97,0.68,128000000,68.7,NCRB Crime in India Report
+2022,7,Bihar,83,57,0.97,0.68,128000000,68.7,NCRB Crime in India Report
+2022,8,Bihar,83,57,0.97,0.68,128000000,68.7,NCRB Crime in India Report
+2022,9,Bihar,83,57,0.97,0.68,128000000,68.7,NCRB Crime in India Report
+2022,10,Bihar,124,86,0.97,0.68,128000000,69.4,NCRB Crime in India Report
+2022,11,Bihar,124,86,0.97,0.68,128000000,69.4,NCRB Crime in India Report
+2022,12,Bihar,124,86,0.97,0.68,128000000,69.4,NCRB Crime in India Report
+2022,1,Jharkhand,58,39,2.31,1.57,38000000,67.2,NCRB Crime in India Report
+2022,2,Jharkhand,58,39,2.31,1.57,38000000,67.2,NCRB Crime in India Report
+2022,3,Jharkhand,87,59,2.31,1.57,38000000,67.8,NCRB Crime in India Report
+2022,4,Jharkhand,87,59,2.31,1.57,38000000,67.8,NCRB Crime in India Report
+2022,5,Jharkhand,87,59,2.31,1.57,38000000,67.8,NCRB Crime in India Report
+2022,6,Jharkhand,58,39,2.31,1.57,38000000,67.2,NCRB Crime in India Report
+2022,7,Jharkhand,58,39,2.31,1.57,38000000,67.2,NCRB Crime in India Report
+2022,8,Jharkhand,58,39,2.31,1.57,38000000,67.2,NCRB Crime in India Report
+2022,9,Jharkhand,58,39,2.31,1.57,38000000,67.2,NCRB Crime in India Report
+2022,10,Jharkhand,87,59,2.31,1.57,38000000,67.8,NCRB Crime in India Report
+2022,11,Jharkhand,87,59,2.31,1.57,38000000,67.8,NCRB Crime in India Report
+2022,12,Jharkhand,87,59,2.31,1.57,38000000,67.8,NCRB Crime in India Report
+2022,1,Kerala,75,52,3.24,2.25,35000000,69.3,NCRB Crime in India Report
+2022,2,Kerala,75,52,3.24,2.25,35000000,69.3,NCRB Crime in India Report
+2022,3,Kerala,113,78,3.24,2.25,35000000,69.0,NCRB Crime in India Report
+2022,4,Kerala,113,78,3.24,2.25,35000000,69.0,NCRB Crime in India Report
+2022,5,Kerala,113,78,3.24,2.25,35000000,69.0,NCRB Crime in India Report
+2022,6,Kerala,75,52,3.24,2.25,35000000,69.3,NCRB Crime in India Report
+2022,7,Kerala,75,52,3.24,2.25,35000000,69.3,NCRB Crime in India Report
+2022,8,Kerala,75,52,3.24,2.25,35000000,69.3,NCRB Crime in India Report
+2022,9,Kerala,75,52,3.24,2.25,35000000,69.3,NCRB Crime in India Report
+2022,10,Kerala,113,78,3.24,2.25,35000000,69.0,NCRB Crime in India Report
+2022,11,Kerala,113,78,3.24,2.25,35000000,69.0,NCRB Crime in India Report
+2022,12,Kerala,113,78,3.24,2.25,35000000,69.0,NCRB Crime in India Report
+2022,1,Andhra Pradesh,104,73,2.9,2.03,54000000,70.2,NCRB Crime in India Report
+2022,2,Andhra Pradesh,104,73,2.9,2.03,54000000,70.2,NCRB Crime in India Report
+2022,3,Andhra Pradesh,156,109,2.9,2.03,54000000,69.9,NCRB Crime in India Report
+2022,4,Andhra Pradesh,156,109,2.9,2.03,54000000,69.9,NCRB Crime in India Report
+2022,5,Andhra Pradesh,156,109,2.9,2.03,54000000,69.9,NCRB Crime in India Report
+2022,6,Andhra Pradesh,104,73,2.9,2.03,54000000,70.2,NCRB Crime in India Report
+2022,7,Andhra Pradesh,104,73,2.9,2.03,54000000,70.2,NCRB Crime in India Report
+2022,8,Andhra Pradesh,104,73,2.9,2.03,54000000,70.2,NCRB Crime in India Report
+2022,9,Andhra Pradesh,104,73,2.9,2.03,54000000,70.2,NCRB Crime in India Report
+2022,10,Andhra Pradesh,156,109,2.9,2.03,54000000,69.9,NCRB Crime in India Report
+2022,11,Andhra Pradesh,156,109,2.9,2.03,54000000,69.9,NCRB Crime in India Report
+2022,12,Andhra Pradesh,156,109,2.9,2.03,54000000,69.9,NCRB Crime in India Report
+2022,1,Chhattisgarh,37,25,1.96,1.34,29000000,67.6,NCRB Crime in India Report
+2022,2,Chhattisgarh,37,25,1.96,1.34,29000000,67.6,NCRB Crime in India Report
+2022,3,Chhattisgarh,56,38,1.96,1.34,29000000,67.9,NCRB Crime in India Report
+2022,4,Chhattisgarh,56,38,1.96,1.34,29000000,67.9,NCRB Crime in India Report
+2022,5,Chhattisgarh,56,38,1.96,1.34,29000000,67.9,NCRB Crime in India Report
+2022,6,Chhattisgarh,37,25,1.96,1.34,29000000,67.6,NCRB Crime in India Report
+2022,7,Chhattisgarh,37,25,1.96,1.34,29000000,67.6,NCRB Crime in India Report
+2022,8,Chhattisgarh,37,25,1.96,1.34,29000000,67.6,NCRB Crime in India Report
+2022,9,Chhattisgarh,37,25,1.96,1.34,29000000,67.6,NCRB Crime in India Report
+2022,10,Chhattisgarh,56,38,1.96,1.34,29000000,67.9,NCRB Crime in India Report
+2022,11,Chhattisgarh,56,38,1.96,1.34,29000000,67.9,NCRB Crime in India Report
+2022,12,Chhattisgarh,56,38,1.96,1.34,29000000,67.9,NCRB Crime in India Report
+2022,1,Uttarakhand,29,20,4.05,2.84,11000000,69.0,NCRB Crime in India Report
+2022,2,Uttarakhand,29,20,4.05,2.84,11000000,69.0,NCRB Crime in India Report
+2022,3,Uttarakhand,44,31,4.05,2.84,11000000,70.5,NCRB Crime in India Report
+2022,4,Uttarakhand,44,31,4.05,2.84,11000000,70.5,NCRB Crime in India Report
+2022,5,Uttarakhand,44,31,4.05,2.84,11000000,70.5,NCRB Crime in India Report
+2022,6,Uttarakhand,29,20,4.05,2.84,11000000,69.0,NCRB Crime in India Report
+2022,7,Uttarakhand,29,20,4.05,2.84,11000000,69.0,NCRB Crime in India Report
+2022,8,Uttarakhand,29,20,4.05,2.84,11000000,69.0,NCRB Crime in India Report
+2022,9,Uttarakhand,29,20,4.05,2.84,11000000,69.0,NCRB Crime in India Report
+2022,10,Uttarakhand,44,31,4.05,2.84,11000000,70.5,NCRB Crime in India Report
+2022,11,Uttarakhand,44,31,4.05,2.84,11000000,70.5,NCRB Crime in India Report
+2022,12,Uttarakhand,44,31,4.05,2.84,11000000,70.5,NCRB Crime in India Report
+2023,1,Uttar Pradesh,349,245,2.21,1.55,237000000,70.2,NCRB Crime in India Report
+2023,2,Uttar Pradesh,349,245,2.21,1.55,237000000,70.2,NCRB Crime in India Report
+2023,3,Uttar Pradesh,523,368,2.21,1.55,237000000,70.4,NCRB Crime in India Report
+2023,4,Uttar Pradesh,523,368,2.21,1.55,237000000,70.4,NCRB Crime in India Report
+2023,5,Uttar Pradesh,523,368,2.21,1.55,237000000,70.4,NCRB Crime in India Report
+2023,6,Uttar Pradesh,349,245,2.21,1.55,237000000,70.2,NCRB Crime in India Report
+2023,7,Uttar Pradesh,349,245,2.21,1.55,237000000,70.2,NCRB Crime in India Report
+2023,8,Uttar Pradesh,349,245,2.21,1.55,237000000,70.2,NCRB Crime in India Report
+2023,9,Uttar Pradesh,349,245,2.21,1.55,237000000,70.2,NCRB Crime in India Report
+2023,10,Uttar Pradesh,523,368,2.21,1.55,237000000,70.4,NCRB Crime in India Report
+2023,11,Uttar Pradesh,523,368,2.21,1.55,237000000,70.4,NCRB Crime in India Report
+2023,12,Uttar Pradesh,523,368,2.21,1.55,237000000,70.4,NCRB Crime in India Report
+2023,1,Maharashtra,635,451,7.63,5.42,125000000,71.0,NCRB Crime in India Report
+2023,2,Maharashtra,635,451,7.63,5.42,125000000,71.0,NCRB Crime in India Report
+2023,3,Maharashtra,953,677,7.63,5.42,125000000,71.0,NCRB Crime in India Report
+2023,4,Maharashtra,953,677,7.63,5.42,125000000,71.0,NCRB Crime in India Report
+2023,5,Maharashtra,953,677,7.63,5.42,125000000,71.0,NCRB Crime in India Report
+2023,6,Maharashtra,635,451,7.63,5.42,125000000,71.0,NCRB Crime in India Report
+2023,7,Maharashtra,635,451,7.63,5.42,125000000,71.0,NCRB Crime in India Report
+2023,8,Maharashtra,635,451,7.63,5.42,125000000,71.0,NCRB Crime in India Report
+2023,9,Maharashtra,635,451,7.63,5.42,125000000,71.0,NCRB Crime in India Report
+2023,10,Maharashtra,953,677,7.63,5.42,125000000,71.0,NCRB Crime in India Report
+2023,11,Maharashtra,953,677,7.63,5.42,125000000,71.0,NCRB Crime in India Report
+2023,12,Maharashtra,953,677,7.63,5.42,125000000,71.0,NCRB Crime in India Report
+2023,1,Karnataka,800,601,17.66,13.27,68000000,75.1,NCRB Crime in India Report
+2023,2,Karnataka,800,601,17.66,13.27,68000000,75.1,NCRB Crime in India Report
+2023,3,Karnataka,1200,902,17.66,13.27,68000000,75.2,NCRB Crime in India Report
+2023,4,Karnataka,1200,902,17.66,13.27,68000000,75.2,NCRB Crime in India Report
+2023,5,Karnataka,1200,902,17.66,13.27,68000000,75.2,NCRB Crime in India Report
+2023,6,Karnataka,800,601,17.66,13.27,68000000,75.1,NCRB Crime in India Report
+2023,7,Karnataka,800,601,17.66,13.27,68000000,75.1,NCRB Crime in India Report
+2023,8,Karnataka,800,601,17.66,13.27,68000000,75.1,NCRB Crime in India Report
+2023,9,Karnataka,800,601,17.66,13.27,68000000,75.1,NCRB Crime in India Report
+2023,10,Karnataka,1200,902,17.66,13.27,68000000,75.2,NCRB Crime in India Report
+2023,11,Karnataka,1200,902,17.66,13.27,68000000,75.2,NCRB Crime in India Report
+2023,12,Karnataka,1200,902,17.66,13.27,68000000,75.2,NCRB Crime in India Report
+2023,1,Telangana,385,290,15.61,11.78,37000000,75.3,NCRB Crime in India Report
+2023,2,Telangana,385,290,15.61,11.78,37000000,75.3,NCRB Crime in India Report
+2023,3,Telangana,577,435,15.61,11.78,37000000,75.4,NCRB Crime in India Report
+2023,4,Telangana,577,435,15.61,11.78,37000000,75.4,NCRB Crime in India Report
+2023,5,Telangana,577,435,15.61,11.78,37000000,75.4,NCRB Crime in India Report
+2023,6,Telangana,385,290,15.61,11.78,37000000,75.3,NCRB Crime in India Report
+2023,7,Telangana,385,290,15.61,11.78,37000000,75.3,NCRB Crime in India Report
+2023,8,Telangana,385,290,15.61,11.78,37000000,75.3,NCRB Crime in India Report
+2023,9,Telangana,385,290,15.61,11.78,37000000,75.3,NCRB Crime in India Report
+2023,10,Telangana,577,435,15.61,11.78,37000000,75.4,NCRB Crime in India Report
+2023,11,Telangana,577,435,15.61,11.78,37000000,75.4,NCRB Crime in India Report
+2023,12,Telangana,577,435,15.61,11.78,37000000,75.4,NCRB Crime in India Report
+2023,1,Assam,169,111,7.28,4.78,35000000,65.7,NCRB Crime in India Report
+2023,2,Assam,169,111,7.28,4.78,35000000,65.7,NCRB Crime in India Report
+2023,3,Assam,254,167,7.28,4.78,35000000,65.7,NCRB Crime in India Report
+2023,4,Assam,254,167,7.28,4.78,35000000,65.7,NCRB Crime in India Report
+2023,5,Assam,254,167,7.28,4.78,35000000,65.7,NCRB Crime in India Report
+2023,6,Assam,169,111,7.28,4.78,35000000,65.7,NCRB Crime in India Report
+2023,7,Assam,169,111,7.28,4.78,35000000,65.7,NCRB Crime in India Report
+2023,8,Assam,169,111,7.28,4.78,35000000,65.7,NCRB Crime in India Report
+2023,9,Assam,169,111,7.28,4.78,35000000,65.7,NCRB Crime in India Report
+2023,10,Assam,254,167,7.28,4.78,35000000,65.7,NCRB Crime in India Report
+2023,11,Assam,254,167,7.28,4.78,35000000,65.7,NCRB Crime in India Report
+2023,12,Assam,254,167,7.28,4.78,35000000,65.7,NCRB Crime in India Report
+2023,1,Delhi,328,237,14.93,10.81,33000000,72.3,NCRB Crime in India Report
+2023,2,Delhi,328,237,14.93,10.81,33000000,72.3,NCRB Crime in India Report
+2023,3,Delhi,492,356,14.93,10.81,33000000,72.4,NCRB Crime in India Report
+2023,4,Delhi,492,356,14.93,10.81,33000000,72.4,NCRB Crime in India Report
+2023,5,Delhi,492,356,14.93,10.81,33000000,72.4,NCRB Crime in India Report
+2023,6,Delhi,328,237,14.93,10.81,33000000,72.3,NCRB Crime in India Report
+2023,7,Delhi,328,237,14.93,10.81,33000000,72.3,NCRB Crime in India Report
+2023,8,Delhi,328,237,14.93,10.81,33000000,72.3,NCRB Crime in India Report
+2023,9,Delhi,328,237,14.93,10.81,33000000,72.3,NCRB Crime in India Report
+2023,10,Delhi,492,356,14.93,10.81,33000000,72.4,NCRB Crime in India Report
+2023,11,Delhi,492,356,14.93,10.81,33000000,72.4,NCRB Crime in India Report
+2023,12,Delhi,492,356,14.93,10.81,33000000,72.4,NCRB Crime in India Report
+2023,1,Tamil Nadu,236,168,4.61,3.29,77000000,71.2,NCRB Crime in India Report
+2023,2,Tamil Nadu,236,168,4.61,3.29,77000000,71.2,NCRB Crime in India Report
+2023,3,Tamil Nadu,354,253,4.61,3.29,77000000,71.5,NCRB Crime in India Report
+2023,4,Tamil Nadu,354,253,4.61,3.29,77000000,71.5,NCRB Crime in India Report
+2023,5,Tamil Nadu,354,253,4.61,3.29,77000000,71.5,NCRB Crime in India Report
+2023,6,Tamil Nadu,236,168,4.61,3.29,77000000,71.2,NCRB Crime in India Report
+2023,7,Tamil Nadu,236,168,4.61,3.29,77000000,71.2,NCRB Crime in India Report
+2023,8,Tamil Nadu,236,168,4.61,3.29,77000000,71.2,NCRB Crime in India Report
+2023,9,Tamil Nadu,236,168,4.61,3.29,77000000,71.2,NCRB Crime in India Report
+2023,10,Tamil Nadu,354,253,4.61,3.29,77000000,71.5,NCRB Crime in India Report
+2023,11,Tamil Nadu,354,253,4.61,3.29,77000000,71.5,NCRB Crime in India Report
+2023,12,Tamil Nadu,354,253,4.61,3.29,77000000,71.5,NCRB Crime in India Report
+2023,1,Rajasthan,298,196,5.59,3.69,80000000,65.8,NCRB Crime in India Report
+2023,2,Rajasthan,298,196,5.59,3.69,80000000,65.8,NCRB Crime in India Report
+2023,3,Rajasthan,447,295,5.59,3.69,80000000,66.0,NCRB Crime in India Report
+2023,4,Rajasthan,447,295,5.59,3.69,80000000,66.0,NCRB Crime in India Report
+2023,5,Rajasthan,447,295,5.59,3.69,80000000,66.0,NCRB Crime in India Report
+2023,6,Rajasthan,298,196,5.59,3.69,80000000,65.8,NCRB Crime in India Report
+2023,7,Rajasthan,298,196,5.59,3.69,80000000,65.8,NCRB Crime in India Report
+2023,8,Rajasthan,298,196,5.59,3.69,80000000,65.8,NCRB Crime in India Report
+2023,9,Rajasthan,298,196,5.59,3.69,80000000,65.8,NCRB Crime in India Report
+2023,10,Rajasthan,447,295,5.59,3.69,80000000,66.0,NCRB Crime in India Report
+2023,11,Rajasthan,447,295,5.59,3.69,80000000,66.0,NCRB Crime in India Report
+2023,12,Rajasthan,447,295,5.59,3.69,80000000,66.0,NCRB Crime in India Report
+2023,1,Haryana,258,190,13.39,9.87,29000000,73.6,NCRB Crime in India Report
+2023,2,Haryana,258,190,13.39,9.87,29000000,73.6,NCRB Crime in India Report
+2023,3,Haryana,388,286,13.39,9.87,29000000,73.7,NCRB Crime in India Report
+2023,4,Haryana,388,286,13.39,9.87,29000000,73.7,NCRB Crime in India Report
+2023,5,Haryana,388,286,13.39,9.87,29000000,73.7,NCRB Crime in India Report
+2023,6,Haryana,258,190,13.39,9.87,29000000,73.6,NCRB Crime in India Report
+2023,7,Haryana,258,190,13.39,9.87,29000000,73.6,NCRB Crime in India Report
+2023,8,Haryana,258,190,13.39,9.87,29000000,73.6,NCRB Crime in India Report
+2023,9,Haryana,258,190,13.39,9.87,29000000,73.6,NCRB Crime in India Report
+2023,10,Haryana,388,286,13.39,9.87,29000000,73.7,NCRB Crime in India Report
+2023,11,Haryana,388,286,13.39,9.87,29000000,73.7,NCRB Crime in India Report
+2023,12,Haryana,388,286,13.39,9.87,29000000,73.7,NCRB Crime in India Report
+2023,1,Gujarat,218,153,5.03,3.53,65000000,70.2,NCRB Crime in India Report
+2023,2,Gujarat,218,153,5.03,3.53,65000000,70.2,NCRB Crime in India Report
+2023,3,Gujarat,327,229,5.03,3.53,65000000,70.0,NCRB Crime in India Report
+2023,4,Gujarat,327,229,5.03,3.53,65000000,70.0,NCRB Crime in India Report
+2023,5,Gujarat,327,229,5.03,3.53,65000000,70.0,NCRB Crime in India Report
+2023,6,Gujarat,218,153,5.03,3.53,65000000,70.2,NCRB Crime in India Report
+2023,7,Gujarat,218,153,5.03,3.53,65000000,70.2,NCRB Crime in India Report
+2023,8,Gujarat,218,153,5.03,3.53,65000000,70.2,NCRB Crime in India Report
+2023,9,Gujarat,218,153,5.03,3.53,65000000,70.2,NCRB Crime in India Report
+2023,10,Gujarat,327,229,5.03,3.53,65000000,70.0,NCRB Crime in India Report
+2023,11,Gujarat,327,229,5.03,3.53,65000000,70.0,NCRB Crime in India Report
+2023,12,Gujarat,327,229,5.03,3.53,65000000,70.0,NCRB Crime in India Report
+2023,1,West Bengal,165,117,2.5,1.78,99000000,70.9,NCRB Crime in India Report
+2023,2,West Bengal,165,117,2.5,1.78,99000000,70.9,NCRB Crime in India Report
+2023,3,West Bengal,247,176,2.5,1.78,99000000,71.3,NCRB Crime in India Report
+2023,4,West Bengal,247,176,2.5,1.78,99000000,71.3,NCRB Crime in India Report
+2023,5,West Bengal,247,176,2.5,1.78,99000000,71.3,NCRB Crime in India Report
+2023,6,West Bengal,165,117,2.5,1.78,99000000,70.9,NCRB Crime in India Report
+2023,7,West Bengal,165,117,2.5,1.78,99000000,70.9,NCRB Crime in India Report
+2023,8,West Bengal,165,117,2.5,1.78,99000000,70.9,NCRB Crime in India Report
+2023,9,West Bengal,165,117,2.5,1.78,99000000,70.9,NCRB Crime in India Report
+2023,10,West Bengal,247,176,2.5,1.78,99000000,71.3,NCRB Crime in India Report
+2023,11,West Bengal,247,176,2.5,1.78,99000000,71.3,NCRB Crime in India Report
+2023,12,West Bengal,247,176,2.5,1.78,99000000,71.3,NCRB Crime in India Report
+2023,1,Madhya Pradesh,160,109,2.83,1.92,85000000,68.1,NCRB Crime in India Report
+2023,2,Madhya Pradesh,160,109,2.83,1.92,85000000,68.1,NCRB Crime in India Report
+2023,3,Madhya Pradesh,240,163,2.83,1.92,85000000,67.9,NCRB Crime in India Report
+2023,4,Madhya Pradesh,240,163,2.83,1.92,85000000,67.9,NCRB Crime in India Report
+2023,5,Madhya Pradesh,240,163,2.83,1.92,85000000,67.9,NCRB Crime in India Report
+2023,6,Madhya Pradesh,160,109,2.83,1.92,85000000,68.1,NCRB Crime in India Report
+2023,7,Madhya Pradesh,160,109,2.83,1.92,85000000,68.1,NCRB Crime in India Report
+2023,8,Madhya Pradesh,160,109,2.83,1.92,85000000,68.1,NCRB Crime in India Report
+2023,9,Madhya Pradesh,160,109,2.83,1.92,85000000,68.1,NCRB Crime in India Report
+2023,10,Madhya Pradesh,240,163,2.83,1.92,85000000,67.9,NCRB Crime in India Report
+2023,11,Madhya Pradesh,240,163,2.83,1.92,85000000,67.9,NCRB Crime in India Report
+2023,12,Madhya Pradesh,240,163,2.83,1.92,85000000,67.9,NCRB Crime in India Report
+2023,1,Odisha,143,94,4.79,3.15,45000000,65.7,NCRB Crime in India Report
+2023,2,Odisha,143,94,4.79,3.15,45000000,65.7,NCRB Crime in India Report
+2023,3,Odisha,215,141,4.79,3.15,45000000,65.6,NCRB Crime in India Report
+2023,4,Odisha,215,141,4.79,3.15,45000000,65.6,NCRB Crime in India Report
+2023,5,Odisha,215,141,4.79,3.15,45000000,65.6,NCRB Crime in India Report
+2023,6,Odisha,143,94,4.79,3.15,45000000,65.7,NCRB Crime in India Report
+2023,7,Odisha,143,94,4.79,3.15,45000000,65.7,NCRB Crime in India Report
+2023,8,Odisha,143,94,4.79,3.15,45000000,65.7,NCRB Crime in India Report
+2023,9,Odisha,143,94,4.79,3.15,45000000,65.7,NCRB Crime in India Report
+2023,10,Odisha,215,141,4.79,3.15,45000000,65.6,NCRB Crime in India Report
+2023,11,Odisha,215,141,4.79,3.15,45000000,65.6,NCRB Crime in India Report
+2023,12,Odisha,215,141,4.79,3.15,45000000,65.6,NCRB Crime in India Report
+2023,1,Punjab,134,91,6.73,4.56,30000000,67.9,NCRB Crime in India Report
+2023,2,Punjab,134,91,6.73,4.56,30000000,67.9,NCRB Crime in India Report
+2023,3,Punjab,201,136,6.73,4.56,30000000,67.7,NCRB Crime in India Report
+2023,4,Punjab,201,136,6.73,4.56,30000000,67.7,NCRB Crime in India Report
+2023,5,Punjab,201,136,6.73,4.56,30000000,67.7,NCRB Crime in India Report
+2023,6,Punjab,134,91,6.73,4.56,30000000,67.9,NCRB Crime in India Report
+2023,7,Punjab,134,91,6.73,4.56,30000000,67.9,NCRB Crime in India Report
+2023,8,Punjab,134,91,6.73,4.56,30000000,67.9,NCRB Crime in India Report
+2023,9,Punjab,134,91,6.73,4.56,30000000,67.9,NCRB Crime in India Report
+2023,10,Punjab,201,136,6.73,4.56,30000000,67.7,NCRB Crime in India Report
+2023,11,Punjab,201,136,6.73,4.56,30000000,67.7,NCRB Crime in India Report
+2023,12,Punjab,201,136,6.73,4.56,30000000,67.7,NCRB Crime in India Report
+2023,1,Bihar,95,66,1.12,0.78,128000000,69.5,NCRB Crime in India Report
+2023,2,Bihar,95,66,1.12,0.78,128000000,69.5,NCRB Crime in India Report
+2023,3,Bihar,143,99,1.12,0.78,128000000,69.2,NCRB Crime in India Report
+2023,4,Bihar,143,99,1.12,0.78,128000000,69.2,NCRB Crime in India Report
+2023,5,Bihar,143,99,1.12,0.78,128000000,69.2,NCRB Crime in India Report
+2023,6,Bihar,95,66,1.12,0.78,128000000,69.5,NCRB Crime in India Report
+2023,7,Bihar,95,66,1.12,0.78,128000000,69.5,NCRB Crime in India Report
+2023,8,Bihar,95,66,1.12,0.78,128000000,69.5,NCRB Crime in India Report
+2023,9,Bihar,95,66,1.12,0.78,128000000,69.5,NCRB Crime in India Report
+2023,10,Bihar,143,99,1.12,0.78,128000000,69.2,NCRB Crime in India Report
+2023,11,Bihar,143,99,1.12,0.78,128000000,69.2,NCRB Crime in India Report
+2023,12,Bihar,143,99,1.12,0.78,128000000,69.2,NCRB Crime in India Report
+2023,1,Jharkhand,67,45,2.65,1.81,38000000,67.2,NCRB Crime in India Report
+2023,2,Jharkhand,67,45,2.65,1.81,38000000,67.2,NCRB Crime in India Report
+2023,3,Jharkhand,100,68,2.65,1.81,38000000,68.0,NCRB Crime in India Report
+2023,4,Jharkhand,100,68,2.65,1.81,38000000,68.0,NCRB Crime in India Report
+2023,5,Jharkhand,100,68,2.65,1.81,38000000,68.0,NCRB Crime in India Report
+2023,6,Jharkhand,67,45,2.65,1.81,38000000,67.2,NCRB Crime in India Report
+2023,7,Jharkhand,67,45,2.65,1.81,38000000,67.2,NCRB Crime in India Report
+2023,8,Jharkhand,67,45,2.65,1.81,38000000,67.2,NCRB Crime in India Report
+2023,9,Jharkhand,67,45,2.65,1.81,38000000,67.2,NCRB Crime in India Report
+2023,10,Jharkhand,100,68,2.65,1.81,38000000,68.0,NCRB Crime in India Report
+2023,11,Jharkhand,100,68,2.65,1.81,38000000,68.0,NCRB Crime in India Report
+2023,12,Jharkhand,100,68,2.65,1.81,38000000,68.0,NCRB Crime in India Report
+2023,1,Kerala,86,60,3.73,2.59,35000000,69.8,NCRB Crime in India Report
+2023,2,Kerala,86,60,3.73,2.59,35000000,69.8,NCRB Crime in India Report
+2023,3,Kerala,130,90,3.73,2.59,35000000,69.2,NCRB Crime in India Report
+2023,4,Kerala,130,90,3.73,2.59,35000000,69.2,NCRB Crime in India Report
+2023,5,Kerala,130,90,3.73,2.59,35000000,69.2,NCRB Crime in India Report
+2023,6,Kerala,86,60,3.73,2.59,35000000,69.8,NCRB Crime in India Report
+2023,7,Kerala,86,60,3.73,2.59,35000000,69.8,NCRB Crime in India Report
+2023,8,Kerala,86,60,3.73,2.59,35000000,69.8,NCRB Crime in India Report
+2023,9,Kerala,86,60,3.73,2.59,35000000,69.8,NCRB Crime in India Report
+2023,10,Kerala,130,90,3.73,2.59,35000000,69.2,NCRB Crime in India Report
+2023,11,Kerala,130,90,3.73,2.59,35000000,69.2,NCRB Crime in India Report
+2023,12,Kerala,130,90,3.73,2.59,35000000,69.2,NCRB Crime in India Report
+2023,1,Andhra Pradesh,120,84,3.34,2.34,54000000,70.0,NCRB Crime in India Report
+2023,2,Andhra Pradesh,120,84,3.34,2.34,54000000,70.0,NCRB Crime in India Report
+2023,3,Andhra Pradesh,180,126,3.34,2.34,54000000,70.0,NCRB Crime in India Report
+2023,4,Andhra Pradesh,180,126,3.34,2.34,54000000,70.0,NCRB Crime in India Report
+2023,5,Andhra Pradesh,180,126,3.34,2.34,54000000,70.0,NCRB Crime in India Report
+2023,6,Andhra Pradesh,120,84,3.34,2.34,54000000,70.0,NCRB Crime in India Report
+2023,7,Andhra Pradesh,120,84,3.34,2.34,54000000,70.0,NCRB Crime in India Report
+2023,8,Andhra Pradesh,120,84,3.34,2.34,54000000,70.0,NCRB Crime in India Report
+2023,9,Andhra Pradesh,120,84,3.34,2.34,54000000,70.0,NCRB Crime in India Report
+2023,10,Andhra Pradesh,180,126,3.34,2.34,54000000,70.0,NCRB Crime in India Report
+2023,11,Andhra Pradesh,180,126,3.34,2.34,54000000,70.0,NCRB Crime in India Report
+2023,12,Andhra Pradesh,180,126,3.34,2.34,54000000,70.0,NCRB Crime in India Report
+2023,1,Chhattisgarh,43,29,2.25,1.54,29000000,67.4,NCRB Crime in India Report
+2023,2,Chhattisgarh,43,29,2.25,1.54,29000000,67.4,NCRB Crime in India Report
+2023,3,Chhattisgarh,65,44,2.25,1.54,29000000,67.7,NCRB Crime in India Report
+2023,4,Chhattisgarh,65,44,2.25,1.54,29000000,67.7,NCRB Crime in India Report
+2023,5,Chhattisgarh,65,44,2.25,1.54,29000000,67.7,NCRB Crime in India Report
+2023,6,Chhattisgarh,43,29,2.25,1.54,29000000,67.4,NCRB Crime in India Report
+2023,7,Chhattisgarh,43,29,2.25,1.54,29000000,67.4,NCRB Crime in India Report
+2023,8,Chhattisgarh,43,29,2.25,1.54,29000000,67.4,NCRB Crime in India Report
+2023,9,Chhattisgarh,43,29,2.25,1.54,29000000,67.4,NCRB Crime in India Report
+2023,10,Chhattisgarh,65,44,2.25,1.54,29000000,67.7,NCRB Crime in India Report
+2023,11,Chhattisgarh,65,44,2.25,1.54,29000000,67.7,NCRB Crime in India Report
+2023,12,Chhattisgarh,65,44,2.25,1.54,29000000,67.7,NCRB Crime in India Report
+2023,1,Uttarakhand,34,23,4.65,3.25,11000000,67.6,NCRB Crime in India Report
+2023,2,Uttarakhand,34,23,4.65,3.25,11000000,67.6,NCRB Crime in India Report
+2023,3,Uttarakhand,51,35,4.65,3.25,11000000,68.6,NCRB Crime in India Report
+2023,4,Uttarakhand,51,35,4.65,3.25,11000000,68.6,NCRB Crime in India Report
+2023,5,Uttarakhand,51,35,4.65,3.25,11000000,68.6,NCRB Crime in India Report
+2023,6,Uttarakhand,34,23,4.65,3.25,11000000,67.6,NCRB Crime in India Report
+2023,7,Uttarakhand,34,23,4.65,3.25,11000000,67.6,NCRB Crime in India Report
+2023,8,Uttarakhand,34,23,4.65,3.25,11000000,67.6,NCRB Crime in India Report
+2023,9,Uttarakhand,34,23,4.65,3.25,11000000,67.6,NCRB Crime in India Report
+2023,10,Uttarakhand,51,35,4.65,3.25,11000000,68.6,NCRB Crime in India Report
+2023,11,Uttarakhand,51,35,4.65,3.25,11000000,68.6,NCRB Crime in India Report
+2023,12,Uttarakhand,51,35,4.65,3.25,11000000,68.6,NCRB Crime in India Report
