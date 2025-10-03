@@ -10,7 +10,8 @@ mlflow
 dagshub
 dvc
 fastapi
-uvicorn
+uvicorn[standard]
+websockets
 python-multipart
 geopy
 folium

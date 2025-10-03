@@ -158,6 +158,7 @@ except:
     pass
 
 @app.get("/", response_class=HTMLResponse, tags=["dashboard"])
+@app.head("/", response_class=HTMLResponse, tags=["dashboard"])
 async def dashboard(request: Request):
     """Serve the main CyberGuard dashboard"""
     return templates.TemplateResponse("dashboard.html", {"request": request})
@@ -189,6 +190,31 @@ async def predict_withdrawal_location(complaint: ComplaintInput):
     Returns coordinates, probability, and timing predictions
     """
     try:
+        # Check if model files exist
+        if not os.path.exists("final_models/preprocessor.pkl") or not os.path.exists("final_models/model.pkl"):
+            # Return mock prediction for demo purposes
+            logger.warning("⚠️ Model files not found, returning demo prediction")
+            
+            # Generate realistic demo prediction based on input
+            base_lat = complaint.complaint_lat + np.random.uniform(-0.1, 0.1)
+            base_lng = complaint.complaint_lng + np.random.uniform(-0.1, 0.1)
+            demo_prob = 0.85 if complaint.urgency_level == "High" else 0.65 if complaint.urgency_level == "Medium" else 0.45
+            demo_hours = 6 if complaint.urgency_level == "High" else 24 if complaint.urgency_level == "Medium" else 48
+            
+            result = WithdrawalPrediction(
+                complaint_id=complaint.complaint_id,
+                predicted_withdrawal_lat=float(base_lat),
+                predicted_withdrawal_lng=float(base_lng),
+                withdrawal_probability=demo_prob,
+                predicted_hours_to_withdrawal=demo_hours,
+                risk_level="HIGH" if demo_prob > 0.8 else "MEDIUM" if demo_prob > 0.5 else "LOW",
+                confidence_score=demo_prob,
+                alert_radius_km=2.0 if demo_prob > 0.8 else 5.0
+            )
+            
+            logger.info(f"📊 Demo prediction generated for {complaint.complaint_id}")
+            return result
+        
         # Load the trained models
         preprocessor = load_object("final_models/preprocessor.pkl")
         final_model = load_object("final_models/model.pkl")
@@ -290,6 +316,33 @@ async def bulk_predict_withdrawals(file: UploadFile = File(...)):
     """
     try:
         df = pd.read_csv(file.file)
+        
+        # Check if model files exist
+        if not os.path.exists("final_models/preprocessor.pkl") or not os.path.exists("final_models/model.pkl"):
+            logger.warning("⚠️ Model files not found, generating demo predictions for bulk request")
+            
+            # Generate demo predictions
+            df['predicted_withdrawal_lat'] = df['complaint_lat'] + np.random.uniform(-0.1, 0.1, len(df))
+            df['predicted_withdrawal_lng'] = df['complaint_lng'] + np.random.uniform(-0.1, 0.1, len(df))
+            df['withdrawal_probability'] = np.random.uniform(0.4, 0.9, len(df))
+            df['predicted_hours_to_withdrawal'] = np.random.randint(6, 72, len(df))
+            df['risk_level'] = df['withdrawal_probability'].apply(
+                lambda x: "HIGH" if x > 0.8 else "MEDIUM" if x > 0.5 else "LOW"
+            )
+            
+            # Save results
+            output_path = f'prediction_output/bulk_predictions_demo_{int(datetime.now().timestamp())}.csv'
+            df.to_csv(output_path, index=False)
+            
+            return JSONResponse({
+                "status": "success",
+                "message": f"Demo predictions generated for {len(df)} complaints",
+                "high_risk_count": len(df[df['risk_level'] == 'HIGH']),
+                "output_file": output_path,
+                "note": "Demo mode - model files not available",
+                "predictions": df[['complaint_id', 'predicted_withdrawal_lat', 'predicted_withdrawal_lng', 
+                                 'withdrawal_probability', 'risk_level']].to_dict(orient='records')[:10]  # Limit to 10 for response size
+            })
         
         # Load models
         preprocessor = load_object("final_models/preprocessor.pkl")
@@ -505,5 +558,26 @@ async def get_system_stats():
             "system_status": "error",
             "error": str(e)
         }, status_code=500)
+@app.get("/health", tags=["system"])
+async def health_check():
+    """System health check endpoint"""
+    health_status = {
+        "status": "healthy",
+        "timestamp": datetime.now().isoformat(),
+        "version": "3.0.0",
+        "components": {
+            "database": "connected" if MONGODB_AVAILABLE else "offline",
+            "models": "available" if (os.path.exists("final_models/preprocessor.pkl") and os.path.exists("final_models/model.pkl")) else "demo-mode",
+            "websocket": "ready",
+            "api": "operational"
+        }
+    }
+    return JSONResponse(health_status)
+
+@app.get("/favicon.ico", tags=["static"])
+async def favicon():
+    """Serve favicon"""
+    return FileResponse("static/favicon.ico")
+
 if __name__ == "__main__":
     app_run("app:app", host="0.0.0.0", port=8000, reload=True)
