@@ -41,7 +41,7 @@ class NetworkDataExtract:
             raise NetworkSecurityException(e, sys)
         
 if __name__ == "__main__":
-    FILE_PATH = r"Network_Data/phisingData.csv"
+    FILE_PATH = r"enhanced_indian_cybercrime_data.csv"
     DATABASE_NAME = "NetworkSecurity"
     COLLECTION_NAME = "NetworkData"
     

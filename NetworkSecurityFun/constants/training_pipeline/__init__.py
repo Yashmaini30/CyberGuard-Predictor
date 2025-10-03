@@ -6,7 +6,7 @@ import pandas as pd
 """
 defining common constant variable for CyberGuard withdrawal prediction pipeline
 """
-TARGET_COLUMNS = ["predicted_withdrawal_lat", "predicted_withdrawal_lng", "withdrawal_probability"]
+TARGET_COLUMNS = ["withdrawal_probability", "risk_score"]
 PIPELINE_NAME: str = "cyberguard_predictor"
 ARTIFACT_DIR: str = "artifact"
 FILENAME: str = "datasets/withdrawal_prediction/complaint_to_withdrawal_focused.csv"
@@ -23,7 +23,7 @@ MODEL_FILE_NAME: str = "model.pkl"
 Data Ingestion related constant starts with DATA_INGESTION VAR NAME
 """
 
-DATA_INGESTION_COLLECTION_NAME: str = "WithdrawalPredictionData"
+DATA_INGESTION_COLLECTION_NAME: str = "EnhancedCybercrimeData"
 DATA_INGESTION_DATABASE_NAME: str = "CyberGuardDB"
 DATA_INGESTION_DIR_NAME: str = "data_ingestion"
 DATA_INGESTION_FEATURE_STORE_DIR_NAME: str = "feature_store"

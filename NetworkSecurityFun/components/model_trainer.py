@@ -196,13 +196,8 @@ class CyberGuardModelTrainer:
         test_mse = mean_squared_error(y_test, test_pred)
         test_mae = mean_absolute_error(y_test, test_pred)
         
-        # Calculate geospatial metrics for withdrawal prediction
-        train_geo_metrics = self.calculate_geospatial_metrics(y_train, train_pred)
-        test_geo_metrics = self.calculate_geospatial_metrics(y_test, test_pred)
-        
-        logger.info(f"📊 Training Metrics: R²={train_r2:.4f}, Distance Error={train_geo_metrics['mean_distance_error_km']:.2f}km")
-        logger.info(f"📊 Test Metrics: R²={test_r2:.4f}, Distance Error={test_geo_metrics['mean_distance_error_km']:.2f}km")
-        logger.info(f"🎯 Accuracy within 1km: {test_geo_metrics['accuracy_within_1km_pct']:.1f}%")
+        logger.info(f"📊 Training Metrics: R²={train_r2:.4f}, MSE={train_mse:.4f}, MAE={train_mae:.4f}")
+        logger.info(f"📊 Test Metrics: R²={test_r2:.4f}, MSE={test_mse:.4f}, MAE={test_mae:.4f}")
 
         self._track_model(best_name, best_estimator, test_r2, test_mse, test_mae)
 
@@ -216,17 +211,15 @@ class CyberGuardModelTrainer:
         artifact = ModelTrainerArtifact(
             trained_model_file_path=self.model_trainer_config.trained_model_file_path,
             trained_metric_artifact={
-                "regression_metrics": {"r2": train_r2, "mse": train_mse, "mae": train_mae},
-                "geospatial_metrics": train_geo_metrics
+                "regression_metrics": {"r2": train_r2, "mse": train_mse, "mae": train_mae}
             },
             test_metric_artifact={
-                "regression_metrics": {"r2": test_r2, "mse": test_mse, "mae": test_mae},
-                "geospatial_metrics": test_geo_metrics
+                "regression_metrics": {"r2": test_r2, "mse": test_mse, "mae": test_mae}
             },
             best_model_name=best_name,
             best_model_params=best_estimator.get_params(),
         )
-        logger.info(f"🏆  Best CyberGuard model: {best_name} – R²={best_score:.4f}, 1km accuracy={test_geo_metrics['accuracy_within_1km_pct']:.1f}%")
+        logger.info(f"🏆 Best CyberGuard model: {best_name} – R²={best_score:.4f}")
         return artifact
 
     def initiate_model_trainer(self) -> ModelTrainerArtifact:
@@ -238,9 +231,9 @@ class CyberGuardModelTrainer:
                 self.data_transformation_artifact.transformed_test_file_path
             )
 
-            # Multi-output target extraction (last 3 columns are targets)
-            X_train, y_train = train_arr[:, :-3], train_arr[:, -3:]
-            X_test, y_test = test_arr[:, :-3], test_arr[:, -3:]
+            # Multi-output target extraction (last 2 columns are withdrawal_probability and risk_score)
+            X_train, y_train = train_arr[:, :-2], train_arr[:, -2:]
+            X_test, y_test = test_arr[:, :-2], test_arr[:, -2:]
 
             logger.info(f"🎯 Training data: {X_train.shape} features, {y_train.shape} targets")
             logger.info(f"🎯 Test data: {X_test.shape} features, {y_test.shape} targets")

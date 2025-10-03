@@ -29,15 +29,15 @@ class CyberGuardDataIngestion:
     def load_withdrawal_prediction_data_from_csv(self):
         """Load withdrawal prediction data from CSV file"""
         try:
-            # Load from our focused dataset
-            csv_file_path = "datasets/withdrawal_prediction/complaint_to_withdrawal_focused.csv"
-            logger.info(f"Loading withdrawal prediction data from: {csv_file_path}")
+            # Load from our enhanced Indian cybercrime dataset
+            csv_file_path = "enhanced_indian_cybercrime_data.csv"
+            logger.info(f"Loading enhanced cybercrime data from: {csv_file_path}")
             
             if not os.path.exists(csv_file_path):
-                raise FileNotFoundError(f"Dataset file not found: {csv_file_path}")
+                raise FileNotFoundError(f"Enhanced dataset file not found: {csv_file_path}")
                 
             df = pd.read_csv(csv_file_path)
-            logger.info(f"✅ Loaded {len(df)} withdrawal prediction records")
+            logger.info(f"✅ Loaded {len(df)} enhanced cybercrime records")
             
             # Data preprocessing for withdrawal prediction
             df = self.preprocess_withdrawal_data(df)
@@ -48,44 +48,57 @@ class CyberGuardDataIngestion:
             raise NetworkSecurityException(e, sys)
     
     def preprocess_withdrawal_data(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Preprocess withdrawal prediction data while maintaining schema compatibility"""
+        """Preprocess enhanced cybercrime data for ML training"""
         try:
-            logger.info("🔄 Preprocessing withdrawal prediction data...")
+            logger.info("🔄 Preprocessing enhanced cybercrime data...")
             
             # Handle missing values
             df = df.dropna()
             
-            # Ensure we have all required columns from schema
-            required_columns = [
+            # Core columns from enhanced dataset
+            core_columns = [
                 'complaint_id', 'timestamp', 'crime_type', 'amount_lost', 'urgency_level',
-                'complaint_city', 'complaint_lat', 'complaint_lng', 'predicted_withdrawal_lat',
-                'predicted_withdrawal_lng', 'withdrawal_probability', 'hours_to_withdrawal',
-                'intervention_window_hours', 'hour', 'day_of_week', 'is_weekend',
-                'is_peak_withdrawal_time', 'nearest_atm_network', 'nearest_atm_lat',
-                'nearest_atm_lng', 'atm_distance_km', 'risk_score', 'alert_priority',
-                'requires_bank_alert', 'jurisdiction'
+                'complaint_city', 'complaint_state', 'complaint_lat', 'complaint_lng', 'victim_phone',
+                'predicted_withdrawal_lat', 'predicted_withdrawal_lng', 'withdrawal_probability', 
+                'risk_score', 'status', 'reported_by', 'investigation_officer', 'bank_involved'
             ]
             
-            # Keep only schema-required columns
-            available_columns = [col for col in required_columns if col in df.columns]
+            # Keep only available columns
+            available_columns = [col for col in core_columns if col in df.columns]
             df = df[available_columns]
             
-            # Add missing columns with default values if needed
-            for col in required_columns:
-                if col not in df.columns:
-                    if col == 'complaint_id':
-                        df[col] = range(len(df))
-                    elif col == 'timestamp':
-                        df[col] = pd.Timestamp.now()
-                    elif col in ['crime_type', 'urgency_level', 'complaint_city', 'nearest_atm_network', 'alert_priority', 'jurisdiction']:
-                        df[col] = 'unknown'
-                    elif col == 'intervention_window_hours':
-                        df[col] = 24  # Default intervention window
-                    else:
-                        df[col] = 0
+            # Feature engineering for ML
+            if 'timestamp' in df.columns:
+                df['timestamp'] = pd.to_datetime(df['timestamp'])
+                df['hour'] = df['timestamp'].dt.hour
+                df['day_of_week'] = df['timestamp'].dt.dayofweek
+                df['is_weekend'] = df['day_of_week'].isin([5, 6]).astype(int)
+                df['is_peak_hours'] = df['hour'].isin([9, 10, 11, 14, 15, 16]).astype(int)
             
-            # Ensure column order matches schema
-            df = df[required_columns]
+            # Calculate distance if coordinates available
+            if all(col in df.columns for col in ['complaint_lat', 'complaint_lng', 'predicted_withdrawal_lat', 'predicted_withdrawal_lng']):
+                from math import radians, cos, sin, asin, sqrt
+                def haversine(lon1, lat1, lon2, lat2):
+                    # Convert to radians
+                    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+                    # Haversine formula
+                    dlon = lon2 - lon1
+                    dlat = lat2 - lat1
+                    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+                    c = 2 * asin(sqrt(a))
+                    r = 6371  # Radius of earth in kilometers
+                    return c * r
+                
+                df['distance_km'] = df.apply(lambda row: haversine(
+                    row['complaint_lng'], row['complaint_lat'],
+                    row['predicted_withdrawal_lng'], row['predicted_withdrawal_lat']
+                ), axis=1)
+            
+            # Create alert priority based on risk score and amount
+            if 'risk_score' in df.columns and 'amount_lost' in df.columns:
+                df['alert_priority'] = 'Low'
+                df.loc[(df['risk_score'] >= 80) | (df['amount_lost'] >= 100000), 'alert_priority'] = 'High'
+                df.loc[(df['risk_score'] >= 60) & (df['risk_score'] < 80) & (df['amount_lost'] >= 50000) & (df['amount_lost'] < 100000), 'alert_priority'] = 'Medium'
             
             logger.info(f"✅ Preprocessing complete. Final shape: {df.shape}")
             logger.info(f"Final columns: {list(df.columns)}")

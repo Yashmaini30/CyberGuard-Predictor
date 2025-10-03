@@ -1,43 +1,28 @@
 columns:
-  # Complaint Details
-  - complaint_id: str
-  - timestamp: datetime
-  - crime_type: str
+  - complaint_id: object
+  - timestamp: object
+  - crime_type: object
   - amount_lost: float64
-  - urgency_level: str
-  
-  # Geographic Features
-  - complaint_city: str
+  - urgency_level: object
+  - complaint_city: object
+  - complaint_state: object
   - complaint_lat: float64
   - complaint_lng: float64
-  
-  # Target Variables (Prediction Targets)
+  - victim_phone: object
   - predicted_withdrawal_lat: float64
   - predicted_withdrawal_lng: float64
   - withdrawal_probability: float64
-  
-  # Timing Features
-  - hours_to_withdrawal: int64
-  - intervention_window_hours: int64
+  - risk_score: float64
+  - status: object
+  - reported_by: object
+  - investigation_officer: object
+  - bank_involved: object
+  - distance_km: float64
+  - alert_priority: object
   - hour: int64
   - day_of_week: int64
-  - is_weekend: int64
-  - is_peak_withdrawal_time: int64
-  
-  # ATM/Banking Infrastructure
-  - nearest_atm_network: str
-  - nearest_atm_lat: float64
-  - nearest_atm_lng: float64
-  - atm_distance_km: float64
-  
-  # Risk Assessment
-  - risk_score: float64
-  - alert_priority: str
-  - requires_bank_alert: int64
-  
-  # LEA Coordination
-  - jurisdiction: str
-
+  - is_weekend: bool
+  - is_peak_hours: bool
 
 numerical_columns:
   # Amount and Geographic
@@ -47,47 +32,39 @@ numerical_columns:
   - predicted_withdrawal_lat
   - predicted_withdrawal_lng
   - withdrawal_probability
-  
-  # Timing Features
-  - hours_to_withdrawal
-  - intervention_window_hours
+  - risk_score
+  - distance_km
   - hour
   - day_of_week
-  - is_weekend
-  - is_peak_withdrawal_time
-  
-  # Infrastructure Features
-  - nearest_atm_lat
-  - nearest_atm_lng
-  - atm_distance_km
-  
-  # Risk Features
-  - risk_score
-  - requires_bank_alert
 
 categorical_columns:
   - crime_type
   - urgency_level
   - complaint_city
-  - nearest_atm_network
+  - complaint_state
+  - status
+  - reported_by
+  - investigation_officer
+  - bank_involved
   - alert_priority
-  - jurisdiction
+  - is_weekend
+  - is_peak_hours
 
 target_variables:
-  - predicted_withdrawal_lat
-  - predicted_withdrawal_lng  
   - withdrawal_probability
+  - risk_score
 
 feature_columns:
   - amount_lost
   - complaint_lat
   - complaint_lng
-  - hours_to_withdrawal
+  - crime_type
+  - urgency_level
+  - complaint_city
+  - complaint_state
+  - distance_km
+  - alert_priority
   - hour
   - day_of_week
   - is_weekend
-  - is_peak_withdrawal_time
-  - nearest_atm_lat
-  - nearest_atm_lng
-  - atm_distance_km
-  - risk_score
+  - is_peak_hours

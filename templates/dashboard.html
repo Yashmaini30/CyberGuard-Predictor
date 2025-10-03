@@ -204,7 +204,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                     </li>
@@ -214,8 +214,26 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#analytics"><i class="fas fa-chart-line"></i> Analytics</a>
                     </li>
+                    <li class="nav-item" id="enhancedAnalyticsNav" style="display: none;">
+                        <a class="nav-link" href="#enhanced-analytics"><i class="fas fa-chart-bar"></i> India Analytics</a>
+                    </li>
+                    <li class="nav-item" id="notificationsNav" style="display: none;">
+                        <a class="nav-link" href="#notifications"><i class="fas fa-bell"></i> Notifications</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/docs" target="_blank"><i class="fas fa-book"></i> API Docs</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle"></i> <span id="userName">Guest</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><span class="dropdown-item-text"><small id="userRole">Role: Guest</small></span></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -420,6 +438,222 @@
         </div>
     </section>
 
+    <!-- Enhanced India-Wide Analytics Section -->
+    <section id="enhanced-analytics" class="py-5" style="display: none;">
+        <div class="container">
+            <h3 class="text-center mb-5">
+                <i class="fas fa-chart-bar text-primary"></i> 
+                Comprehensive India-Wide Analytics
+            </h3>
+            
+            <!-- Summary Cards -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-3">
+                    <div class="card stat-card h-100">
+                        <div class="card-body text-center">
+                            <div class="stat-icon bg-danger mx-auto mb-3">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <h3 id="totalIndianCases" class="fw-bold">12,979</h3>
+                            <p class="text-muted">Total Cases (India)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card h-100">
+                        <div class="card-body text-center">
+                            <div class="stat-icon bg-warning mx-auto mb-3">
+                                <i class="fas fa-rupee-sign"></i>
+                            </div>
+                            <h3 id="totalAmountLost" class="fw-bold">₹456.7Cr</h3>
+                            <p class="text-muted">Amount Lost</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card h-100">
+                        <div class="card-body text-center">
+                            <div class="stat-icon bg-info mx-auto mb-3">
+                                <i class="fas fa-map-marked"></i>
+                            </div>
+                            <h3 id="statesCovered" class="fw-bold">31</h3>
+                            <p class="text-muted">States Covered</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card h-100">
+                        <div class="card-body text-center">
+                            <div class="stat-icon bg-success mx-auto mb-3">
+                                <i class="fas fa-shield-check"></i>
+                            </div>
+                            <h3 id="recoveryRate" class="fw-bold">23.7%</h3>
+                            <p class="text-muted">Recovery Rate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0">State-wise Distribution</h6>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="stateWiseChart" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0">Crime Type Analysis</h6>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="crimeTypeChart" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0">Monthly Trends (12 Months)</h6>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="monthlyTrendChart" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0">Age Demographics</h6>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="ageDemographicsChart" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Banking Partners Analysis -->
+            <div class="row g-4 mt-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0">Banking Partners - Incident Analysis</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="bankingPartnersTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Bank Name</th>
+                                            <th>Incidents</th>
+                                            <th>Amount Lost (₹Cr)</th>
+                                            <th>Avg per Case</th>
+                                            <th>Trend</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Dynamic content will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notifications Management Section -->
+    <section id="notifications" class="py-5 bg-light" style="display: none;">
+        <div class="container">
+            <h3 class="text-center mb-5">
+                <i class="fas fa-bell text-primary"></i> 
+                Alert Notifications Management
+            </h3>
+            
+            <div class="row g-4">
+                <!-- Send Alert Form -->
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h6 class="mb-0"><i class="fas fa-paper-plane"></i> Send Alert</h6>
+                        </div>
+                        <div class="card-body">
+                            <form id="alertForm">
+                                <div class="mb-3">
+                                    <label for="alertComplaintId" class="form-label">Complaint ID</label>
+                                    <input type="text" class="form-control" id="alertComplaintId" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="alertType" class="form-label">Alert Type</label>
+                                    <select class="form-select" id="alertType" required>
+                                        <option value="">Select Alert Type</option>
+                                        <option value="high_risk_withdrawal">High Risk Withdrawal</option>
+                                        <option value="suspicious_pattern">Suspicious Pattern</option>
+                                        <option value="hotspot_detected">Hotspot Detected</option>
+                                        <option value="recovery_opportunity">Recovery Opportunity</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="alertSeverity" class="form-label">Severity</label>
+                                    <select class="form-select" id="alertSeverity" required>
+                                        <option value="HIGH">High</option>
+                                        <option value="MEDIUM">Medium</option>
+                                        <option value="LOW">Low</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="alertMessage" class="form-label">Message</label>
+                                    <textarea class="form-control" id="alertMessage" rows="3" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipientRole" class="form-label">Recipient</label>
+                                    <select class="form-select" id="recipientRole" required>
+                                        <option value="both">Both LEA & Bank</option>
+                                        <option value="lea">LEA Only</option>
+                                        <option value="bank">Bank Only</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="alertCity" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="alertCity" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="fas fa-bell"></i> Send Alert
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification History -->
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header bg-white">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="mb-0"><i class="fas fa-history"></i> Notification History</h6>
+                                <button class="btn btn-sm btn-outline-primary" onclick="loadNotificationHistory()">
+                                    <i class="fas fa-refresh"></i> Refresh
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="notificationHistory" style="max-height: 400px; overflow-y: auto;">
+                                <!-- Dynamic notification history will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Analytics Section -->
     <section id="analytics" class="py-5">
         <div class="container">
@@ -456,7 +690,7 @@
     <!-- Footer -->
     <footer class="bg-dark text-white py-4">
         <div class="container text-center">
-            <p>&copy; 2025 CyberGuard Predictor - SIH 2024 Problem Statement ID 25257</p>
+            <p>&copy; 2025 CyberGuard Predictor - SIH 2025 Problem Statement ID 25257</p>
             <p class="small">Advanced Cybercrime Withdrawal Location Prediction System</p>
         </div>
     </footer>
@@ -474,9 +708,47 @@
         let map;
         let websocket;
         let predictionSocket;
+        let enhancedChartsInitialized = false;
+
+        // User authentication and role management
+        function checkAuthAndSetupUI() {
+            const userRole = localStorage.getItem('userRole');
+            const userName = localStorage.getItem('userName');
+            const userToken = localStorage.getItem('userToken');
+
+            if (!userRole || !userName || !userToken) {
+                // Redirect to login if not authenticated
+                window.location.href = '/login';
+                return;
+            }
+
+            // Update UI based on user role
+            document.getElementById('userName').textContent = userName;
+            document.getElementById('userRole').textContent = `Role: ${userRole.toUpperCase()}`;
+
+            // Show role-specific navigation items
+            if (userRole === 'lea') {
+                document.getElementById('enhancedAnalyticsNav').style.display = 'block';
+                document.getElementById('notificationsNav').style.display = 'block';
+            } else if (userRole === 'bank') {
+                document.getElementById('enhancedAnalyticsNav').style.display = 'block';
+                // Banks can view analytics but limited notification access
+            }
+        }
+
+        function logout() {
+            // Clear local storage
+            localStorage.removeItem('userRole');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userToken');
+            
+            // Redirect to login
+            window.location.href = '/login';
+        }
 
         // Initialize dashboard
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
+            checkAuthAndSetupUI();
             initializeMap();
             initializeWebSocket();
             updateCurrentTime();
@@ -484,7 +756,9 @@
             setupPredictionForm();
             setupCitySearch();
             initializeCharts();
-            initializeGeographicChart();
+            await initializeGeographicChart(); // Make this async
+            setupNavigation();
+            setupAlertForm();
             
             // Update time every minute
             setInterval(updateCurrentTime, 60000);
@@ -492,7 +766,336 @@
             setInterval(loadSystemStats, 30000);
             // Update charts every 2 minutes
             setInterval(updateCharts, 120000);
+            // Update geographic data every 5 minutes
+            setInterval(initializeGeographicChart, 300000);
         });
+
+        // Navigation setup for new sections
+        function setupNavigation() {
+            // Enhanced Analytics navigation
+            document.querySelector('a[href="#enhanced-analytics"]')?.addEventListener('click', function(e) {
+                e.preventDefault();
+                showEnhancedAnalytics();
+            });
+
+            // Notifications navigation
+            document.querySelector('a[href="#notifications"]')?.addEventListener('click', function(e) {
+                e.preventDefault();
+                showNotifications();
+            });
+        }
+
+        // Show Enhanced Analytics section
+        async function showEnhancedAnalytics() {
+            // Hide other sections
+            document.getElementById('analytics').style.display = 'none';
+            document.getElementById('prediction').style.display = 'none';
+            document.getElementById('notifications').style.display = 'none';
+            
+            // Show enhanced analytics
+            document.getElementById('enhanced-analytics').style.display = 'block';
+            
+            // Load enhanced analytics data if not already loaded
+            if (!enhancedChartsInitialized) {
+                await loadEnhancedAnalytics();
+                enhancedChartsInitialized = true;
+            }
+        }
+
+        // Show Notifications section
+        function showNotifications() {
+            // Hide other sections
+            document.getElementById('analytics').style.display = 'none';
+            document.getElementById('prediction').style.display = 'none';
+            document.getElementById('enhanced-analytics').style.display = 'none';
+            
+            // Show notifications
+            document.getElementById('notifications').style.display = 'block';
+            
+            // Load notification history
+            loadNotificationHistory();
+        }
+
+        // Load Enhanced Analytics
+        async function loadEnhancedAnalytics() {
+            try {
+                const response = await fetch('/enhanced-analytics');
+                const data = await response.json();
+                
+                // Update summary cards
+                document.getElementById('totalIndianCases').textContent = data.summary.total_cases.toLocaleString();
+                document.getElementById('totalAmountLost').textContent = `₹${data.summary.total_amount_lost}Cr`;
+                document.getElementById('statesCovered').textContent = data.summary.states_covered;
+                document.getElementById('recoveryRate').textContent = `${data.recovery_statistics.recovery_rate}%`;
+                
+                // Initialize enhanced charts
+                initializeStateWiseChart(data.state_wise_distribution);
+                initializeCrimeTypeChart(data.crime_type_analysis);
+                initializeMonthlyTrendChart(data.monthly_trends);
+                initializeAgeDemographicsChart(data.age_demographics);
+                initializeBankingPartnersTable(data.banking_partners);
+                
+                console.log('📊 Enhanced analytics loaded successfully');
+                
+            } catch (error) {
+                console.error('Failed to load enhanced analytics:', error);
+            }
+        }
+
+        // Initialize State-wise Chart
+        function initializeStateWiseChart(stateData) {
+            const ctx = document.getElementById('stateWiseChart').getContext('2d');
+            const states = Object.keys(stateData).slice(0, 10); // Top 10 states
+            const incidents = states.map(state => stateData[state].incidents);
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: states,
+                    datasets: [{
+                        label: 'Incidents',
+                        data: incidents,
+                        backgroundColor: 'rgba(30, 64, 175, 0.8)',
+                        borderColor: 'rgba(30, 64, 175, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Top 10 States by Cybercrime Incidents'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize Crime Type Chart
+        function initializeCrimeTypeChart(crimeData) {
+            const ctx = document.getElementById('crimeTypeChart').getContext('2d');
+            const crimeTypes = Object.keys(crimeData);
+            const cases = crimeTypes.map(type => crimeData[type].cases);
+            
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: crimeTypes,
+                    datasets: [{
+                        data: cases,
+                        backgroundColor: [
+                            '#dc2626', '#d97706', '#059669', '#1e40af', '#7c3aed', '#be185d'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Crime Type Distribution'
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize Monthly Trend Chart
+        function initializeMonthlyTrendChart(monthlyData) {
+            const ctx = document.getElementById('monthlyTrendChart').getContext('2d');
+            const months = monthlyData.map(item => item.month);
+            const totalCases = monthlyData.map(item => item.total_cases);
+            const highRisk = monthlyData.map(item => item.high_risk);
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: 'Total Cases',
+                        data: totalCases,
+                        borderColor: '#1e40af',
+                        backgroundColor: 'rgba(30, 64, 175, 0.1)',
+                        fill: true
+                    }, {
+                        label: 'High Risk',
+                        data: highRisk,
+                        borderColor: '#dc2626',
+                        backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '12-Month Trend Analysis'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize Age Demographics Chart
+        function initializeAgeDemographicsChart(ageData) {
+            const ctx = document.getElementById('ageDemographicsChart').getContext('2d');
+            const ageGroups = Object.keys(ageData);
+            const percentages = ageGroups.map(group => ageData[group].percentage);
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ageGroups,
+                    datasets: [{
+                        label: 'Percentage',
+                        data: percentages,
+                        backgroundColor: 'rgba(5, 150, 105, 0.8)',
+                        borderColor: 'rgba(5, 150, 105, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Age Group Distribution (%)'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 40
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize Banking Partners Table
+        function initializeBankingPartnersTable(bankData) {
+            const tbody = document.querySelector('#bankingPartnersTable tbody');
+            tbody.innerHTML = '';
+            
+            Object.keys(bankData).forEach(bankName => {
+                const bank = bankData[bankName];
+                const avgPerCase = (bank.amount * 10000000 / bank.incidents).toLocaleString(); // Convert crores to rupees
+                
+                const row = `
+                    <tr>
+                        <td><strong>${bankName}</strong></td>
+                        <td>${bank.incidents.toLocaleString()}</td>
+                        <td>₹${bank.amount}</td>
+                        <td>₹${avgPerCase}</td>
+                        <td><span class="badge bg-warning">Monitoring</span></td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        // Setup Alert Form
+        function setupAlertForm() {
+            document.getElementById('alertForm')?.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const alertData = {
+                    alert_id: `AL${Date.now()}`,
+                    complaint_id: document.getElementById('alertComplaintId').value,
+                    alert_type: document.getElementById('alertType').value,
+                    message: document.getElementById('alertMessage').value,
+                    severity: document.getElementById('alertSeverity').value,
+                    recipient_role: document.getElementById('recipientRole').value,
+                    city: document.getElementById('alertCity').value,
+                    phone_number: "+91-9876543210", // Demo phone
+                    email: "demo@cyberguard.gov.in" // Demo email
+                };
+
+                try {
+                    const response = await fetch('/send-alert', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${localStorage.getItem('userToken')}`
+                        },
+                        body: JSON.stringify(alertData)
+                    });
+
+                    const result = await response.json();
+                    
+                    if (result.status === 'success') {
+                        alert('Alert sent successfully!');
+                        document.getElementById('alertForm').reset();
+                        loadNotificationHistory(); // Refresh history
+                    } else {
+                        alert('Failed to send alert');
+                    }
+                } catch (error) {
+                    console.error('Alert sending failed:', error);
+                    alert('Failed to send alert');
+                }
+            });
+        }
+
+        // Load Notification History
+        async function loadNotificationHistory() {
+            try {
+                const response = await fetch('/notification-history');
+                const data = await response.json();
+                
+                const historyDiv = document.getElementById('notificationHistory');
+                historyDiv.innerHTML = '';
+                
+                if (data.notifications.length === 0) {
+                    historyDiv.innerHTML = '<p class="text-muted text-center">No notifications found</p>';
+                    return;
+                }
+                
+                data.notifications.forEach(notification => {
+                    const severityClass = notification.severity === 'HIGH' ? 'danger' : 
+                                        notification.severity === 'MEDIUM' ? 'warning' : 'info';
+                    
+                    const notificationHtml = `
+                        <div class="alert alert-${severityClass} alert-dismissible fade show" role="alert">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="alert-heading">${notification.alert_type.replace('_', ' ').toUpperCase()}</h6>
+                                    <p class="mb-1">${notification.message}</p>
+                                    <small><strong>Complaint:</strong> ${notification.complaint_id} | 
+                                           <strong>Time:</strong> ${new Date(notification.timestamp).toLocaleString()}</small>
+                                </div>
+                                <span class="badge bg-${severityClass}">${notification.severity}</span>
+                            </div>
+                        </div>
+                    `;
+                    historyDiv.innerHTML += notificationHtml;
+                });
+                
+            } catch (error) {
+                console.error('Failed to load notification history:', error);
+                document.getElementById('notificationHistory').innerHTML = 
+                    '<p class="text-danger text-center">Failed to load notification history</p>';
+            }
+        }
 
         // Initialize Leaflet map
         function initializeMap() {
@@ -533,8 +1136,61 @@
                         </div>
                     `);
                 });
+                
+                console.log('🗺️ Risk heatmap loaded with', heatmapData.length, 'points');
+                
             } catch (error) {
                 console.error('Failed to load heatmap data:', error);
+                
+                // Fallback: Use geographic data if available
+                if (window.geographicData && window.geographicData.length > 0) {
+                    console.log('🗺️ Using geographic data as heatmap fallback');
+                    
+                    // Add some sample coordinates for major Indian cities
+                    const cityCoordinates = {
+                        'Delhi': [28.6139, 77.2090],
+                        'Mumbai': [19.0760, 72.8777],
+                        'Maharashtra': [19.7515, 75.7139],
+                        'Karnataka': [15.3173, 75.7139],
+                        'Bangalore': [12.9716, 77.5946],
+                        'Chennai': [13.0827, 80.2707],
+                        'Tamil Nadu': [11.1271, 78.6569],
+                        'Kolkata': [22.5726, 88.3639],
+                        'West Bengal': [22.9868, 87.8550],
+                        'Hyderabad': [17.3850, 78.4867],
+                        'Telangana': [18.1124, 79.0193],
+                        'Gujarat': [23.0225, 72.5714],
+                        'Uttar Pradesh': [26.8467, 80.9462],
+                        'Rajasthan': [27.0238, 74.2179],
+                        'Punjab': [31.1471, 75.3412]
+                    };
+                    
+                    window.geographicData.forEach(location => {
+                        const coords = cityCoordinates[location.city];
+                        if (coords) {
+                            const color = location.risk > 0.8 ? '#dc2626' : 
+                                         location.risk > 0.5 ? '#d97706' : '#059669';
+                            
+                            const marker = L.circleMarker(coords, {
+                                radius: Math.max(8, Math.min(location.incidents / 50, 20)),
+                                fillColor: color,
+                                color: color,
+                                weight: 2,
+                                opacity: 0.8,
+                                fillOpacity: 0.6
+                            }).addTo(map);
+
+                            marker.bindPopup(`
+                                <div>
+                                    <h6>${location.city}</h6>
+                                    <p><strong>Risk Score:</strong> ${(location.risk * 100).toFixed(1)}%</p>
+                                    <p><strong>Incidents:</strong> ${location.incidents}</p>
+                                    ${location.amount_lost ? `<p><strong>Amount Lost:</strong> ₹${location.amount_lost}Cr</p>` : ''}
+                                </div>
+                            `);
+                        }
+                    });
+                }
             }
         }
 
@@ -1244,18 +1900,59 @@
         }
 
         // Initialize Geographic Distribution Chart
-        function initializeGeographicChart() {
-            // This could be enhanced with actual geographic data
-            const geoData = [
-                { city: 'Delhi', incidents: 67, risk: 0.85 },
-                { city: 'Mumbai', incidents: 52, risk: 0.75 },
-                { city: 'Bangalore', incidents: 41, risk: 0.65 },
-                { city: 'Chennai', incidents: 38, risk: 0.68 },
-                { city: 'Kolkata', incidents: 35, risk: 0.70 },
-                { city: 'Hyderabad', incidents: 29, risk: 0.72 }
-            ];
-
-            console.log('🗺️ Geographic data prepared:', geoData);
+        async function initializeGeographicChart() {
+            try {
+                // Fetch real geographic data from enhanced analytics API
+                const response = await fetch('/enhanced-analytics');
+                const data = await response.json();
+                
+                // Process state-wise data into city format for compatibility
+                const stateData = data.state_wise_distribution || {};
+                const geoData = Object.keys(stateData).map(state => ({
+                    city: state,
+                    incidents: stateData[state].incidents || 0,
+                    risk: stateData[state].risk_score || 0,
+                    amount_lost: stateData[state].amount_lost || 0
+                })).sort((a, b) => b.incidents - a.incidents); // Sort by incidents descending
+                
+                console.log('🗺️ Real geographic data loaded:', geoData.length, 'states/regions');
+                
+                // Store for potential chart visualization
+                window.geographicData = geoData;
+                
+                return geoData;
+                
+            } catch (error) {
+                console.error('Failed to load geographic data:', error);
+                
+                // Fallback to analytics-data endpoint
+                try {
+                    const fallbackResponse = await fetch('/analytics-data');
+                    const fallbackData = await fallbackResponse.json();
+                    const geoData = fallbackData.geographic_data || [];
+                    
+                    console.log('🗺️ Fallback geographic data loaded:', geoData);
+                    window.geographicData = geoData;
+                    return geoData;
+                    
+                } catch (fallbackError) {
+                    console.error('Both geographic data sources failed:', fallbackError);
+                    
+                    // Emergency fallback with demo data
+                    const demoData = [
+                        { city: 'Delhi', incidents: 67, risk: 0.85 },
+                        { city: 'Mumbai', incidents: 52, risk: 0.75 },
+                        { city: 'Bangalore', incidents: 41, risk: 0.65 },
+                        { city: 'Chennai', incidents: 38, risk: 0.68 },
+                        { city: 'Kolkata', incidents: 35, risk: 0.70 },
+                        { city: 'Hyderabad', incidents: 29, risk: 0.72 }
+                    ];
+                    
+                    console.log('🗺️ Using emergency demo data');
+                    window.geographicData = demoData;
+                    return demoData;
+                }
+            }
         }
 
         // Sample data for demo alerts

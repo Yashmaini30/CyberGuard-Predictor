@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberGuard Login - Secure Access</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #dc2626;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            --dark-color: #1f2937;
+            --light-color: #f8fafc;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .login-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .login-header h1 {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .login-header p {
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+
+        .login-form {
+            padding: 3rem 2rem;
+        }
+
+        .role-selector {
+            margin-bottom: 2rem;
+        }
+
+        .role-card {
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .role-card:hover {
+            border-color: var(--primary-color);
+            background-color: #f0f9ff;
+        }
+
+        .role-card.active {
+            border-color: var(--primary-color);
+            background-color: #dbeafe;
+        }
+
+        .role-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .form-control {
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            border: 2px solid #e5e7eb;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(30, 64, 175, 0.25);
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            color: white;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .demo-credentials {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .demo-credentials h6 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .credential-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .credential-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .shield-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="login-card">
+                        <div class="row g-0">
+                            <!-- Header Section -->
+                            <div class="col-lg-5">
+                                <div class="login-header h-100 d-flex flex-column justify-content-center">
+                                    <div class="shield-animation mb-4">
+                                        <i class="fas fa-shield-alt" style="font-size: 4rem;"></i>
+                                    </div>
+                                    <h1>CyberGuard</h1>
+                                    <p class="lead">Advanced Cybercrime Prediction & Prevention System</p>
+                                    <div class="mt-4">
+                                        <p class="small mb-1">🏛️ Law Enforcement Agency Access</p>
+                                        <p class="small mb-1">🏦 Banking Institution Portal</p>
+                                        <p class="small mb-0">🛡️ Real-time Threat Intelligence</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Login Form -->
+                            <div class="col-lg-7">
+                                <div class="login-form">
+                                    <h3 class="text-center mb-4">Secure Login</h3>
+                                    
+                                    <!-- Role Selection -->
+                                    <div class="role-selector">
+                                        <label class="form-label fw-bold">Select Your Role</label>
+                                        <div class="row g-3">
+                                            <div class="col-6">
+                                                <div class="role-card" data-role="lea">
+                                                    <div class="role-icon">
+                                                        <i class="fas fa-badge"></i>
+                                                    </div>
+                                                    <h6>LEA Officer</h6>
+                                                    <p class="small text-muted">Law Enforcement Agency</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="role-card" data-role="bank">
+                                                    <div class="role-icon">
+                                                        <i class="fas fa-university"></i>
+                                                    </div>
+                                                    <h6>Bank Official</h6>
+                                                    <p class="small text-muted">Banking Institution</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Login Form -->
+                                    <form id="loginForm">
+                                        <input type="hidden" id="selectedRole" name="role" required>
+                                        
+                                        <div class="mb-3">
+                                            <label for="username" class="form-label">Username / Employee ID</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-user"></i>
+                                                </span>
+                                                <input type="text" class="form-control" id="username" name="username" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label">Password</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-lock"></i>
+                                                </span>
+                                                <input type="password" class="form-control" id="password" name="password" required>
+                                                <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-login">
+                                            <i class="fas fa-sign-in-alt me-2"></i>
+                                            Secure Login
+                                        </button>
+                                    </form>
+
+                                    <!-- Demo Credentials -->
+                                    <div class="demo-credentials">
+                                        <h6><i class="fas fa-info-circle me-2"></i>Demo Credentials</h6>
+                                        <div class="credential-item">
+                                            <strong>LEA Officer:</strong> lea_officer / password123
+                                            <br><small class="text-muted">Access: Full investigation tools, alerts, analytics</small>
+                                        </div>
+                                        <div class="credential-item">
+                                            <strong>Bank Official:</strong> bank_admin / password123
+                                            <br><small class="text-muted">Access: Withdrawal predictions, risk alerts, reports</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Role selection
+        document.querySelectorAll('.role-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Remove active class from all cards
+                document.querySelectorAll('.role-card').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked card
+                this.classList.add('active');
+                
+                // Update hidden input
+                const role = this.dataset.role;
+                document.getElementById('selectedRole').value = role;
+                
+                // Update form styling based on role
+                if (role === 'lea') {
+                    document.querySelector('.btn-login').style.background = 'linear-gradient(135deg, #1e40af, #3b82f6)';
+                } else {
+                    document.querySelector('.btn-login').style.background = 'linear-gradient(135deg, #059669, #10b981)';
+                }
+            });
+        });
+
+        // Password toggle
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordField = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+
+        // Form submission
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const role = document.getElementById('selectedRole').value;
+            if (!role) {
+                alert('Please select your role first');
+                return;
+            }
+
+            const formData = {
+                username: document.getElementById('username').value,
+                password: document.getElementById('password').value,
+                role: role
+            };
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Store user info
+                    localStorage.setItem('userRole', result.user.role);
+                    localStorage.setItem('userName', result.user.name);
+                    localStorage.setItem('userToken', result.token);
+                    
+                    // Redirect to appropriate dashboard
+                    if (result.user.role === 'lea') {
+                        window.location.href = '/dashboard/lea';
+                    } else {
+                        window.location.href = '/dashboard/bank';
+                    }
+                } else {
+                    alert(result.message || 'Login failed');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('Login failed. Please try again.');
+            }
+        });
+
+        // Auto-fill demo credentials on card click
+        document.querySelectorAll('.credential-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const text = this.textContent;
+                if (text.includes('lea_officer')) {
+                    document.getElementById('username').value = 'lea_officer';
+                    document.getElementById('password').value = 'password123';
+                    document.querySelector('[data-role="lea"]').click();
+                } else if (text.includes('bank_admin')) {
+                    document.getElementById('username').value = 'bank_admin';
+                    document.getElementById('password').value = 'password123';
+                    document.querySelector('[data-role="bank"]').click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
