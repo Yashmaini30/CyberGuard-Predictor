@@ -142,6 +142,48 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
+        /* Coordinate input styling */
+        .form-control[readonly] {
+            background-color: #f8f9fa;
+            border-color: #e9ecef;
+            color: #6c757d;
+        }
+
+        .form-control.is-valid[readonly] {
+            background-color: #d1e7dd;
+            border-color: #badbcc;
+            color: #0f5132;
+        }
+
+        .city-selection-hint {
+            font-size: 0.875rem;
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        /* City dropdown styling */
+        .hover-bg-light:hover {
+            background-color: #f8f9fa !important;
+        }
+        
+        .city-item {
+            transition: background-color 0.2s ease;
+        }
+        
+        .city-item:hover {
+            background-color: #e9ecef;
+        }
+        
+        #cityDropdown {
+            border-top: none !important;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .city-item small {
+            font-size: 0.75rem;
+            color: #6c757d;
+        }
     </style>
 </head>
 <body>
@@ -332,15 +374,32 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="complaintCity" class="form-label">Complaint City</label>
-                                    <input type="text" class="form-control" id="complaintCity" required>
+                                    <div class="position-relative">
+                                        <input type="text" 
+                                               class="form-control" 
+                                               id="complaintCity" 
+                                               name="complaintCity" 
+                                               placeholder="Search any city, town, or location in India..." 
+                                               autocomplete="off"
+                                               required>
+                                        <div id="cityDropdown" class="position-absolute w-100 bg-white border border-top-0 rounded-bottom shadow-sm" style="display: none; z-index: 1000; max-height: 200px; overflow-y: auto;">
+                                            <!-- City suggestions will appear here -->
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="complaintLat" class="form-label">Latitude</label>
-                                    <input type="number" step="any" class="form-control" id="complaintLat" required>
+                                    <input type="number" step="any" class="form-control" id="complaintLat" required readonly>
+                                    <div class="form-text">
+                                        <small class="text-muted">Auto-filled from city selection</small>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="complaintLng" class="form-label">Longitude</label>
-                                    <input type="number" step="any" class="form-control" id="complaintLng" required>
+                                    <input type="number" step="any" class="form-control" id="complaintLng" required readonly>
+                                    <div class="form-text">
+                                        <small class="text-muted">Auto-filled from city selection</small>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -423,6 +482,7 @@
             updateCurrentTime();
             loadSystemStats();
             setupPredictionForm();
+            setupCitySearch();
             initializeCharts();
             initializeGeographicChart();
             
@@ -560,6 +620,254 @@
             }
         }
 
+        // Setup city search with OpenStreetMap integration
+        function setupCitySearch() {
+            const cityInput = document.getElementById('complaintCity');
+            const cityDropdown = document.getElementById('cityDropdown');
+            let searchTimeout;
+            let selectedCityData = null;
+
+            // Focus shows helpful text
+            cityInput.addEventListener('focus', function() {
+                if (cityInput.value.trim() === '') {
+                    cityDropdown.innerHTML = '<div class="p-2 text-muted"><i class="fas fa-info-circle"></i> Start typing to search for any city, town, or location in India...</div>';
+                    cityDropdown.style.display = 'block';
+                }
+            });
+
+            // Search cities as user types
+            cityInput.addEventListener('input', function() {
+                const query = this.value.trim();
+                
+                clearTimeout(searchTimeout);
+                
+                if (query.length < 2) {
+                    if (query.length === 0) {
+                        showPopularCities();
+                    } else {
+                        cityDropdown.style.display = 'none';
+                    }
+                    return;
+                }
+
+                // Show loading
+                cityDropdown.innerHTML = '<div class="p-2 text-muted"><i class="fas fa-spinner fa-spin"></i> Searching cities...</div>';
+                cityDropdown.style.display = 'block';
+
+                // Debounce search
+                searchTimeout = setTimeout(async () => {
+                    try {
+                        const suggestions = await getCitySuggestions(query);
+                        displayCitySuggestions(suggestions);
+                    } catch (error) {
+                        console.error('City search failed:', error);
+                        cityDropdown.innerHTML = '<div class="p-2 text-danger"><i class="fas fa-exclamation-triangle"></i> Search failed. Please try again.</div>';
+                    }
+                }, 300);
+            });
+
+            // Hide dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!cityInput.contains(e.target) && !cityDropdown.contains(e.target)) {
+                    cityDropdown.style.display = 'none';
+                }
+            });
+
+            // Handle city selection
+            cityDropdown.addEventListener('click', function(e) {
+                const cityItem = e.target.closest('.city-item');
+                if (cityItem) {
+                    const cityName = cityItem.dataset.cityName;
+                    if (cityItem.dataset.lat && cityItem.dataset.lng) {
+                        const lat = parseFloat(cityItem.dataset.lat);
+                        const lng = parseFloat(cityItem.dataset.lng);
+                        const state = cityItem.dataset.state;
+                        selectCity(cityName, lat, lng, state);
+                    } else {
+                        selectCity(cityName);
+                    }
+                }
+            });
+
+            function displayCitySuggestions(suggestions) {
+                if (suggestions.length === 0) {
+                    cityDropdown.innerHTML = '<div class="p-2 text-muted">No cities found. Try a different search term.</div>';
+                    return;
+                }
+
+                let html = '<div class="p-2"><strong class="text-muted"><i class="fas fa-search"></i> Search Results</strong></div>';
+                
+                suggestions.forEach(city => {
+                    html += `<div class="city-item p-2 border-bottom cursor-pointer hover-bg-light" 
+                                  data-city-name="${city.name}" 
+                                  data-lat="${city.lat}" 
+                                  data-lng="${city.lng}" 
+                                  data-state="${city.state}"
+                                  style="cursor: pointer;">
+                                <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                <strong>${city.name}</strong>${city.state ? ', ' + city.state : ''}
+                                <small class="text-muted d-block">${city.fullName}</small>
+                             </div>`;
+                });
+                
+                cityDropdown.innerHTML = html;
+                cityDropdown.style.display = 'block';
+            }
+
+            async function selectCity(cityName, lat = null, lng = null, state = null) {
+                cityInput.value = cityName;
+                cityDropdown.style.display = 'none';
+
+                // Show loading state
+                document.getElementById('complaintLat').value = 'Loading...';
+                document.getElementById('complaintLng').value = 'Loading...';
+
+                try {
+                    let coordinates;
+                    if (lat && lng) {
+                        coordinates = { lat, lng, state };
+                    } else {
+                        // Fetch coordinates from OpenStreetMap
+                        coordinates = await getCityCoordinates(cityName);
+                    }
+
+                    if (coordinates) {
+                        selectedCityData = coordinates;
+                        document.getElementById('complaintLat').value = coordinates.lat.toFixed(6);
+                        document.getElementById('complaintLng').value = coordinates.lng.toFixed(6);
+                        
+                        // Show success feedback
+                        showCitySelectionFeedback(cityName, coordinates);
+                        
+                        // Update map if available
+                        if (typeof map !== 'undefined' && map) {
+                            map.setView([coordinates.lat, coordinates.lng], 12);
+                            
+                            // Add marker
+                            if (window.cityMarker) {
+                                map.removeLayer(window.cityMarker);
+                            }
+                            window.cityMarker = L.marker([coordinates.lat, coordinates.lng])
+                                .addTo(map)
+                                .bindPopup(`${cityName}<br>Lat: ${coordinates.lat.toFixed(6)}, Lng: ${coordinates.lng.toFixed(6)}`)
+                                .openPopup();
+                        }
+                    } else {
+                        throw new Error('Coordinates not found');
+                    }
+                } catch (error) {
+                    console.error('Failed to get coordinates:', error);
+                    document.getElementById('complaintLat').value = '';
+                    document.getElementById('complaintLng').value = '';
+                    showCityErrorMessage(cityName);
+                }
+            }
+
+            // Search cities using OpenStreetMap Nominatim API
+            async function getCitySuggestions(query) {
+                const nominatimUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&countrycodes=in&limit=10&addressdetails=1`;
+                
+                try {
+                    const response = await fetch(nominatimUrl, {
+                        headers: {
+                            'User-Agent': 'CyberGuard-Predictor/1.0'
+                        }
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    // Process and format the results
+                    return data.map(item => ({
+                        name: item.display_name.split(',')[0], // First part is usually the city name
+                        fullName: item.display_name,
+                        lat: parseFloat(item.lat),
+                        lng: parseFloat(item.lon),
+                        state: item.address?.state || '',
+                        type: item.type,
+                        importance: item.importance || 0
+                    })).sort((a, b) => b.importance - a.importance); // Sort by importance
+                    
+                } catch (error) {
+                    console.error('Error fetching city suggestions:', error);
+                    return [];
+                }
+            }
+
+            function showCityErrorMessage(cityName) {
+                const latInput = document.getElementById('complaintLat');
+                const lngInput = document.getElementById('complaintLng');
+                
+                // Add error styling
+                latInput.classList.add('is-invalid');
+                lngInput.classList.add('is-invalid');
+                
+                // Show error toast
+                const toastHtml = `
+                    <div class="toast align-items-center text-bg-danger border-0 position-fixed top-0 end-0 m-3" role="alert" style="z-index: 1055;">
+                        <div class="d-flex">
+                            <div class="toast-body">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                Could not find coordinates for "${cityName}". Please try a different city.
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.insertAdjacentHTML('beforeend', toastHtml);
+                const toast = new bootstrap.Toast(document.querySelector('.toast:last-child'));
+                toast.show();
+                
+                // Remove error styling after 3 seconds
+                setTimeout(() => {
+                    latInput.classList.remove('is-invalid');
+                    lngInput.classList.remove('is-invalid');
+                }, 3000);
+                
+                console.error(`❌ Failed to geocode: ${cityName}`);
+            }
+        }
+
+        // Show feedback when city is selected
+        function showCitySelectionFeedback(cityName, coordinates) {
+            const latInput = document.getElementById('complaintLat');
+            const lngInput = document.getElementById('complaintLng');
+            
+            // Add success styling
+            latInput.classList.add('is-valid');
+            lngInput.classList.add('is-valid');
+            
+            // Show success toast
+            const toastHtml = `
+                <div class="toast align-items-center text-bg-success border-0 position-fixed top-0 end-0 m-3" role="alert" style="z-index: 1055;">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <strong>${cityName}</strong> located successfully!
+                            <br><small>Lat: ${coordinates.lat.toFixed(6)}, Lng: ${coordinates.lng.toFixed(6)}</small>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', toastHtml);
+            const toast = new bootstrap.Toast(document.querySelector('.toast:last-child'));
+            toast.show();
+            
+            // Remove success styling after 3 seconds
+            setTimeout(() => {
+                latInput.classList.remove('is-valid');
+                lngInput.classList.remove('is-valid');
+            }, 3000);
+            
+            console.log(`✅ Geocoded ${cityName}: ${coordinates.lat.toFixed(6)}, ${coordinates.lng.toFixed(6)}`);
+        }
+
         // Setup prediction form
         function setupPredictionForm() {
             document.getElementById('predictionForm').addEventListener('submit', async function(e) {
@@ -575,6 +883,18 @@
                     complaint_lng: parseFloat(document.getElementById('complaintLng').value)
                 };
 
+                // Validate that a city is selected
+                if (!formData.complaint_city) {
+                    alert('Please select a city from the dropdown.');
+                    return;
+                }
+
+                // Validate coordinates are populated
+                if (!formData.complaint_lat || !formData.complaint_lng) {
+                    alert('Coordinates not found for selected city. Please try another city.');
+                    return;
+                }
+
                 try {
                     const response = await fetch('/predict-withdrawal-location', {
                         method: 'POST',
@@ -585,6 +905,7 @@
                     });
 
                     const result = await response.json();
+                    console.log('🎯 RECEIVED FROM MODEL:', result);
                     displayPredictionResults(result);
                 } catch (error) {
                     console.error('Prediction failed:', error);
