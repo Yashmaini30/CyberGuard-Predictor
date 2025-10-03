@@ -423,11 +423,15 @@
             updateCurrentTime();
             loadSystemStats();
             setupPredictionForm();
+            initializeCharts();
+            initializeGeographicChart();
             
             // Update time every minute
             setInterval(updateCurrentTime, 60000);
             // Update stats every 30 seconds
             setInterval(loadSystemStats, 30000);
+            // Update charts every 2 minutes
+            setInterval(updateCharts, 120000);
         });
 
         // Initialize Leaflet map
@@ -667,6 +671,270 @@
                 map.setView([result.predicted_withdrawal_lat, result.predicted_withdrawal_lng], 10);
                 marker.openPopup();
             }
+        }
+
+        // Initialize Analytics Charts
+        async function initializeCharts() {
+            try {
+                // Fetch real analytics data
+                const response = await fetch('/analytics-data');
+                const analytics = await response.json();
+                
+                // Weekly Trend Chart
+                const trendCtx = document.getElementById('trendChart').getContext('2d');
+                const trendChart = new Chart(trendCtx, {
+                    type: 'line',
+                    data: {
+                        labels: analytics.weekly_trend.labels,
+                        datasets: [{
+                            label: 'Cybercrime Reports',
+                            data: analytics.weekly_trend.complaints,
+                            borderColor: '#1e40af',
+                            backgroundColor: 'rgba(30, 64, 175, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }, {
+                            label: 'High Risk Alerts',
+                            data: analytics.weekly_trend.high_risk,
+                            borderColor: '#dc2626',
+                            backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.1)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.1)'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Weekly Cybercrime Trends'
+                            }
+                        }
+                    }
+                });
+
+                // Risk Distribution Chart
+                const riskCtx = document.getElementById('riskChart').getContext('2d');
+                const riskChart = new Chart(riskCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['High Risk', 'Medium Risk', 'Low Risk'],
+                        datasets: [{
+                            data: [analytics.risk_distribution.high, analytics.risk_distribution.medium, analytics.risk_distribution.low],
+                            backgroundColor: [
+                                '#dc2626',
+                                '#d97706', 
+                                '#059669'
+                            ],
+                            borderColor: [
+                                '#dc2626',
+                                '#d97706',
+                                '#059669'
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Risk Level Distribution'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.parsed;
+                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                        const percentage = ((value / total) * 100).toFixed(1);
+                                        return `${label}: ${value} (${percentage}%)`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                console.log('📊 Analytics charts initialized with real data');
+                
+                // Store chart references for updates
+                window.dashboardCharts = { trendChart, riskChart };
+                
+            } catch (error) {
+                console.error('Failed to load analytics data:', error);
+                // Fall back to demo data
+                initializeChartsWithDemoData();
+            }
+        }
+
+        // Fallback function with demo data
+        function initializeChartsWithDemoData() {
+            // Weekly Trend Chart
+            const trendCtx = document.getElementById('trendChart').getContext('2d');
+            const trendChart = new Chart(trendCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Cybercrime Reports',
+                        data: [45, 52, 38, 67, 73, 29, 41],
+                        borderColor: '#1e40af',
+                        backgroundColor: 'rgba(30, 64, 175, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }, {
+                        label: 'High Risk Alerts',
+                        data: [12, 15, 8, 22, 28, 7, 13],
+                        borderColor: '#dc2626',
+                        backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Weekly Cybercrime Trends (Demo Data)'
+                        }
+                    }
+                }
+            });
+
+            // Risk Distribution Chart
+            const riskCtx = document.getElementById('riskChart').getContext('2d');
+            const riskChart = new Chart(riskCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['High Risk', 'Medium Risk', 'Low Risk'],
+                    datasets: [{
+                        data: [89, 156, 203],
+                        backgroundColor: [
+                            '#dc2626',
+                            '#d97706', 
+                            '#059669'
+                        ],
+                        borderColor: [
+                            '#dc2626',
+                            '#d97706',
+                            '#059669'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Risk Level Distribution (Demo Data)'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            console.log('📊 Analytics charts initialized with demo data');
+        }
+
+        // Update charts with fresh data
+        async function updateCharts() {
+            try {
+                const response = await fetch('/analytics-data');
+                const analytics = await response.json();
+                
+                if (window.dashboardCharts) {
+                    // Update trend chart
+                    if (window.dashboardCharts.trendChart) {
+                        window.dashboardCharts.trendChart.data.datasets[0].data = analytics.weekly_trend.complaints;
+                        window.dashboardCharts.trendChart.data.datasets[1].data = analytics.weekly_trend.high_risk;
+                        window.dashboardCharts.trendChart.update();
+                    }
+                    
+                    // Update risk distribution chart
+                    if (window.dashboardCharts.riskChart) {
+                        window.dashboardCharts.riskChart.data.datasets[0].data = [
+                            analytics.risk_distribution.high,
+                            analytics.risk_distribution.medium,
+                            analytics.risk_distribution.low
+                        ];
+                        window.dashboardCharts.riskChart.update();
+                    }
+                    
+                    console.log('📊 Charts updated with fresh data');
+                }
+            } catch (error) {
+                console.error('Failed to update charts:', error);
+            }
+        }
+
+        // Initialize Geographic Distribution Chart
+        function initializeGeographicChart() {
+            // This could be enhanced with actual geographic data
+            const geoData = [
+                { city: 'Delhi', incidents: 67, risk: 0.85 },
+                { city: 'Mumbai', incidents: 52, risk: 0.75 },
+                { city: 'Bangalore', incidents: 41, risk: 0.65 },
+                { city: 'Chennai', incidents: 38, risk: 0.68 },
+                { city: 'Kolkata', incidents: 35, risk: 0.70 },
+                { city: 'Hyderabad', incidents: 29, risk: 0.72 }
+            ];
+
+            console.log('🗺️ Geographic data prepared:', geoData);
         }
 
         // Sample data for demo alerts
